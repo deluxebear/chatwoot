@@ -212,6 +212,7 @@ zh-CN:
     settings_pages:
       general: 通用
       custom_branding: 自定义品牌
+      email: 邮件
     sign_in:
       title: "管理员，您好 \U0001F44B"
       email: 邮箱地址
@@ -219,3 +220,281 @@ zh-CN:
       password: 密码
       password_placeholder: 请输入密码
       login: 登录
+    app_config:
+      INSTALLATION_NAME:
+        title: 安装名称
+        description: 在仪表板、页面标题等处使用的全局安装名称
+      LOGO_THUMBNAIL:
+        title: Logo 缩略图
+        description: 用作网站图标（favicon）的缩略图（512px X 512px）
+      LOGO:
+        title: Logo
+        description: 在仪表板、登录页等处使用的 Logo
+      LOGO_DARK:
+        title: 深色模式 Logo
+        description: 深色模式下在仪表板、登录页等处使用的 Logo
+      BRAND_URL:
+        title: 品牌 URL
+        description: 在邮件“Powered By”区域使用的 URL
+      WIDGET_BRAND_URL:
+        title: 聊天挂件品牌 URL
+        description: 在聊天挂件“Powered By”区域使用的 URL
+      BRAND_NAME:
+        title: 品牌名称
+        description: 在邮件和聊天挂件中使用的名称
+      TERMS_URL:
+        title: 服务条款 URL
+        description: 在注册页面显示的服务条款 URL
+      PRIVACY_URL:
+        title: 隐私政策 URL
+        description: 在应用中显示的隐私政策 URL
+      DISPLAY_MANIFEST:
+        title: Chatwoot 元数据
+        description: 显示默认的 Chatwoot 元数据，例如网站图标和升级提醒
+      ENABLE_ACCOUNT_SIGNUP:
+        title: 启用账户注册
+        description: 允许用户注册新账户
+      CREATE_NEW_ACCOUNT_FROM_DASHBOARD:
+        description: 允许用户从仪表板创建新账户
+      INSTALLATION_EVENTS_WEBHOOK_URL:
+        title: 系统事件 Webhook URL
+        description: 用于接收系统事件（如新账户创建）的 URL
+      WEBHOOK_TIMEOUT:
+        title: Webhook 请求超时（秒）
+        description: Chatwoot 等待 Webhook 响应的最长时间，超时后请求将判定为失败
+      DIRECT_UPLOADS_ENABLED:
+        description: 启用直接上传到云存储
+      MAXIMUM_FILE_UPLOAD_SIZE:
+        title: 附件大小限制（MB）
+        description: 允许上传的附件最大大小（MB）
+      MAILER_INBOUND_EMAIL_DOMAIN:
+        title: 入站邮件域名
+        description: 用于生成会话连续性邮件的域名（reply+id@domain.com）
+      MAILER_SUPPORT_EMAIL:
+        title: 支持邮箱
+        description: 您的安装实例的支持邮箱地址
+      ACCOUNT_EMAILS_LIMIT:
+        title: 账户邮件发送限制（每日）
+        description: 每个账户每天可发送的非渠道邮件的最大数量
+      ACCOUNT_EMAILS_PLAN_LIMITS:
+        title: 账户邮件套餐限制（每日）
+        description: 以 JSON 形式配置各套餐的每日邮件发送限制
+      FB_APP_ID:
+        title: Facebook 应用 ID
+      FB_VERIFY_TOKEN:
+        title: Facebook 验证 Token
+        description: 用于 Facebook Messenger Webhook 的验证 Token
+      FB_APP_SECRET:
+        title: Facebook 应用 Secret
+      IG_VERIFY_TOKEN:
+        title: Instagram 验证 Token
+        description: 用于 Instagram Webhook 的验证 Token
+      FACEBOOK_API_VERSION:
+        title: Facebook API 版本
+        description: 如需使用其他 Facebook API 版本请在此配置，请确保以 `v` 开头
+      ENABLE_MESSENGER_CHANNEL_HUMAN_AGENT:
+        title: 启用人工客服
+        description: 为 Messenger 渠道启用人工客服以延长消息回复时限，需要额外的应用审核：https://developers.facebook.com/docs/features-reference/human-agent/
+      WHATSAPP_APP_ID:
+        title: WhatsApp 应用 ID
+        description: 用于 WhatsApp Business API 集成的 Facebook 应用 ID
+      WHATSAPP_CONFIGURATION_ID:
+        title: WhatsApp 配置 ID
+        description: WhatsApp 嵌入式注册流程的配置 ID（嵌入式注册必填）
+      WHATSAPP_APP_SECRET:
+        title: WhatsApp 应用 Secret
+        description: WhatsApp 嵌入式注册流程的应用 Secret（嵌入式注册必填）
+      WHATSAPP_API_VERSION:
+        title: WhatsApp API 版本
+        description: 如需使用其他 WhatsApp API 版本请在此配置，请确保以 `v` 开头
+      AZURE_APP_ID:
+        title: Azure 应用 ID
+        description: 用于客户 Microsoft 账户认证的应用 ID，Azure 配置详情请参阅：https://chwt.app/dev/ms
+      AZURE_APP_SECRET:
+        title: Azure 应用 Secret
+      CAPTAIN_OPEN_AI_API_KEY:
+        title: OpenAI API Key
+        description: 用于验证 Captain AI 对 OpenAI 服务请求的 API Key。
+      CAPTAIN_OPEN_AI_MODEL:
+        title: OpenAI 模型
+        description: 为 Captain AI 配置的 OpenAI 模型，默认值：gpt-4.1-mini
+      CAPTAIN_OPEN_AI_ENDPOINT:
+        title: OpenAI API 端点（可选）
+        description: 为 Captain AI 配置的 OpenAI 端点，默认值：https://api.openai.com/
+      CAPTAIN_EMBEDDING_MODEL:
+        title: 嵌入模型（可选）
+        description: 为 Captain AI 配置的嵌入模型，默认值：text-embedding-3-small
+      CAPTAIN_FIRECRAWL_API_KEY:
+        title: FireCrawl API Key（可选）
+        description: 用于 Captain AI 服务的 FireCrawl API Key
+      CAPTAIN_CLOUD_PLAN_LIMITS:
+        title: Captain 云端套餐限制
+        description: Captain AI 服务在不同套餐下的使用限制
+      CAPTAIN_DOCUMENT_AUTO_SYNC_INTERVALS:
+        title: Captain 文档自动同步间隔
+        description: 以 JSON 形式按套餐配置 Captain 文档自动同步间隔（小时），使用 null 可禁用某套餐的自动同步。
+      CAPTAIN_DOCUMENT_AUTO_SYNC_PER_ACCOUNT_BATCH_LIMIT:
+        title: Captain 文档自动同步单账户批量上限
+        description: 单次调度运行中每个账户可加入同步队列的 Captain 文档最大数量，默认为 50。
+      CAPTAIN_DOCUMENT_AUTO_SYNC_GLOBAL_BATCH_LIMIT:
+        title: Captain 文档自动同步全局批量上限
+        description: 单次调度运行中全局可加入同步队列的 Captain 文档最大数量，默认为 1000。
+      CONTEXT_DEV_API_KEY:
+        title: Context.dev API Key
+        description: 账户引导期间使用的 Context.dev 品牌服务 API Key
+      CHATWOOT_INBOX_TOKEN:
+        title: 收件箱 Token
+        description: 用于云端“联系支持”功能的 Chatwoot 收件箱 Token
+      CHATWOOT_INBOX_HMAC_KEY:
+        title: 收件箱 HMAC Key
+        description: 用于云端“联系支持”功能的 Chatwoot 收件箱 HMAC Key
+      CHATWOOT_CLOUD_PLANS:
+        title: 云端套餐
+        description: 用于存储云端 Stripe 套餐的配置
+      CHATWOOT_CLOUD_PLAN_FEATURES:
+        title: 套餐功能列表
+        description: 用于配置功能及其对应套餐
+      DEPLOYMENT_ENV:
+        description: 安装实例的部署环境，用于区分 Chatwoot 云端和自托管部署
+      CLOUD_ANALYTICS_TOKEN:
+        title: 分析 Token
+        description: Chatwoot 云端使用的 Amplitude 分析 API Key
+      CLEARBIT_API_KEY:
+        title: Clearbit API Key
+        description: 此 API Key 用于用户引导，预填账户数据。
+      DASHBOARD_SCRIPTS:
+        title: 仪表板脚本
+        description: 脚本将作为 <body> 标签内的最后一项加载
+      BLOCKED_EMAIL_DOMAINS:
+        title: 屏蔽的邮箱域名
+        description: 每行添加一个域名以阻止其注册，支持正则表达式
+      SKIP_INCOMING_BCC_PROCESSING:
+        title: 跳过 BCC 处理的账户
+        description: 需要跳过入站 BCC 处理的账户 ID 列表，以逗号分隔
+      INACTIVE_WHATSAPP_NUMBERS:
+        title: 停用的 WhatsApp 号码
+        description: 应以 422 错误拒绝的 WhatsApp 号码列表，以逗号分隔
+      INSTALLATION_PRICING_PLAN:
+        description: 安装实例的定价套餐，从计费 API 获取
+      INSTALLATION_PRICING_PLAN_QUANTITY:
+        description: 安装实例已购买的许可证数量，从计费 API 获取
+      CHATWOOT_SUPPORT_WEBSITE_TOKEN:
+        description: Chatwoot 网站 Token，用于识别 Chatwoot 收件箱并在计费页面显示“联系支持”选项
+      CHATWOOT_SUPPORT_SCRIPT_URL:
+        description: Chatwoot 脚本基础 URL，用于在计费页面显示“联系支持”选项
+      CHATWOOT_SUPPORT_IDENTIFIER_HASH:
+        description: Chatwoot 标识哈希，用于在在线聊天窗口中验证联系人。
+      ACCOUNT_SECURITY_NOTIFICATION_WEBHOOK_URL:
+        title: 安全分析推送 Webhook URL
+        description: 用于向 Chatwoot 通报账户滥用和潜在威胁（应为 Discord Webhook URL）
+      CHATWOOT_INSTANCE_ADMIN_EMAIL:
+        title: 实例管理员邮箱
+        description: 用于接收合规相关通知的实例管理员邮箱
+      API_CHANNEL_NAME:
+        description: API 渠道的自定义名称
+      API_CHANNEL_THUMBNAIL:
+        description: API 渠道的自定义缩略图
+      LOGOUT_REDIRECT_LINK:
+        description: 退出登录后重定向到其他链接
+      DISABLE_USER_PROFILE_UPDATE:
+        description: 禁止向用户显示个人资料更新页面
+      FIREBASE_PROJECT_ID:
+        title: Firebase 项目 ID
+        description: Firebase 项目 ID
+      FIREBASE_CREDENTIALS:
+        title: Firebase 凭据
+        description: 您的 Firebase 凭据 JSON 文件的内容
+      LINEAR_CLIENT_ID:
+        title: Linear 客户端 ID
+        description: Linear 客户端 ID
+      LINEAR_CLIENT_SECRET:
+        title: Linear 客户端 Secret
+        description: Linear 客户端 Secret
+      NOTION_CLIENT_ID:
+        title: Notion 客户端 ID
+        description: Notion 客户端 ID
+      NOTION_CLIENT_SECRET:
+        title: Notion 客户端 Secret
+        description: Notion 客户端 Secret
+      NOTION_VERSION:
+        title: Notion 版本
+        description: Notion 版本
+      SLACK_CLIENT_ID:
+        title: Slack 客户端 ID
+        description: Slack 客户端 ID
+      SLACK_CLIENT_SECRET:
+        title: Slack 客户端 Secret
+        description: Slack 客户端 Secret
+      SHOPIFY_CLIENT_ID:
+        title: Shopify 客户端 ID
+        description: 来自您 Shopify 合作伙伴账户的客户端 ID（API Key）
+      SHOPIFY_CLIENT_SECRET:
+        title: Shopify 客户端 Secret
+        description: 来自您 Shopify 合作伙伴账户的客户端 Secret（API Secret Key）
+      INSTAGRAM_APP_ID:
+        title: Instagram 应用 ID
+      INSTAGRAM_APP_SECRET:
+        title: Instagram 应用 Secret
+        description: 用于 Instagram 认证的应用 Secret
+      INSTAGRAM_VERIFY_TOKEN:
+        title: Instagram 验证 Token
+        description: 用于 Instagram Webhook 的验证 Token
+      ENABLE_INSTAGRAM_CHANNEL_HUMAN_AGENT:
+        title: 为 Instagram 渠道启用人工客服
+        description: 为 Instagram 渠道启用人工客服以延长消息回复时限，需要额外的应用审核：https://developers.facebook.com/docs/features-reference/human-agent/
+      INSTAGRAM_API_VERSION:
+        title: Instagram API 版本
+        description: 如需使用其他 Instagram API 版本请在此配置，请确保以 `v` 开头
+      TIKTOK_API_VERSION:
+        title: TikTok API 版本
+        description: 如需使用其他 TikTok API 版本请在此配置，请确保以 `v` 开头
+      TIKTOK_APP_ID:
+        title: TikTok 应用 ID
+      TIKTOK_APP_SECRET:
+        title: TikTok 应用 Secret
+      OG_IMAGE_CDN_URL:
+        title: OG 图片 CDN URL
+        description: 用于提供 OG 图片的 CDN URL
+      OG_IMAGE_CLIENT_REF:
+        title: OG 图片客户端引用
+        description: 用于阻止未经授权访问 OG 图片的 Token
+      GOOGLE_OAUTH_CLIENT_ID:
+        title: Google OAuth 客户端 ID
+        description: 用于邮箱认证的 Google OAuth 客户端 ID
+      GOOGLE_OAUTH_CLIENT_SECRET:
+        title: Google OAuth 客户端 Secret
+        description: 用于邮箱认证的 Google OAuth 客户端 Secret
+      GOOGLE_OAUTH_REDIRECT_URI:
+        title: Google OAuth 重定向 URI
+        description: 在您的 Google OAuth 应用中配置的重定向 URI
+      ENABLE_GOOGLE_OAUTH_LOGIN:
+        title: 启用 Google OAuth 登录
+        description: 在凭据配置完成后，将 Google OAuth 显示为登录选项
+      ENABLE_SAML_SSO_LOGIN:
+        title: 启用 SAML SSO 登录
+        description: 将 SAML SSO 显示为登录选项，若已有用户使用 SAML 认证则无法禁用。
+      CLOUDFLARE_API_KEY:
+        title: Cloudflare API Key
+        description: 用于 Cloudflare 账户认证的 API Key
+      CLOUDFLARE_ZONE_ID:
+        title: Cloudflare Zone ID
+        description: Cloudflare 域名的 Zone ID
+      WIDGET_TOKEN_EXPIRY:
+        title: 聊天挂件 Token 有效期
+        description: Token 有效期（天）
+      OTEL_PROVIDER:
+        title: OpenTelemetry 提供商
+        description: LLM 可观测性提供商（langfuse、langsmith 等）
+      LANGFUSE_PUBLIC_KEY:
+        title: Langfuse Public Key
+        description: 用于 Langfuse 认证的 Public Key
+      LANGFUSE_SECRET_KEY:
+        title: Langfuse Secret Key
+        description: 用于 Langfuse 认证的 Secret Key
+      LANGFUSE_BASE_URL:
+        title: Langfuse 基础 URL
+        description: Langfuse 端点（美国：https://us.cloud.langfuse.com，欧洲：https://cloud.langfuse.com）
+      page_title: 配置设置
+      submit: 提交
+      'true': 是
+      'false': 否
