@@ -1,7 +1,3 @@
-# Super admin (administrate) Chinese translations.
-# The administrate gem ships its own zh-CN scaffolding translations (buttons,
-# pagination, forms); this file adds the model/attribute names it can't know.
-# Locale is zh-CN (hyphen) to match administrate; the main app uses zh_CN.
 zh-CN:
   activerecord:
     models:
@@ -44,6 +40,7 @@ zh-CN:
         limits: 配额限制
         created_at: 创建时间
         updated_at: 更新时间
+        all_features: 全部功能开关
       user:
         id: ID
         name: 姓名
@@ -113,3 +110,108 @@ zh-CN:
         active: 启用
         created_at: 创建时间
         updated_at: 更新时间
+  helpers:
+    label:
+      account:
+        id: ID
+        name: 名称
+        locale: 语言
+        status: 状态
+        active: 启用
+        suspended: 已停用
+        users: 用户
+        account_users: 账户成员
+        conversations: 会话
+        custom_attributes: 自定义属性
+        limits: 配额限制
+        created_at: 创建时间
+        updated_at: 更新时间
+        all_features: 全部功能开关
+      user:
+        id: ID
+        name: 姓名
+        display_name: 显示名称
+        email: 邮箱
+        password: 密码
+        type: 类型
+        accounts: 所属账户
+        account_users: 账户成员关系
+        confirmed: 已验证
+        confirmed_at: 验证时间
+        unconfirmed_email: 待验证邮箱
+        current_sign_in_at: 本次登录时间
+        current_sign_in_ip: 本次登录 IP
+        last_sign_in_at: 上次登录时间
+        last_sign_in_ip: 上次登录 IP
+        sign_in_count: 登录次数
+        provider: 认证方式
+        avatar: 头像
+        avatar_url: 头像地址
+        created_at: 创建时间
+        updated_at: 更新时间
+      account_user:
+        id: ID
+        account: 账户
+        user: 用户
+        role: 角色
+        inviter: 邀请人
+        created_at: 创建时间
+        updated_at: 更新时间
+      agent_bot:
+        id: ID
+        name: 名称
+        description: 描述
+        account: 所属账户
+        outgoing_url: 回调地址
+        avatar: 头像
+        avatar_url: 头像地址
+        access_token: 访问令牌
+        created_at: 创建时间
+        updated_at: 更新时间
+      access_token:
+        id: ID
+        token: 令牌
+        owner: 所有者
+        user: 用户
+        agent_bot: 客服机器人
+        platform_app: 平台应用
+        created_at: 创建时间
+        updated_at: 更新时间
+      installation_config:
+        id: ID
+        name: 配置名
+        value: 配置值
+        created_at: 创建时间
+        updated_at: 更新时间
+      platform_app:
+        id: ID
+        name: 名称
+        access_token: 访问令牌
+        created_at: 创建时间
+        updated_at: 更新时间
+      platform_banner:
+        id: ID
+        banner_message: 公告内容
+        banner_type: 公告类型
+        active: 启用
+        created_at: 创建时间
+        updated_at: 更新时间
+  super_admin:
+    nav:
+      dashboard: 仪表盘
+      sidekiq: Sidekiq 任务队列
+      instance_health: 实例健康状态
+      push_diagnostics: 推送诊断
+      agent_dashboard: 客服工作台
+      logout: 退出登录
+      settings: 设置
+    settings_pages:
+      general: 通用
+      custom_branding: 自定义品牌
+    sign_in:
+      title: "管理员，您好 \U0001F44B"
+      email: 邮箱地址
+      email_placeholder: 例如：someone@example.com
+      password: 密码
+      password_placeholder: 请输入密码
+      login: 登录
