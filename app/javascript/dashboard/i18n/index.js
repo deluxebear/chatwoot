@@ -39,8 +39,10 @@ import zh_CN from './locale/zh_CN';
 import zh_TW from './locale/zh_TW';
 import is from './locale/is';
 import lt from './locale/lt';
+// CUSTOM-I18N-HOOK: local translation overrides, re-apply if lost in upstream merge (see AGENTS.md)
+import applyCustomLocales from './custom';
 
-export default {
+export default applyCustomLocales({
   ar,
   bg,
   ca,
@@ -82,4 +84,4 @@ export default {
   zh_TW,
   is,
   lt,
-};
+});
