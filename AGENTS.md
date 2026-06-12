@@ -18,7 +18,9 @@ This repo is a customized fork (二次开发) of upstream `chatwoot/chatwoot`. L
   3. If upstream refactored/moved code that we customized, port our customization to the new location/API rather than keeping the stale structure
   4. Never silently drop a local feature; if upstream made a local customization obsolete or fundamentally incompatible, stop and ask the user instead of deciding alone
   5. After resolving, verify: `bundle exec rubocop` on touched Ruby files, `pnpm eslint` on touched JS/Vue files, and run the test suites related to conflicted areas
-- **Local customizations so far**: enterprise feature mocking tooling (`lib/tasks/mock_enterprise.rake`, `mock_enterprise_features.rb`, `test_enterprise_mock.rb`, `ENTERPRISE_SETUP.md`) — purely additive files
+- **Local customizations so far**:
+  - Enterprise feature mocking tooling (`lib/tasks/mock_enterprise.rake`, `ENTERPRISE_SETUP.md`) — purely additive files; feature lists are derived at runtime from `config/features.yml` (`premium: true`) and `Enterprise::Billing::ReconcilePlanFeaturesService` plan constants, so they track upstream automatically
+  - `defined?` guard in `db/migrate/20231211010807_add_cached_labels_list.rb` for the removed `ActsAsTaggableOn::Taggable::Cache` constant
 
 ## Build / Test / Lint
 
