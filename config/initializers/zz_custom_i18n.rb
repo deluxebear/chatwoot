@@ -16,7 +16,19 @@ Rails.application.config.i18n.available_locales += [SUPER_ADMIN_LOCALE]
 
 # 3. Force the super admin panel (administrate) to use Chinese. The main app
 #    keeps its own per-user/per-account locale switching (SwitchLocale).
+# 4. Administrate's default record label is "#{resource.class} ##{id}" (English
+#    class name). Use the translated model name instead; dashboards that define
+#    their own display_resource (account, user, ...) are unaffected.
+module CustomAdministrateDisplayResource
+  def display_resource(resource)
+    "#{resource.class.model_name.human} ##{resource.id}"
+  end
+end
+
 Rails.application.config.to_prepare do
+  require 'administrate/base_dashboard'
+  Administrate::BaseDashboard.prepend(CustomAdministrateDisplayResource)
+
   [SuperAdmin::ApplicationController, SuperAdmin::Devise::SessionsController].each do |controller|
     controller.class_eval do
       around_action :switch_to_custom_super_admin_locale

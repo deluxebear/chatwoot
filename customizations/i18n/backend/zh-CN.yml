@@ -196,6 +196,10 @@ zh-CN:
         active: 启用
         created_at: 创建时间
         updated_at: 更新时间
+    submit:
+      create: 创建%{model}
+      update: 更新%{model}
+      submit: 保存%{model}
   super_admin:
     nav:
       dashboard: 仪表盘
