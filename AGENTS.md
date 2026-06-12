@@ -1,5 +1,25 @@
 # Chatwoot Development Guidelines
 
+## Fork & Upstream Sync
+
+This repo is a customized fork (二次开发) of upstream `chatwoot/chatwoot`. Local customizations live on top of upstream code and must be preserved across syncs.
+
+- **Remotes**:
+  - `origin` (`deluxebear/chatwoot`) — our fork; all pushes and PRs go here
+  - `upstream` (`chatwoot/chatwoot`) — official repo, fetch-only; its push URL is intentionally set to `DISABLED_NO_PUSH`. NEVER push to upstream, never re-enable its push URL, never open PRs against `chatwoot/chatwoot`
+- **Sync requirement**: keep `develop` up to date with the latest `upstream/develop`. Sync via merge (not rebase) to preserve local commit history:
+  ```bash
+  git fetch upstream
+  git merge upstream/develop
+  ```
+- **Conflict resolution**: when a sync produces conflicts, the agent must intelligently resolve them — do not abort the merge and do not blindly pick one side:
+  1. For each conflicted file, understand both sides: what upstream changed and what our customization does
+  2. Default to upstream's version for code we never customized; preserve our local customizations and re-apply them on top of upstream's new structure when the surrounding code changed
+  3. If upstream refactored/moved code that we customized, port our customization to the new location/API rather than keeping the stale structure
+  4. Never silently drop a local feature; if upstream made a local customization obsolete or fundamentally incompatible, stop and ask the user instead of deciding alone
+  5. After resolving, verify: `bundle exec rubocop` on touched Ruby files, `pnpm eslint` on touched JS/Vue files, and run the test suites related to conflicted areas
+- **Local customizations so far**: enterprise feature mocking tooling (`lib/tasks/mock_enterprise.rake`, `mock_enterprise_features.rb`, `test_enterprise_mock.rb`, `ENTERPRISE_SETUP.md`) — purely additive files
+
 ## Build / Test / Lint
 
 - **Setup**: `bundle install && pnpm install`
