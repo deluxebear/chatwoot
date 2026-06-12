@@ -12,6 +12,7 @@ This repo is a customized fork (二次开发) of upstream `chatwoot/chatwoot`. L
   git fetch upstream
   git merge upstream/develop
   ```
+- **Pushing to the fork**: upstream's husky pre-push hook blocks direct pushes to `develop`; for our fork `develop` is the main branch, so push with `git push --no-verify origin develop` (do not edit the hook file — that would drift from upstream)
 - **Conflict resolution**: when a sync produces conflicts, the agent must intelligently resolve them — do not abort the merge and do not blindly pick one side:
   1. For each conflicted file, understand both sides: what upstream changed and what our customization does
   2. Default to upstream's version for code we never customized; preserve our local customizations and re-apply them on top of upstream's new structure when the surrounding code changed
