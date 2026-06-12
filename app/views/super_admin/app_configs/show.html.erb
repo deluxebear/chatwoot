@@ -1,5 +1,6 @@
 <% content_for(:title) do %>
-  Configure Settings - <%= @config.titleize %>
+  <%# CUSTOM-I18N-HOOK: translated page title and settings page name %>
+  <%= t('super_admin.app_config.page_title', default: 'Configure Settings') %> - <%= t("super_admin.settings_pages.#{@config}", default: @config.titleize) %>
 <% end %>
 
 <header class="main-content__header" role="banner">
@@ -19,12 +20,13 @@
     <% @allowed_configs.each do |key| %>
       <div class="flex mb-8">
         <div class="field-unit__label">
-          <%= form.label "app_config[#{key}]", @installation_configs[key]&.dig('display_title') || key %>
+          <%# CUSTOM-I18N-HOOK: translated config label %>
+          <%= form.label "app_config[#{key}]", t("super_admin.app_config.#{key}.title", default: @installation_configs[key]&.dig('display_title') || key) %>
         </div>
         <div class="-mt-2 field-unit__field ">
           <% if @installation_configs[key]&.dig('type') == 'boolean' %>
             <%= form.select "app_config[#{key}]",
-              [["True", true], ["False", false]],
+              [[t('super_admin.app_config.true', default: 'True'), true], [t('super_admin.app_config.false', default: 'False'), false]],
               { selected: ActiveModel::Type::Boolean.new.cast(@app_config[key]) },
               class: "mt-2 border border-slate-100 p-1 rounded-md"
             %>
@@ -64,14 +66,15 @@
         <% end %>
           <%if @installation_configs[key]&.dig('description').present? %>
             <p class="pt-2 text-xs italic text-slate-400">
-              <%= @installation_configs[key]&.dig('description') %>
+              <%# CUSTOM-I18N-HOOK: translated config description %>
+              <%= t("super_admin.app_config.#{key}.description", default: @installation_configs[key]&.dig('description')) %>
             </p>
           <% end %>
         </div>
       </div>
     <% end %>
     <div class="form-actions">
-      <%= form.submit "Submit" %>
+      <%= form.submit t('super_admin.app_config.submit', default: 'Submit') %>
     </div>
   <% end %>
 </section>
