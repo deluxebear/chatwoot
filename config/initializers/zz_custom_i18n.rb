@@ -17,11 +17,13 @@ Rails.application.config.i18n.available_locales += [SUPER_ADMIN_LOCALE]
 # 3. Force the super admin panel (administrate) to use Chinese. The main app
 #    keeps its own per-user/per-account locale switching (SwitchLocale).
 Rails.application.config.to_prepare do
-  SuperAdmin::ApplicationController.class_eval do
-    around_action :switch_to_custom_super_admin_locale
+  [SuperAdmin::ApplicationController, SuperAdmin::Devise::SessionsController].each do |controller|
+    controller.class_eval do
+      around_action :switch_to_custom_super_admin_locale
 
-    def switch_to_custom_super_admin_locale(&)
-      I18n.with_locale(SUPER_ADMIN_LOCALE, &)
+      def switch_to_custom_super_admin_locale(&)
+        I18n.with_locale(SUPER_ADMIN_LOCALE, &)
+      end
     end
   end
 end
