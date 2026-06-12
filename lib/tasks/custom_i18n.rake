@@ -2,13 +2,16 @@
 
 # Maintenance tasks for our local i18n overlay (see AGENTS.md).
 # Run `custom_i18n:verify` after every upstream sync.
+# rubocop:disable Metrics/BlockLength
 namespace :custom_i18n do
   desc 'Verify the overlay hooks survived an upstream merge'
-  task :verify do
+  task verify: :environment do
     failures = []
     frontend_hook = Rails.root.join('app/javascript/dashboard/i18n/index.js')
     failures << "missing CUSTOM-I18N-HOOK in #{frontend_hook}" unless File.read(frontend_hook).include?('CUSTOM-I18N-HOOK')
-    failures << 'missing app/javascript/dashboard/i18n/custom/zh_CN.json' unless Rails.root.join('app/javascript/dashboard/i18n/custom/zh_CN.json').exist?
+    unless Rails.root.join('app/javascript/dashboard/i18n/custom/zh_CN.json').exist?
+      failures << 'missing app/javascript/dashboard/i18n/custom/zh_CN.json'
+    end
     failures << 'missing config/initializers/zz_custom_i18n.rb' unless Rails.root.join('config/initializers/zz_custom_i18n.rb').exist?
     failures << 'missing customizations/i18n/backend overrides' if Dir[Rails.root.join('customizations/i18n/backend/*.yml')].empty?
 
@@ -21,7 +24,7 @@ namespace :custom_i18n do
   end
 
   desc 'Report untranslated zh_CN keys (upstream + overlay combined)'
-  task :check do
+  task check: :environment do
     require 'json'
 
     en = flatten_locale_dir(Rails.root.join('app/javascript/dashboard/i18n/locale/en'))
@@ -53,3 +56,4 @@ namespace :custom_i18n do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
