@@ -21,9 +21,14 @@ const deepMerge = (target, source) => {
   return result;
 };
 
-export default messages => {
-  Object.keys(overrides).forEach(locale => {
-    messages[locale] = deepMerge(messages[locale] || {}, overrides[locale]);
+export const applyOverrides = (messages, localeOverrides) => {
+  Object.keys(localeOverrides).forEach(locale => {
+    messages[locale] = deepMerge(
+      messages[locale] || {},
+      localeOverrides[locale]
+    );
   });
   return messages;
 };
+
+export default messages => applyOverrides(messages, overrides);

@@ -41,8 +41,10 @@ import uz from './locale/uz.json';
 import vi from './locale/vi.json';
 import zh_CN from './locale/zh_CN.json';
 import zh_TW from './locale/zh_TW.json';
+// CUSTOM-I18N-HOOK: local translation overrides, re-apply if lost in upstream merge (see AGENTS.md)
+import applyCustomLocales from './custom';
 
-export default {
+export default applyCustomLocales({
   ar,
   bg,
   ca,
@@ -86,4 +88,4 @@ export default {
   vi,
   zh_CN,
   zh_TW,
-};
+});

@@ -4,6 +4,12 @@
     "CONTACT_FALLBACK": "联系人 #{id}",
     "ATTRIBUTES": {
       "CONTACT": "联系人"
+    },
+    "MULTI_VALUE_INPUT_PLACEHOLDER": "输入一个值，按回车键可继续添加",
+    "MULTI_VALUE_INPUT_PLACEHOLDER_SHORT": "输入一个值",
+    "OPERATOR_LABELS": {
+      "detects": "检测到",
+      "does_not_detect": "未检测到"
     }
   },
   "AGENT_BOTS": {
@@ -19,6 +25,11 @@
       "DONE": "完成",
       "RESET_SUCCESS": "Webhook 密钥已重新生成",
       "RESET_ERROR": "无法重新生成 Webhook 密钥，请重试"
+    },
+    "FORM": {
+      "WEBHOOK_URL": {
+        "PLACEHOLDER": "https://example.com/webhook"
+      }
     }
   },
   "AGENT_MGMT": {
@@ -51,7 +62,8 @@
     "NO_RESULTS": "未找到符合搜索条件的自动化规则",
     "LAST_RESPONDING_AGENT": "最后回复的客服",
     "EVENTS": {
-      "CONVERSATION_RESOLVED": "会话已解决"
+      "CONVERSATION_RESOLVED": "会话已解决",
+      "MONITOR_MATCHED": "监控匹配"
     },
     "ACTIONS": {
       "REMOVE_ASSIGNED_AGENT": "移除已分配的客服",
@@ -62,7 +74,82 @@
       "OUTGOING": "传出消息"
     },
     "ATTRIBUTES": {
-      "EMAIL": "电子邮件"
+      "EMAIL": "电子邮件",
+      "MESSAGE_CONTAINS": "消息内容",
+      "CAPTAIN": "Captain"
+    },
+    "ADD": {
+      "FORM": {
+        "MONITOR": {
+          "LABEL": "监控",
+          "PLACEHOLDER": "选择一个运行中的监控",
+          "ERROR": "请选择一个运行中的监控",
+          "FETCH_FAILED": "无法加载监控，请稍后重试。",
+          "API_UNAVAILABLE": "该监控已不可用。请选择一个运行中的监控后重试。",
+          "EMPTY": "暂无运行中的监控。请创建或恢复一个监控以使用此事件。",
+          "GO_TO_MONITORS": "前往监控",
+          "RETRY": "重试",
+          "UNAVAILABLE": "不可用的监控",
+          "UNAVAILABLE_HELP": "该监控无法用于自动化。请选择一个运行中的监控以启用此规则。",
+          "HELP": "当监控首次通过新的实时活动匹配到某个会话时运行一次。历史扫描不会触发操作。"
+        },
+        "RUN_TYPE": {
+          "LABEL": "此规则应在何时运行？",
+          "OPTIONS": {
+            "INSTANT": {
+              "LABEL": "立即运行",
+              "DESCRIPTION": "事件发生时立即运行，只要满足条件即可。"
+            },
+            "WAIT": {
+              "LABEL": "等待后运行",
+              "DESCRIPTION": "等待设定的时间，仅当状态仍未变化时才运行。如有变化，则跳过此规则。"
+            }
+          }
+        },
+        "WAIT": {
+          "LABEL": "等待条件",
+          "WHEN_LABEL": "当",
+          "STATUS_LABEL": "状态为",
+          "FOR_LABEL": "持续",
+          "ERROR": "等待时间必须在 10 分钟到 30 天之间",
+          "OPTIONS": {
+            "CONVERSATION_STATUS": "会话保持在某个状态",
+            "CUSTOMER_UNRESPONSIVE": "客户未回复",
+            "AGENT_UNRESPONSIVE": "没有团队成员回复"
+          },
+          "DURATION": {
+            "MINUTES": "{count} 分钟 | {count} 分钟",
+            "HOURS": "{count} 小时 | {count} 小时",
+            "DAYS": "{count} 天 | {count} 天"
+          },
+          "EXPLANATION": {
+            "CONVERSATION_STATUS": "会话进入此状态时开始计时。如果 {duration} 后仍处于该状态，则执行下方的操作。如果状态在此之前发生变化，则不执行任何操作。",
+            "CUSTOMER_UNRESPONSIVE": "团队成员回复时开始计时。如果 {duration} 后客户仍未回复，则执行下方的操作。如果客户回复了，则不执行任何操作，团队成员的下一次回复会重新开始计时。",
+            "AGENT_UNRESPONSIVE": "客户发送消息时开始计时。如果 {duration} 后仍没有团队成员回复，则执行下方的操作。如果在此之前有人回复，则不执行任何操作。"
+          },
+          "FOOTNOTE": "只有新的活动才会开始计时。已处于该状态的会话将在下次发生活动时被纳入。"
+        }
+      }
+    },
+    "LIST": {
+      "404_DELAYED": "暂无等待后运行的规则",
+      "TABS": {
+        "INSTANT": "立即运行",
+        "DELAYED": "等待后运行"
+      },
+      "DELAY_BADGE": "{delay}后运行",
+      "MONITOR_PAUSED": "监控已暂停",
+      "MONITOR_DELETED": "监控已删除",
+      "MONITOR_UNAVAILABLE": "监控功能不可用",
+      "DELAY_DISABLED_BANNER": "此账户已关闭延迟执行，因此下方等待后运行的规则将暂停，直至重新开启。"
+    },
+    "CONDITION": {
+      "PLACEHOLDERS": {
+        "CAPTAIN": "描述需要识别的内容，例如：客户想要取消"
+      }
+    },
+    "ACTION": {
+      "INSERT_CONTACT_EMAIL": "使用联系人的邮箱"
     }
   },
   "BULK_ACTION": {
@@ -81,6 +168,12 @@
     "TEAMS": {
       "ASSIGN_TEAM_CONFIRMATION_LABEL": "确定要将 {n} 个会话分配给 {teamName} 吗？ | 确定要将 {n} 个会话分配给 {teamName} 吗？",
       "UNASSIGN_TEAM_CONFIRMATION_LABEL": "确定要取消分配 {n} 个会话吗？ | 确定要取消分配 {n} 个会话吗？"
+    },
+    "MACROS": {
+      "EXECUTE_MACRO": "执行宏",
+      "EXECUTE_CONFIRMATION_LABEL": "确定要对 {n} 个会话运行 {macroName} 吗？ | 确定要对 {n} 个会话运行 {macroName} 吗？",
+      "QUEUED": "已为 {count} 个会话排队执行宏。 | 已为 {count} 个会话排队执行宏。",
+      "QUEUED_WITH_MISSING_ATTRIBUTES": "已为 {count} 个会话排队执行宏。该会话目前缺少必填属性，可能仍保持打开状态。 | 已为 {count} 个会话排队执行宏。至少有一个会话目前缺少必填属性，可能仍保持打开状态。"
     }
   },
   "CAMPAIGN": {
@@ -104,7 +197,193 @@
             "SUCCESS_MESSAGE": "WhatsApp 活动创建成功"
           }
         }
+      },
+      "CARD": {
+        "ANALYTICS": "查看分析"
+      },
+      "FORM": {
+        "CREATE_TITLE": "创建活动",
+        "LIVE_TEST": "实时测试",
+        "LIVE_TEST_TOOLTIP": "实时测试即将推出",
+        "SCHEDULE": "安排活动",
+        "SCHEDULED_FOR": "计划于 {date}",
+        "RESCHEDULE": "重新安排",
+        "DISCARD": "放弃更改",
+        "SAVE": "保存更改",
+        "BASIC_SETTINGS": {
+          "TITLE": "基本设置",
+          "NAME": {
+            "LABEL": "标题",
+            "PLACEHOLDER": "输入活动标题"
+          },
+          "INBOX": {
+            "LABEL": "收件箱",
+            "PLACEHOLDER": "选择收件箱"
+          }
+        },
+        "AUDIENCE": {
+          "TITLE": "受众",
+          "TIER_DESCRIPTION": "您的 WhatsApp 账户最多可向 {tier} 发送消息。",
+          "TIER_UNKNOWN": "选择一个收件箱以查看您 WhatsApp 账户的消息发送上限。",
+          "LEARN_MORE": "了解更多",
+          "LABELS": {
+            "LABEL": "标签",
+            "PLACEHOLDER": "选择客户标签"
+          },
+          "SELECTED_COUNT": "已选择 {count} 位联系人",
+          "VIEW": "查看",
+          "EMPTY_STATE": "请至少选择一个标签来构建受众。",
+          "CONTACTS": {
+            "TITLE": "联系人",
+            "TAGGED_WITH": "标记为",
+            "SEARCH_PLACEHOLDER": "按姓名、邮箱或电话号码搜索",
+            "EMPTY_STATE": "未找到联系人"
+          }
+        },
+        "TEMPLATE": {
+          "TITLE": "模板",
+          "SELECT": {
+            "LABEL": "模板",
+            "PLACEHOLDER": "选择模板"
+          },
+          "EMPTY_STATE": "选择一个收件箱以加载其已批准的模板",
+          "NO_TEMPLATES": "此收件箱没有可用于活动的已批准模板",
+          "HEADER_LABEL": "标题",
+          "INVALID_MEDIA_URL": "请输入有效的 HTTP 或 HTTPS URL。",
+          "HEADER_PLACEHOLDER": "输入{type}标题",
+          "DOCUMENT_NAME_PLACEHOLDER": "输入文档名称",
+          "BODY_LABEL": "正文",
+          "BUTTONS_LABEL": "按钮",
+          "VARIABLE_PLACEHOLDER": "输入变量 {variable}",
+          "BUTTON_PLACEHOLDER": "输入按钮 {index} 的参数"
+        },
+        "ACCOUNT_INFORMATION": {
+          "TITLE": "账户信息",
+          "MESSAGING_TIER": "消息发送等级",
+          "ACCOUNT_STATUS": "账户状态",
+          "ACCOUNT_HEALTH": "账户健康度",
+          "STATUS_DESCRIPTION": "该 WhatsApp 号码的当前模式",
+          "HEALTH_DESCRIPTION": "Meta 评定的质量等级",
+          "EMPTY_STATE": "选择一个收件箱以查看其 WhatsApp 账户信息。",
+          "UNAVAILABLE": "不可用",
+          "OPEN": "在 WhatsApp Manager 中打开"
+        },
+        "PREVIEW": {
+          "TITLE": "消息预览",
+          "EMPTY_STATE": "选择一个模板以预览消息。",
+          "FOOTNOTE": "不同操作系统的显示可能略有差异，请进行实时测试确认。保存时将存储高亮变量的默认值。"
+        },
+        "SCHEDULE_POPOVER": {
+          "LABEL": "安排",
+          "CANCEL": "取消",
+          "CREATE": "创建"
+        },
+        "API": {
+          "CREATE_SUCCESS": "WhatsApp 活动创建成功",
+          "CREATE_ERROR": "出现错误，请重试。",
+          "UPDATE_SUCCESS": "WhatsApp 活动更新成功",
+          "UPDATE_ERROR": "出现错误，请重试。"
+        }
+      },
+      "ANALYTICS": {
+        "LOADING": "正在加载分析数据...",
+        "EMPTY": "未找到发送记录。",
+        "EMPTY_FILTER": "未找到状态为{status}的发送记录。",
+        "DELIVERIES_ERROR": "无法加载发送记录。请刷新页面重试。",
+        "EMPTY_STATE": {
+          "ERROR": {
+            "TITLE": "无法加载分析数据",
+            "DESCRIPTION": "请刷新页面重试。"
+          },
+          "PENDING": {
+            "TITLE": "开始发送后将显示送达数据",
+            "DESCRIPTION": "此活动暂无发送记录。"
+          },
+          "UNAVAILABLE": {
+            "TITLE": "此活动无可用的分析数据",
+            "DESCRIPTION": "此活动未记录任何送达数据。在推出活动分析功能之前发送的活动可能会出现这种情况。"
+          }
+        },
+        "PROCESSING_NOTICE": "此活动仍在发送中。计数、百分比和发送记录均为部分数据，仅包含目前已处理的联系人。随着发送继续，将显示更多联系人。",
+        "RATE": "受众的 {value}%",
+        "SENT_ON": "发送于 {date}",
+        "BREADCRUMB": {
+          "WHATSAPP": "WhatsApp"
+        },
+        "METRICS": {
+          "AUDIENCE": {
+            "HINT": "此活动包含的联系人。"
+          },
+          "SENT": {
+            "LABEL": "已提交至 WhatsApp",
+            "HINT": "WhatsApp 已接受并准备投递的消息。"
+          },
+          "DELIVERED": {
+            "LABEL": "已送达",
+            "HINT": "已到达联系人设备的消息，包含已读消息。"
+          },
+          "READ": {
+            "HINT": "联系人已打开的消息。"
+          },
+          "FAILED": {
+            "HINT": "WhatsApp 无法投递的消息。"
+          },
+          "SKIPPED": {
+            "LABEL": "已跳过",
+            "HINT": "发送前被跳过的联系人，通常是因为电话号码缺失或无效。"
+          }
+        },
+        "STATUS": {
+          "QUEUED": "排队中",
+          "SENT": "等待送达状态更新",
+          "DELIVERED": "已送达",
+          "SKIPPED": "已跳过"
+        },
+        "BREAKDOWN": {
+          "TITLE": "送达明细",
+          "DELIVERY_RATE": "已送达 {value}%",
+          "LEGEND": {
+            "DELIVERED": "已送达",
+            "SKIPPED": "已跳过",
+            "PENDING": "排队中或等待更新"
+          }
+        },
+        "TABLE": {
+          "TITLE": "发送记录",
+          "MESSAGE_NOT_GENERATED": "未生成",
+          "REASON": "原因",
+          "ERROR_CODE": "代码 {code}"
+        },
+        "PAYWALL": {
+          "TITLE": "解锁活动分析",
+          "AVAILABLE_ON": "活动分析功能适用于商业版和企业版套餐。",
+          "UPGRADE_PROMPT": "升级后即可跟踪活动的送达、已读状态和发送失败的消息。",
+          "UPGRADE_NOW": "查看套餐",
+          "CANCEL_ANYTIME": "可随时更改或取消套餐。"
+        },
+        "ENTERPRISE_PAYWALL": {
+          "AVAILABLE_ON": "活动分析功能适用于付费的自托管套餐。",
+          "UPGRADE_PROMPT": "升级您的安装实例，即可跟踪活动的送达、已读状态和发送失败的消息。",
+          "ASK_ADMIN": "请联系您的实例管理员进行升级。"
+        },
+        "PROCESSING_BANNER": {
+          "DEFAULT": "此活动仍在处理中，分析数据将自动更新。",
+          "BOTH": "此活动仍在处理中。{queued} 条消息正在排队，{awaitingUpdate} 条正在等待 WhatsApp 的送达状态更新。",
+          "BOTH_SINGLE": "此活动仍在处理中。{queued} 条消息正在排队，{awaitingUpdate} 条正在等待 WhatsApp 的送达状态更新。",
+          "BOTH_QUEUED_SINGLE": "此活动仍在处理中。{queued} 条消息正在排队，{awaitingUpdate} 条正在等待 WhatsApp 的送达状态更新。",
+          "BOTH_AWAITING_SINGLE": "此活动仍在处理中。{queued} 条消息正在排队，{awaitingUpdate} 条正在等待 WhatsApp 的送达状态更新。",
+          "QUEUED": "此活动仍在处理中。{count} 条消息正在排队。 | 此活动仍在处理中。{count} 条消息正在排队。",
+          "AWAITING_UPDATE": "此活动仍在处理中。{count} 条消息正在等待 WhatsApp 的送达状态更新。 | 此活动仍在处理中。{count} 条消息正在等待 WhatsApp 的送达状态更新。",
+          "COMPLETING": "此活动即将完成，分析数据将自动更新。"
+        }
       }
+    },
+    "HISTORY": {
+      "LABEL": "活动",
+      "LOAD_MORE": "加载更早的活动"
+    },
+    "CONFIRM_DELETE": {
+      "WHATSAPP_DESCRIPTION": "删除此活动将同时移除其保存的消息历史和送达详情。已通过 WhatsApp 发送的消息将保留。此操作无法撤销。"
     }
   },
   "CANNED_MGMT": {
@@ -116,8 +395,12 @@
     "SORT_ORDER_ITEMS": {
       "priority_desc_created_at_asc": {
         "TEXT": "优先级：从高到低，创建时间：从早到晚"
+      },
+      "unread": {
+        "TEXT": "未读数：从高到低"
       }
-    }
+    },
+    "FETCH_ERROR": "无法加载会话，请重试。"
   },
   "COMPANIES": {
     "ORDER": {
@@ -157,7 +440,8 @@
           "UPDATE_ERROR": "无法更新公司属性。",
           "DELETE_SUCCESS": "公司属性已移除。",
           "DELETE_ERROR": "无法移除公司属性。"
-        }
+        },
+        "TITLE": "自定义属性"
       },
       "CONTACTS": {
         "EMPTY": "尚无联系人与该公司关联。",
@@ -195,11 +479,14 @@
         "TITLE": "编辑公司信息",
         "DESCRIPTION_PLACEHOLDER": "为该公司添加简短描述",
         "ACTIONS": {
-          "SAVE": "更新公司"
+          "SAVE": "更新公司",
+          "REFRESH": "刷新资料"
         },
         "MESSAGES": {
           "UPDATE_SUCCESS": "公司已更新。",
-          "UPDATE_ERROR": "无法更新公司。"
+          "UPDATE_ERROR": "无法更新公司。",
+          "REFRESH_SUCCESS": "公司资料已刷新。",
+          "REFRESH_ERROR": "无法刷新公司资料。"
         }
       },
       "DELETE": {
@@ -214,7 +501,93 @@
           "SUCCESS": "公司已删除。",
           "ERROR": "无法删除公司。"
         }
+      },
+      "HEADER": {
+        "EDIT": "编辑",
+        "MORE": "显示更多",
+        "LESS": "收起",
+        "OPEN_COUNT": "{count} 个进行中 | {count} 个进行中",
+        "REFRESH_WITH_TIME": "刷新资料（更新于 {time}）"
+      },
+      "FACTS": {
+        "INDUSTRY": "行业",
+        "SIZE": "员工人数",
+        "LOCATION": "所在地",
+        "ADDED": "添加时间",
+        "UNKNOWN": "未知",
+        "YES": "是",
+        "NO": "否"
+      },
+      "PEOPLE": {
+        "ADD": "添加",
+        "SEARCH": "搜索人员",
+        "EMPTY": "该公司暂无人员。",
+        "NO_MATCHES": "没有符合搜索条件的人员。",
+        "DIALOG_TITLE": "添加人员到 {name}"
+      },
+      "TABS": {
+        "CONVERSATIONS": "会话",
+        "NOTES": "备注",
+        "PEOPLE": "人员"
+      },
+      "ACTIVITY": {
+        "TODAY": "今天",
+        "YESTERDAY": "昨天",
+        "UNKNOWN_AUTHOR": "某人",
+        "EMPTY_CONVERSATIONS": "暂无会话。当该公司的人员联系您时，会话将显示在这里。",
+        "EMPTY_NOTES": "暂无备注。为该公司人员添加的备注将显示在这里。",
+        "LOAD_MORE": "加载更多",
+        "SEARCH_NOTES": "搜索备注",
+        "NO_MATCHING_NOTES": "没有符合搜索条件的备注。",
+        "NO_MATCHING_CONVERSATIONS": "没有符合这些筛选条件的会话。"
+      },
+      "EDIT": {
+        "TITLE": "编辑公司",
+        "SAVE": "保存更改",
+        "DESCRIPTION": "描述",
+        "DETAILS": "详细信息",
+        "CITY": "城市",
+        "COUNTRY": "国家/地区",
+        "PHONE": "电话",
+        "SOCIAL": {
+          "TITLE": "社交资料",
+          "LINKEDIN": "LinkedIn",
+          "FACEBOOK": "Facebook",
+          "INSTAGRAM": "Instagram",
+          "GITHUB": "GitHub",
+          "YOUTUBE": "YouTube"
+        },
+        "PLACEHOLDERS": {
+          "DOMAIN": "acme.com",
+          "INDUSTRY": "软件",
+          "EMPLOYEES": "51 至 200",
+          "USERNAME": "用户名"
+        }
+      },
+      "CONVERSATION_FILTERS": {
+        "BUTTON": "筛选",
+        "BUTTON_WITH_COUNT": "筛选（{count}）",
+        "ANY": "任意"
+      },
+      "ENRICHMENT_UPGRADE": {
+        "TITLE": "在商业版套餐中丰富公司资料",
+        "DESCRIPTION": "根据公司域名自动填写公司的描述、行业、规模、所在地和社交资料。适用于商业版和企业版套餐。",
+        "UPGRADE": "查看套餐"
       }
+    },
+    "SELECTOR": {
+      "PLACEHOLDER": "选择公司",
+      "CREATE_OPTION": "添加“{name}”"
+    },
+    "CARD": {
+      "EMPLOYEES": "{count} 名员工"
+    },
+    "PAYWALL": {
+      "TITLE": "升级以使用公司功能",
+      "AVAILABLE_ON": "免费套餐不提供公司功能。",
+      "UPGRADE_PROMPT": "升级套餐后，可按公司对联系人分组、查看与某个客户公司的所有会话，并将公司详情集中保存在一处。",
+      "UPGRADE_NOW": "立即升级",
+      "CANCEL_ANYTIME": "您可以随时更改或取消套餐"
     }
   },
   "SLASH_COMMANDS": {
@@ -228,13 +601,19 @@
     "BULLET_LIST": "无序列表",
     "ORDERED_LIST": "有序列表",
     "TABLE": "表格",
-    "IMAGE": "图片"
+    "IMAGE": "图片",
+    "VIDEO": "视频",
+    "DIVIDER": "分隔线"
   },
   "CONTACT_PANEL": {
     "CALL_FAILED": "无法发起通话，请重试。",
     "WHATSAPP_CALL_PERMISSION_REQUESTED": "已向联系人发送通话权限请求，待对方接受后请重试。",
     "WHATSAPP_CALL_PERMISSION_PENDING": "通话权限请求最近已发送，待联系人接受后请重试。",
-    "CLICK_TO_EDIT": "点击编辑"
+    "CLICK_TO_EDIT": "点击编辑",
+    "WHATSAPP_USERNAME": "WhatsApp 用户名",
+    "CONVERSATIONS": {
+      "VIEW_ALL": "查看全部会话"
+    }
   },
   "CONTACTS_LAYOUT": {
     "CARD": {
@@ -242,6 +621,9 @@
         "FORM": {
           "TELEGRAM": {
             "PLACEHOLDER": "添加 Telegram"
+          },
+          "WHATSAPP": {
+            "PLACEHOLDER": "添加 WhatsApp"
           }
         }
       }
@@ -280,6 +662,9 @@
         "CC_PLACEHOLDER": "输入至少 2 个字符，按邮箱搜索",
         "BCC_PLACEHOLDER": "输入至少 2 个字符，按邮箱搜索"
       }
+    },
+    "CONTACT_CREATE": {
+      "ERROR_MESSAGE": "无法创建联系人，请重试。"
     }
   },
   "CONTENT_TEMPLATES": {
@@ -289,7 +674,8 @@
       }
     },
     "PARSER": {
-      "MEDIA_HEADER_LABEL": "{type} 头部"
+      "MEDIA_HEADER_LABEL": "{type} 头部",
+      "MEDIA_URL_PLACEHOLDER": "https://example.com/image.jpg"
     }
   },
   "CONVERSATION": {
@@ -341,7 +727,10 @@
         "DISABLE_TOOLTIP": "不包含引用的邮件会话",
         "REMOVE_PREVIEW": "移除引用的邮件会话",
         "COLLAPSE": "收起预览",
-        "EXPAND": "展开预览"
+        "EXPAND": "展开预览",
+        "SHOW_TOOLTIP": "显示已折叠的内容",
+        "HIDE_TOOLTIP": "隐藏已折叠的内容",
+        "REMOVE": "移除引用文本"
       }
     },
     "FILE_TYPE_NOT_SUPPORTED": "此会话不支持 {fileName} 文件类型",
@@ -356,7 +745,108 @@
       "UNMUTE": "取消静音",
       "VIEW_CHAT_HISTORY": "查看聊天记录",
       "GO_TO_CONVERSATION": "前往会话"
-    }
+    },
+    "REFERRAL": {
+      "AD_LABEL": "广告",
+      "POST_LABEL": "帖子",
+      "VIEW_AD": "查看广告",
+      "WELCOME_MESSAGE_LABEL": "预填消息：",
+      "REPLIED_BELOW": "客户已在下方回复"
+    },
+    "CONTACT_HISTORY": {
+      "OLDER": "上一个会话",
+      "NEWER": "下一个会话",
+      "OLDER_WITH": "与 {name} 的上一个会话 · {time}",
+      "NEWER_WITH": "与 {name} 的下一个会话 · {time}",
+      "CUSTOMER": "此客户",
+      "REPLY_TO_OLDER": "回复这个较早的会话",
+      "GO_TO_LATEST": "前往最新会话"
+    },
+    "BOT_HANDOFF_MESSAGE": "此会话当前由 {assigneeName} 处理。",
+    "BOT_HANDOFF_ACTION": "接管",
+    "INSTAGRAM_RESTRICTION_BANNER": "Instagram 消息目前受到 Meta 方面 API 层面问题的影响，并非 Chatwoot 的问题。部分消息或操作可能会延迟或不可用。我们正与 Meta 紧密合作，尽快解决此问题。",
+    "INSTAGRAM_RESTRICTION_STATUS_LINK": "查看状态更新",
+    "WHATSAPP_FLOW_RESPONSE": "提交了一个流程响应",
+    "WHATSAPP_REFERRAL": {
+      "AD": "广告"
+    },
+    "REQUEST_CONTACT_INFO": {
+      "ACTION": "请客户分享其 WhatsApp 电话号码",
+      "PENDING_ACTION": "联系信息请求待处理",
+      "STATES": {
+        "PENDING": "正在等待联系信息",
+        "SHARED": "已分享电话号码",
+        "IDENTITY_CONFLICT": "电话号码需要核实"
+      }
+    },
+    "CAPTAIN_GENERATION": {
+      "TITLE": "这条回复是如何生成的？",
+      "GENERATED_BY": "由 Captain 生成",
+      "LOADING": "正在加载详情…",
+      "EMPTY": "此消息暂无生成详情。",
+      "TIMELINE": "生成步骤",
+      "STEP_TOOL": "调用了 {name}",
+      "STEP_HANDOFF": "已转交给 {name}",
+      "REASONING": "推理过程",
+      "SOURCES": "知识库",
+      "SOURCES_SUMMARY": "{count} 条结果 | {count} 条结果",
+      "MODEL": "使用 {model} 生成",
+      "CREDITS": "点数：{credits}"
+    },
+    "PICKER": {
+      "VARIABLE": {
+        "SEARCH_PLACEHOLDER": "搜索变量",
+        "VALUE": "值",
+        "NO_VALUE": "此会话中没有该变量的值"
+      },
+      "EMOJI": {
+        "EMPTY_STATE": "输入以搜索表情"
+      },
+      "MACRO": {
+        "SEARCH_PLACEHOLDER": "搜索宏",
+        "ACTION_COUNT": "1 个操作 | {count} 个操作"
+      },
+      "MENTION": {
+        "SEARCH_PLACEHOLDER": "搜索客服和团队",
+        "AUTO_ASSIGN": "自动分配",
+        "YOU_ARE_A_MEMBER": "您是该团队的成员"
+      }
+    },
+    "SUGGESTIONS": {
+      "SUGGEST": "使用 Captain 推荐",
+      "EMPTY": "暂无新建议",
+      "ACCEPT": "接受",
+      "APPLY_HINT": "点击应用",
+      "REJECT": "忽略",
+      "ACCEPT_ALL": "全部接受",
+      "ERROR": "无法加载建议，请重试。",
+      "APPLY_ERROR": "无法应用推荐的标签，请重试。"
+    },
+    "CONTEXT_MENU": {
+      "FORWARD_EMAIL": "转发邮件",
+      "REPORT_MESSAGE": {
+        "LABEL": "举报消息",
+        "TITLE": "举报 Captain 消息",
+        "DESCRIPTION": "发现这条 AI 回复有问题？告诉我们哪里出了错，我们的团队会进行审核，以帮助提升 Captain 的准确性。",
+        "PROBLEM_TYPE": "问题类型",
+        "PROBLEM_TYPE_PLACEHOLDER": "选择问题类型",
+        "DESCRIPTION_PLACEHOLDER": "详细描述该问题",
+        "SUBMIT": "举报",
+        "SUCCESS": "感谢您的反馈，我们的团队会进行查看。",
+        "ERROR": "无法举报此消息，请重试。",
+        "REASONS": {
+          "incorrect_information": "信息不正确",
+          "inappropriate_response": "回复不恰当",
+          "incomplete_response": "回复不完整",
+          "outdated_information": "信息已过时",
+          "other": "其他"
+        }
+      }
+    },
+    "SIDEBAR": {
+      "COPILOT": "Copilot"
+    },
+    "BOT_HANDOFF_FALLBACK_ASSIGNEE": "机器人"
   },
   "EMAIL_TRANSCRIPT": {
     "SEND_EMAIL_PAYMENT_REQUIRED": "您当前的套餐不支持邮件记录功能，请升级后使用。"
@@ -372,7 +862,8 @@
       "DOWNLOAD_ERROR": "无法下载文件，请重试。",
       "FILES_HEADING": "文件",
       "SHOW_LESS": "收起",
-      "UNTITLED_FILE": "未命名文件"
+      "UNTITLED_FILE": "未命名文件",
+      "JUMP_TO_MESSAGE": "跳转到消息"
     },
     "SHOPIFY": {
       "ORDER_ID": "订单 #{id}",
@@ -407,7 +898,29 @@
     "BETA_DESCRIPTION": "此功能处于测试阶段，可能会在改进过程中发生变化。"
   },
   "COMMAND_BAR": {
-    "SNOOZE_PLACEHOLDER": "输入时间，例如：明天、2 小时后、下周五、1 月 15 日..."
+    "SNOOZE_PLACEHOLDER": "输入时间，例如：明天、2 小时后、下周五、1 月 15 日...",
+    "SECTIONS": {
+      "EXECUTE_MACRO": "执行宏"
+    },
+    "COMMANDS": {
+      "GO_TO_MY_INBOX": "前往我的收件箱",
+      "GO_TO_CAPTAIN": "前往 Captain",
+      "GO_TO_CALLS_DASHBOARD": "前往通话面板",
+      "GO_TO_CAMPAIGNS": "前往活动",
+      "GO_TO_HELP_CENTER": "前往帮助中心",
+      "GO_TO_CSAT_REPORTS": "前往 CSAT 报告",
+      "GO_TO_BOT_REPORTS": "前往机器人报告",
+      "GO_TO_SLA_REPORTS": "前往 SLA 报告",
+      "GO_TO_SETTINGS_TEMPLATES": "前往模板",
+      "GO_TO_SETTINGS_CUSTOM_ATTRIBUTES": "前往自定义属性",
+      "GO_TO_SETTINGS_AUTOMATION": "前往自动化",
+      "GO_TO_SETTINGS_MACROS": "前往宏",
+      "GO_TO_SETTINGS_SLA": "前往 SLA 设置",
+      "GO_TO_SETTINGS_DATA": "前往数据",
+      "GO_TO_SETTINGS_AUDIT_LOGS": "前往审计日志",
+      "GO_TO_SETTINGS_BILLING": "前往账单",
+      "EXECUTE_A_MACRO": "执行宏"
+    }
   },
   "HELP_CENTER": {
     "PORTAL": {
@@ -416,6 +929,13 @@
           "API": {
             "SUCCESS_MESSAGE": "CNAME 配置说明发送成功",
             "ERROR_MESSAGE": "发送 CNAME 配置说明时出错"
+          }
+        },
+        "LIST_ITEM": {
+          "PORTAL_CONFIG": {
+            "ITEMS": {
+              "SLUG": "Slug"
+            }
           }
         }
       },
@@ -429,6 +949,14 @@
         "API": {
           "SUCCESS_MESSAGE": "语言发布成功",
           "ERROR_MESSAGE": "无法发布语言，请重试。"
+        }
+      },
+      "ADD": {
+        "LOGO": {
+          "LABEL": "Logo"
+        },
+        "SLUG": {
+          "LABEL": "Slug"
         }
       }
     },
@@ -468,7 +996,21 @@
         "DELETE_CONFIRM_TITLE": "删除文章 | 删除 {count} 篇文章",
         "DELETE_CONFIRM_DESCRIPTION": "这将永久删除所选文章，此操作无法撤销。 | 这将永久删除 {count} 篇所选文章，此操作无法撤销。",
         "DELETE_SUCCESS": "文章删除成功",
-        "DELETE_ERROR": "文章删除失败"
+        "DELETE_ERROR": "文章删除失败",
+        "STATUS_SKIPPED": "已跳过 1 篇有未发布修改的文章——请打开它以发布或放弃修改。 | 已跳过 {count} 篇有未发布修改的文章——请打开它们以发布或放弃修改。",
+        "STATUS_SKIPPED_ALL": "这些文章有未发布的修改——请逐一打开以发布或放弃修改。"
+      },
+      "ARTICLE_CARD": {
+        "CARD": {
+          "PENDING_EDITS": "未发布的修改",
+          "PENDING_EDITS_TOOLTIP": "这篇已发布的文章有未发布的修改"
+        }
+      },
+      "EMPTY_STATE": {
+        "SEARCH": {
+          "TITLE": "没有匹配的文章",
+          "SUBTITLE": "未找到与您的搜索匹配的文章，请尝试其他关键词。"
+        }
       }
     },
     "LOCALES_PAGE": {
@@ -476,7 +1018,8 @@
         "DROPDOWN_MENU": {
           "MOVE_TO_DRAFT": "移至草稿",
           "PUBLISH_LOCALE": "发布语言",
-          "CUSTOMIZE_CONTENT": "本地化内容"
+          "CUSTOMIZE_CONTENT": "本地化内容",
+          "SELECT_POPULAR_CONTENT": "选择推荐内容"
         }
       },
       "CONTENT_DIALOG": {
@@ -495,12 +1038,41 @@
           "SUCCESS_MESSAGE": "语言内容更新成功",
           "ERROR_MESSAGE": "无法更新语言内容，请重试。"
         }
+      },
+      "SEARCH_PLACEHOLDER": "搜索语言...",
+      "SEARCH_EMPTY_STATE": {
+        "TITLE": "没有匹配的语言",
+        "SUBTITLE": "未找到与您的搜索匹配的语言，请尝试其他关键词。"
+      },
+      "POPULAR_CONTENT_DIALOG": {
+        "TITLE": "推荐内容",
+        "DESCRIPTION": "最多选择 3 个类别和 6 篇文章，展示在该语言帮助中心的首页。拖动调整它们向访客展示的顺序。",
+        "EMPTY": "没有匹配的结果",
+        "ADD_ANOTHER": "再添加一个...",
+        "SLOTS_LEFT": "剩余 {count} 个位置",
+        "OVERRIDING_DEFAULTS": "正在覆盖此语言的默认设置",
+        "CONFIRM": "保存推荐内容",
+        "CATEGORIES": {
+          "LABEL": "推荐类别",
+          "ARTICLES_COUNT": "暂无文章 | {count} 篇文章 | {count} 篇文章"
+        },
+        "ARTICLES": {
+          "LABEL": "推荐文章",
+          "IN_CATEGORY": "位于 {category}"
+        },
+        "API": {
+          "SUCCESS_MESSAGE": "推荐内容更新成功",
+          "ERROR_MESSAGE": "无法更新推荐内容，请重试。"
+        }
       }
     },
     "PORTAL_SETTINGS": {
       "FORM": {
         "HOME_PAGE_LINK": {
           "ERROR": "请输入有效的 URL。主页链接必须以“http://”或“https://”开头。"
+        },
+        "SLUG": {
+          "LABEL": "Slug"
         }
       },
       "CONFIGURATION_FORM": {
@@ -542,6 +1114,60 @@
           "PLACEHOLDER": "用户名",
           "ADD": "添加社交链接"
         }
+      },
+      "INTEGRATIONS": {
+        "DESCRIPTION": "连接工具，扩展帮助中心的功能。",
+        "LIVE_CHAT": {
+          "TITLE": "使用 Chatwoot 在线聊天",
+          "DESCRIPTION": "在帮助中心显示在线聊天窗口，让访客在阅读时可以随时联系您。"
+        },
+        "GTM": {
+          "TITLE": "Google Tag Manager",
+          "DESCRIPTION": "连接您的 Tag Manager 容器，添加分析和营销代码。",
+          "PLACEHOLDER": "GTM-XXXXXXX",
+          "HELP": "可在您的 Google Tag Manager 工作区中找到。留空则停用。",
+          "INVALID": "请输入有效的容器 ID，例如 GTM-XXXXXXX。"
+        },
+        "GA4": {
+          "TITLE": "Google Analytics 4",
+          "DESCRIPTION": "使用 Google Analytics 衡量帮助中心的流量和访客行为。",
+          "PLACEHOLDER": "G-XXXXXXXXXX",
+          "HELP": "可在 Google Analytics 的「管理 → 数据流」中找到衡量 ID。留空则停用。",
+          "INVALID": "请输入有效的衡量 ID，例如 G-XXXXXXXXXX。"
+        },
+        "HOTJAR": {
+          "TITLE": "Hotjar",
+          "DESCRIPTION": "通过热图和会话录制了解访客如何使用您的帮助中心。",
+          "HELP": "可在 Hotjar 的 Sites & organizations 中找到您的站点 ID。留空则停用。",
+          "INVALID": "请输入数字格式的 Hotjar 站点 ID。"
+        },
+        "PLAUSIBLE": {
+          "TITLE": "Plausible",
+          "DESCRIPTION": "使用注重隐私的 Plausible Analytics 跟踪帮助中心流量。",
+          "PLACEHOLDER": "example.com",
+          "HELP": "输入在 Plausible 站点设置中配置的域名。留空则停用。",
+          "INVALID": "请输入有效的域名，例如 example.com。"
+        },
+        "AMPLITUDE": {
+          "TITLE": "Amplitude",
+          "DESCRIPTION": "使用 Amplitude 分析帮助中心的访客行为。",
+          "PLACEHOLDER": "0123456789abcdef0123456789abcdef",
+          "HELP": "可在 Amplitude 项目设置中找到 API 密钥。留空则停用。",
+          "INVALID": "请输入有效的 Amplitude API 密钥。"
+        },
+        "CLARITY": {
+          "TITLE": "Microsoft Clarity",
+          "DESCRIPTION": "使用 Microsoft Clarity 记录热图和会话录制。",
+          "PLACEHOLDER": "abcd1234ef",
+          "HELP": "可在 Clarity 项目设置中找到项目 ID。留空则停用。",
+          "INVALID": "请输入有效的 Clarity 项目 ID。"
+        },
+        "META_PIXEL": {
+          "TITLE": "Meta Pixel",
+          "DESCRIPTION": "使用 Meta Pixel 衡量广告转化，并基于帮助中心访问构建受众。",
+          "HELP": "可在 Meta 事件管理工具中找到像素 ID。留空则停用。",
+          "INVALID": "请输入数字格式的像素 ID。"
+        }
       }
     },
     "PDF_UPLOAD": {
@@ -554,6 +1180,85 @@
     "CONTENT_GENERATION": {
       "NO_CONTENT": "暂无生成的内容。请上传 PDF 文档以开始。",
       "LOADING": "正在加载生成的内容..."
+    },
+    "ARTICLE_EDITOR": {
+      "IMAGE_UPLOAD": {
+        "UPLOAD_FAILED": "上传失败",
+        "RATE_LIMITED": "已达到上传上限，请几分钟后重试。",
+        "CANCEL": "取消上传",
+        "ERROR_ATTACHMENT_FILE_SIZE": "文件大小应小于 {size}MB",
+        "ERROR_UNSUPPORTED_TYPE": "不支持此文件类型"
+      }
+    },
+    "CATEGORY": {
+      "ADD": {
+        "SLUG": {
+          "LABEL": "Slug",
+          "HELP_TEXT": "app.chatwoot.com/hc/my-portal/en-US/categories/my-slug"
+        }
+      },
+      "EDIT": {
+        "SLUG": {
+          "LABEL": "Slug",
+          "HELP_TEXT": "app.chatwoot.com/hc/my-portal/en-US/categories/my-slug"
+        }
+      }
+    },
+    "CATEGORY_PAGE": {
+      "CATEGORY_HEADER": {
+        "SEARCH_PLACEHOLDER": "搜索类别..."
+      },
+      "SEARCH_EMPTY_STATE": {
+        "TITLE": "没有匹配的类别",
+        "SUBTITLE": "未找到与您的搜索匹配的类别，请尝试其他关键词。"
+      },
+      "CATEGORY_DIALOG": {
+        "FORM": {
+          "SLUG": {
+            "LABEL": "Slug",
+            "HELP_TEXT": "app.chatwoot.com/hc/{portalSlug}/{localeCode}/categories/{categorySlug}"
+          }
+        }
+      }
+    },
+    "EDIT_ARTICLE_PAGE": {
+      "HEADER": {
+        "PUBLISH_CHANGES": "发布更改",
+        "PUBLISH_CHANGES_SUCCESS": "更改发布成功",
+        "PUBLISH_CHANGES_ERROR": "无法发布更改",
+        "SAVE_IN_PROGRESS": "仍在保存您最新的更改，请稍后再试。",
+        "UPLOAD_IN_PROGRESS": "有文件尚未上传完成。请等待上传完成或先将其移除。",
+        "CREATE_IN_PROGRESS": "文章仍在创建中，请稍后再添加文件。",
+        "DISCARD_CHANGES": "放弃更改",
+        "DISCARD_CHANGES_SUCCESS": "已放弃更改",
+        "DISCARD_CHANGES_ERROR": "无法放弃更改",
+        "PENDING_CHANGES": "待发布的更改",
+        "VIEW_CHANGES": "查看未发布的更改"
+      },
+      "PENDING_CHANGES_POPOVER": {
+        "TITLE": "未发布的更改",
+        "DESCRIPTION": "这篇文章有尚未生效的草稿更改。要在更改状态前应用这些更改，还是放弃它们？",
+        "APPLY": "应用更改",
+        "DISCARD": "放弃更改"
+      },
+      "DIFF_DIALOG": {
+        "TITLE": "未发布的更改",
+        "DESCRIPTION": "将您的草稿与当前线上版本进行对比。"
+      },
+      "ARTICLE_PROPERTIES": {
+        "SLUG": "Slug",
+        "SLUG_PLACEHOLDER": "添加 Slug",
+        "SLUG_USE_TITLE": "使用标题作为 Slug",
+        "SLUG_WARNING": "当前 URL 将失效，现有指向它的链接将无法访问。",
+        "SLUG_UPDATE": "更新",
+        "SLUG_UPDATED": "Slug 已更新。文章现在可通过新的 URL 访问。",
+        "SLUG_OPEN": "打开 URL"
+      }
+    },
+    "CREATE_PORTAL_DIALOG": {
+      "SLUG": {
+        "LABEL": "Slug"
+      }
     }
   },
   "INBOX": {
@@ -575,7 +1280,8 @@
         "CONNECT_YOUR_TIKTOK_PROFILE": "连接您的 TikTok 个人资料",
         "HELP": "要将您的 TikTok 个人资料添加为渠道，请点击“使用 TikTok 继续”完成 TikTok 个人资料认证",
         "ERROR_MESSAGE": "连接 TikTok 时出错，请重试",
-        "ERROR_AUTH": "连接 TikTok 时出错，请重试"
+        "ERROR_AUTH": "连接 TikTok 时出错，请重试",
+        "NORTH_AMERICA_WARNING": "在等待 TikTok 团队更新期间，北美地区账户暂时无法连接 TikTok。"
       },
       "WEBSITE_CHANNEL": {
         "CHANNEL_WEBHOOK_SECRET": {
@@ -589,7 +1295,8 @@
       },
       "WHATSAPP": {
         "SELECT_PROVIDER": {
-          "DESCRIPTION": "选择您的 WhatsApp 服务商。您可以直接通过 Meta 连接（无需任何设置），也可以使用您的账户凭证通过 Twilio 连接。"
+          "DESCRIPTION": "选择您的 WhatsApp 服务商。您可以直接通过 Meta 连接（无需任何设置），也可以使用您的账户凭证通过 Twilio 连接。",
+          "RESTRICTION_DESCRIPTION": "选择您的 WhatsApp 服务商。您可以使用 Cloud API 凭据手动连接 WhatsApp Cloud，也可以使用 Twilio 账户凭据通过 Twilio 连接。"
         },
         "EMBEDDED_SIGNUP": {
           "TITLE": "通过 Meta 快速设置",
@@ -614,7 +1321,116 @@
           "AUTH_NOT_COMPLETED": "认证未完成，请重新开始流程。",
           "SUCCESS_FALLBACK": "WhatsApp Business 账户配置成功",
           "MANUAL_FALLBACK": "如果您的号码已接入 WhatsApp Business 平台（API），或者您是为自有号码开通服务的技术服务商，请使用{link}流程",
-          "CALLING_ENABLE_FAILED": "您的 WhatsApp 收件箱已就绪，但语音通话无法开启——该号码尚未加入 WhatsApp Business Calling API。请联系 Meta 或您的 WhatsApp Business 解决方案提供商完成开通，然后在收件箱的通话设置中开启通话功能。"
+          "CALLING_ENABLE_FAILED": "您的 WhatsApp 收件箱已就绪，但语音通话无法开启——该号码尚未加入 WhatsApp Business Calling API。请联系 Meta 或您的 WhatsApp Business 解决方案提供商完成开通，然后在收件箱的通话设置中开启通话功能。",
+          "UNSUPPORTED_COMPLETION": "Meta 设置已完成，但没有可连接的 WhatsApp 电话号码。请重新运行设置并添加电话号码。",
+          "ACCESS_REQUEST": {
+            "TITLE": "通过 Meta 快速设置",
+            "BUTTON": "申请访问",
+            "FORM_DESCRIPTION": "请介绍您的业务以及您计划如何使用 WhatsApp。提交您的使用场景，即可为您的账户启用快速设置。",
+            "USE_CASE_LABEL": "业务使用场景",
+            "USE_CASE_PLACEHOLDER": "例如：我们销售家居用品，使用 WhatsApp 解答产品问题并协助客户处理订单。",
+            "SUBMIT": "提交",
+            "ERROR": "无法启用访问权限，请重试。"
+          },
+          "RESTRICTED_WARNING": "由于 Meta 方面的 API 层面问题，WhatsApp 嵌入式注册暂时不可用，这并非 Chatwoot 的问题。符合条件的 Cloud API 号码可以使用手动设置。我们正与 Meta 紧密合作，尽快解决此问题。",
+          "STATUS_LINK": "查看状态更新"
+        },
+        "PROVIDERS": {
+          "TWILIO": "Twilio",
+          "WHATSAPP_CLOUD_MANUAL_SETUP_DESC": "使用 Cloud API 凭据手动设置",
+          "360_DIALOG": "360Dialog"
+        },
+        "MANUAL_SETUP": {
+          "HEADER": {
+            "TITLE": "手动连接 WhatsApp",
+            "DESCRIPTION": "按照以下步骤准备您的 Meta 账户，并将号码连接到 Chatwoot。"
+          },
+          "APP": {
+            "TITLE": "创建或选择 Meta 应用",
+            "DESCRIPTION": "您的 WhatsApp 号码必须属于一个已启用 WhatsApp 用例的 Meta 应用。",
+            "ITEM_1": "打开 {metaDevelopers}，并使用管理员账户登录。",
+            "META_DEVELOPERS": "Meta 开发者平台",
+            "ITEM_2": "创建一个新应用，或选择您已为此 WhatsApp 号码使用的应用。",
+            "ITEM_3": "选择通过 WhatsApp 与客户联系的选项。",
+            "ITEM_4": "选择拥有（或将拥有）该 WhatsApp 号码的业务资产组合。",
+            "VIDEO_TITLE": "观看：创建 Meta 应用",
+            "VIDEO_DESCRIPTION": "这段简短的演示展示了如何在 Meta 开发者平台中创建新应用。"
+          },
+          "NUMBER": {
+            "TITLE": "添加电话号码并获取其 ID",
+            "DESCRIPTION": "在您的 Meta 应用中添加并验证正式号码，然后复制 API Setup 中显示的两个标识符。",
+            "ITEM_1": "在您的 Meta 应用中打开 WhatsApp 用例，然后选择 API Setup。",
+            "ITEM_2": "在「发送和接收消息」部分，打开「发件人」选择器。",
+            "ITEM_3": "选择一个已有的正式号码，或选择「添加电话号码」。",
+            "ITEM_4": "完善 Meta 要求填写的 WhatsApp 商业资料。",
+            "ITEM_5": "使用通过短信或语音电话发送的验证码验证电话号码。",
+            "ITEM_6": "复制 API Setup 中显示的电话号码 ID 和 WhatsApp Business 账户 ID。",
+            "VIDEO_TITLE": "观看：添加电话号码并查找其 ID",
+            "VIDEO_DESCRIPTION": "这段演示展示了如何添加或选择正式号码，并从 Meta 复制标识符。"
+          },
+          "TOKEN": {
+            "TITLE": "生成永久访问令牌",
+            "DESCRIPTION": "创建一个可访问您的应用和 WhatsApp Business 账户的 Meta 系统用户。",
+            "ITEM_1": "打开 Meta 商务设置，前往「用户 → 系统用户」。",
+            "ITEM_2": "创建一个管理员系统用户，或选择一个已有的系统用户。",
+            "ITEM_3": "将您的 Meta 应用和 WhatsApp Business 账户分配给该系统用户。",
+            "ITEM_4": "为已分配的 WhatsApp 资产授予完全控制权限。",
+            "ITEM_5": "为您的 Meta 应用生成令牌，并将其有效期设为「永不」。",
+            "ITEM_6": "选择 whatsapp_business_management 和 whatsapp_business_messaging，然后复制令牌。",
+            "VIDEO_TITLE": "观看：生成永久访问令牌",
+            "VIDEO_DESCRIPTION": "这段演示展示了如何选择您的 Meta 应用、选择永不过期的令牌，并授予所需的 WhatsApp 权限。",
+            "WARNING": "Meta 只会显示一次令牌。请在关闭对话框前复制。"
+          },
+          "DETAILS": {
+            "WABA_LABEL": "WhatsApp Business 账户 ID",
+            "WABA_PLACEHOLDER": "输入 WABA ID",
+            "PHONE_ID_LABEL": "电话号码 ID",
+            "PHONE_ID_PLACEHOLDER": "输入电话号码 ID",
+            "TOKEN_LABEL": "永久访问令牌",
+            "TOKEN_PLACEHOLDER": "粘贴访问令牌"
+          },
+          "REVIEW": {
+            "TITLE": "创建您的 WhatsApp 收件箱",
+            "DESCRIPTION": "核对号码详情，并为收件箱选择一个名称。",
+            "VERIFIED": "您的 Meta 号码和访问令牌有效。",
+            "BUSINESS_NAME": "企业名称",
+            "PHONE_ID": "电话号码 ID",
+            "WABA_ID": "WhatsApp Business 账户 ID",
+            "INBOX_NAME_HELP": "此名称根据您已验证的 Meta 企业名称生成，您可以修改。"
+          },
+          "VERIFY": {
+            "TITLE": "验证您的连接",
+            "DESCRIPTION": "Chatwoot 正在检查号码访问权限并配置您的 Meta Webhook。",
+            "NUMBER_ACCESS": "号码访问权限",
+            "TEMPLATE_ACCESS": "模板访问权限",
+            "CALLBACK": "Webhook 回调",
+            "SUBSCRIPTION": "Webhook 订阅",
+            "COPY_SUCCESS": "Webhook URL 已复制到剪贴板",
+            "SUCCESS": "您的 WhatsApp 号码已连接，可以分配客服了。",
+            "RETRY_SUCCESS": "已成功重试 Webhook 设置。",
+            "RETRY_ERROR": "无法重试 Webhook 设置，请再试一次。"
+          },
+          "ACTIONS": {
+            "OPEN_META_APPS": "打开 Meta 应用",
+            "APP_READY": "我的 Meta 应用已就绪",
+            "NEXT": "下一步",
+            "OPEN_BUSINESS_SETTINGS": "打开 Meta 商务设置",
+            "SHOW_TOKEN": "显示令牌",
+            "HIDE_TOKEN": "隐藏令牌",
+            "VERIFY_DETAILS": "验证信息",
+            "RETRY_WEBHOOK": "重试 Webhook 设置",
+            "CONTINUE": "继续添加客服"
+          },
+          "ERRORS": {
+            "IDS_REQUIRED": "请输入电话号码 ID 和 WhatsApp Business 账户 ID。",
+            "REQUIRED": "请输入电话号码 ID、WhatsApp Business 账户 ID 和永久访问令牌。",
+            "INVALID_TOKEN": "此访问令牌无效或已过期。请生成新的永久令牌后重试。",
+            "GENERIC": "无法完成 WhatsApp 设置。请检查您的信息后重试。"
+          }
+        },
+        "API": {
+          "MANUAL_RESTRICTION_WARNING": "由于 Meta 方面的 API 层面问题，WhatsApp 嵌入式注册暂时不可用，这并非 Chatwoot 的问题。手动设置仅适用于已连接到 WhatsApp Cloud API 的号码。此流程暂不支持与 WhatsApp Business 应用共存的号码。我们正与 Meta 紧密合作，尽快解决此问题。感谢您的耐心等待。",
+          "STATUS_LINK": "查看状态更新"
         }
       },
       "VOICE": {
@@ -663,12 +1479,47 @@
             "TITLE": "电子邮件"
           },
           "TIKTOK": {
-            "DESCRIPTION": "连接您的 TikTok 账号"
+            "DESCRIPTION": "连接您的 TikTok 账号",
+            "TITLE": "TikTok",
+            "ACCESS_REQUEST_DESCRIPTION": "联系我们的支持团队申请 TikTok 访问权限"
+          },
+          "FACEBOOK": {
+            "TITLE": "Facebook"
+          },
+          "WHATSAPP": {
+            "TITLE": "WhatsApp"
+          },
+          "API": {
+            "TITLE": "API"
+          },
+          "TELEGRAM": {
+            "TITLE": "Telegram"
+          },
+          "LINE": {
+            "TITLE": "Line"
+          },
+          "INSTAGRAM": {
+            "TITLE": "Instagram"
           }
         }
       },
       "MICROSOFT": {
         "TITLE": "Microsoft 邮箱"
+      },
+      "FB": {
+        "RESTRICTED_WARNING": "由于 Meta 方面的 API 层面问题，暂时无法创建 Facebook 收件箱，这并非 Chatwoot 的问题。我们正与 Meta 紧密合作，尽快解决此问题。",
+        "STATUS_LINK": "查看状态更新"
+      },
+      "INSTAGRAM": {
+        "RESTRICTED_WARNING": "由于 Meta 方面的 API 层面问题，暂时无法创建 Instagram 收件箱，这并非 Chatwoot 的问题。我们正与 Meta 紧密合作，尽快解决此问题。",
+        "SETTINGS_RESTRICTED_WARNING": "Instagram 消息目前受到 Meta 方面 API 层面问题的影响，并非 Chatwoot 的问题。部分消息或操作可能会延迟或不可用。我们正与 Meta 紧密合作，尽快解决此问题。",
+        "STATUS_LINK": "查看状态更新"
+      },
+      "SMS": {
+        "PROVIDERS": {
+          "TWILIO": "Twilio",
+          "BANDWIDTH": "Bandwidth"
+        }
       }
     },
     "EDIT": {
@@ -694,6 +1545,14 @@
       "INBOUND": {
         "LABEL": "允许来电",
         "DESCRIPTION": "允许客户拨打此号码。关闭后，来电将被自动拒绝——客服不会收到通知，也不会创建会话。客服仍可拨打外呼电话。"
+      },
+      "RECORDING": {
+        "LABEL": "录制通话",
+        "DESCRIPTION": "录制通话并将录音附加到会话中。在不允许录制通话的地区请关闭此功能。"
+      },
+      "TRANSCRIPTION": {
+        "LABEL": "转写录音",
+        "DESCRIPTION": "将每段录音转换为文字记录。此功能使用 Captain，并需要为账户启用音频转写。"
       }
     },
     "WHATSAPP_CALLING": {
@@ -734,7 +1593,16 @@
         },
         "DISPLAY_NAME_STATUS": {
           "LABEL": "显示名称状态",
-          "TOOLTIP": "您的商家名称验证状态"
+          "TOOLTIP": "您的商家名称验证状态",
+          "DESCRIPTIONS": {
+            "APPROVED": "显示名称已获批准，可显示在 WhatsApp 聊天顶部。如果收件人保存了其他名称，则可能显示该名称。",
+            "AVAILABLE_WITHOUT_REVIEW": "显示名称已保存到您的 WhatsApp 资料中，但在 Meta 审核批准之前，收件人可能会看到电话号码。当您的企业达到更高的消息发送上限后，Meta 才会开始此审核。",
+            "PENDING_REVIEW": "Meta 正在审核显示名称。除非 Meta 要求提供更多信息，否则无需执行任何操作。",
+            "REJECTED": "Meta 未批准该显示名称。请查看显示名称指南，然后在 Meta 中更新名称或提出申诉。",
+            "DECLINED": "Meta 未批准该显示名称。请查看显示名称指南，然后在 Meta 中更新名称或提出申诉。",
+            "EXPIRED": "该电话号码的证书已过期，因此无法注册用于 API。",
+            "UNKNOWN": "Meta 未返回显示名称的审核状态。"
+          }
         },
         "QUALITY_RATING": {
           "LABEL": "质量评级",
@@ -742,11 +1610,65 @@
         },
         "MESSAGING_LIMIT_TIER": {
           "LABEL": "消息限制等级",
-          "TOOLTIP": "您账户的每日消息发送限制"
+          "TOOLTIP": "您账户的每日消息发送限制",
+          "DESCRIPTION": "此上限由业务资产组合中的所有 WhatsApp 电话号码共享。"
         },
         "ACCOUNT_MODE": {
           "LABEL": "账户模式",
           "TOOLTIP": "您 WhatsApp 账户的当前运行模式"
+        },
+        "PROFILE_DESCRIPTION": {
+          "TOOLTIP": "WhatsApp 商业资料中向客户展示的描述"
+        },
+        "PROFILE_ADDRESS": {
+          "TOOLTIP": "WhatsApp 商业资料中展示的企业地址"
+        },
+        "PROFILE_EMAIL": {
+          "LABEL": "邮箱",
+          "TOOLTIP": "WhatsApp 商业资料中展示的联系邮箱"
+        },
+        "PROFILE_WEBSITES": {
+          "LABEL": "网站",
+          "TOOLTIP": "WhatsApp 商业资料中展示的网站链接"
+        },
+        "PHONE_NUMBER_ID": {
+          "TOOLTIP": "此 WhatsApp 电话号码的 Meta 标识符"
+        },
+        "COEXISTENCE": {
+          "LABEL": "共存",
+          "TOOLTIP": "此号码同时连接到 WhatsApp Business 应用和 Cloud API"
+        },
+        "LAST_ONBOARDED_TIME": {
+          "LABEL": "最近接入时间",
+          "TOOLTIP": "Meta 最近一次接入此电话号码的时间"
+        },
+        "PHONE_NUMBER_STATUS": {
+          "LABEL": "电话号码状态",
+          "TOOLTIP": "此电话号码在 WhatsApp 上的当前连接状态"
+        },
+        "CODE_VERIFICATION_STATUS": {
+          "LABEL": "验证码验证",
+          "TOOLTIP": "Meta 报告的此电话号码的验证码状态"
+        },
+        "THROUGHPUT_LEVEL": {
+          "LABEL": "吞吐量",
+          "TOOLTIP": "分配给此电话号码的消息吞吐量等级"
+        },
+        "BUSINESS_ACCOUNT_NAME": {
+          "LABEL": "WhatsApp Business 账户名称",
+          "TOOLTIP": "关联到此电话号码的 WhatsApp Business 账户名称"
+        },
+        "BUSINESS_ACCOUNT_ID": {
+          "LABEL": "WhatsApp Business 账户 ID",
+          "TOOLTIP": "关联的 WhatsApp Business 账户的 Meta 标识符"
+        },
+        "BUSINESS_PORTFOLIO_NAME": {
+          "LABEL": "业务资产组合名称",
+          "TOOLTIP": "拥有该 WhatsApp Business 账户的 Meta 业务资产组合名称"
+        },
+        "BUSINESS_PORTFOLIO_ID": {
+          "LABEL": "业务资产组合 ID",
+          "TOOLTIP": "拥有该 WhatsApp Business 账户的业务资产组合的 Meta 标识符"
         }
       },
       "VALUES": {
@@ -757,17 +1679,38 @@
           "TIER_10K": "每 24 小时 10K 位客户",
           "TIER_100K": "每 24 小时 100K 位客户",
           "TIER_UNLIMITED": "每 24 小时不限客户数量",
-          "UNKNOWN": "暂无评级"
+          "UNKNOWN": "暂无评级",
+          "TIER_2K": "每 24 小时 2K 位客户"
         },
         "STATUSES": {
           "PENDING_REVIEW": "待审核",
           "AVAILABLE_WITHOUT_REVIEW": "无需审核即可使用",
           "REJECTED": "已拒绝",
           "DECLINED": "已驳回",
-          "NON_EXISTS": "不存在"
+          "NON_EXISTS": "不存在",
+          "CONNECTED": "已连接",
+          "EXPIRED": "已过期",
+          "FLAGGED": "已标记",
+          "RESTRICTED": "受限",
+          "BANNED": "已封禁",
+          "DISCONNECTED": "已断开"
         },
         "MODES": {
           "SANDBOX": "沙盒"
+        },
+        "QUALITY": {
+          "GREEN": "绿色",
+          "YELLOW": "黄色",
+          "RED": "红色"
+        },
+        "TIER_NAMES": {
+          "TIER_250": "等级 250",
+          "TIER_1000": "等级 1K",
+          "TIER_1K": "等级 1K",
+          "TIER_2K": "等级 2K",
+          "TIER_10K": "等级 10K",
+          "TIER_100K": "等级 100K",
+          "TIER_UNLIMITED": "无限制"
         }
       },
       "WEBHOOK": {
@@ -778,13 +1721,37 @@
         "REGISTER_SUCCESS": "Webhook 注册成功",
         "REGISTER_ERROR": "Webhook 注册失败，请重试。",
         "CONFIGURED_SUCCESS": "Webhook 配置成功",
-        "URL_MISMATCH": "Webhook URL 不匹配"
+        "URL_MISMATCH": "Webhook URL 不匹配",
+        "CONFIGURED_URL": "已配置的 URL",
+        "EXPECTED_URL": "预期的 URL",
+        "COPY_URL": "复制 Webhook URL",
+        "COPY_SUCCESS": "Webhook URL 已复制到剪贴板"
+      },
+      "ERRORS": {
+        "AUTHORIZATION": {
+          "EMBEDDED_TITLE": "需要刷新 WhatsApp 连接",
+          "EMBEDDED_DESCRIPTION": "Meta 无法验证此收件箱的连接。请前往「配置」使用嵌入式注册重新配置。",
+          "MANUAL_TITLE": "WhatsApp 访问令牌需要处理",
+          "MANUAL_DESCRIPTION": "Meta 无法验证此收件箱的访问令牌。请前往「配置」验证或更换令牌。"
+        },
+        "GENERIC_TITLE": "WhatsApp 健康数据不可用",
+        "GENERIC_DESCRIPTION": "Meta 无法返回当前的健康详情。请查看下方错误信息，稍后重试。",
+        "GO_TO_CONFIGURATION": "前往配置"
+      },
+      "SECTIONS": {
+        "BUSINESS_PROFILE": "商业资料",
+        "HEALTH_AND_CAPACITY": "健康状况与容量",
+        "BUSINESS_ACCOUNT": "商业账户"
+      },
+      "BUSINESS_PROFILE": {
+        "PREVIEW_LABEL": "WhatsApp 商业资料"
       }
     },
     "SETTINGS_POPUP": {
       "ALLOWED_DOMAINS": {
         "TITLE": "允许的域名",
-        "DESCRIPTION": "限制哪些网站可以嵌入您的聊天组件。出于安全考虑，请只添加您拥有且信任的域名。可添加一个或多个域名，以英文逗号分隔。留空则允许所有域名（不建议在生产环境中使用）。"
+        "DESCRIPTION": "限制哪些网站可以嵌入您的聊天组件。出于安全考虑，请只添加您拥有且信任的域名。可添加一个或多个域名，以英文逗号分隔。留空则允许所有域名（不建议在生产环境中使用）。",
+        "PLACEHOLDER": "example.com, www.example.com, app.example.com"
       },
       "ALLOW_MOBILE_WEBVIEW": {
         "LABEL": "在移动应用中启用组件",
@@ -795,7 +1762,18 @@
         "DESCRIPTION": "通过生成安全 Token 来验证用户的真实身份，防止未经授权的用户在聊天中冒充他人。",
         "VIEW_DOCS": "查看文档",
         "REQUIRE_LABEL": "所有会话均需身份验证",
-        "REQUIRE_DESCRIPTION": "启用后，用户必须提供有效的身份 Token 才能发起会话。缺少有效 Token 的请求将被拒绝。"
+        "REQUIRE_DESCRIPTION": "启用后，用户必须提供有效的身份 Token 才能发起会话。缺少有效 Token 的请求将被拒绝。",
+        "ROTATE": {
+          "BUTTON": "轮换密钥",
+          "TITLE": "要轮换密钥吗？",
+          "WARNING": "轮换后，当前密钥会立即被撤销。",
+          "WARNING_DETAIL": "没有过渡期，且无法恢复。",
+          "IMPACT": "您的服务器必须使用新密钥为用户签名。仍使用旧密钥签名的用户将无法通过验证。如果要求身份验证，这些用户将无法发起会话。",
+          "CONFIRM": "轮换密钥",
+          "CANCEL": "取消",
+          "SUCCESS": "密钥轮换成功",
+          "ERROR": "无法轮换密钥，请重试"
+        }
       },
       "ENABLE_CONTINUITY_VIA_EMAIL_DISABLED_TEXT": "此功能仅在付费套餐中提供。升级后即可启用通过电子邮件延续会话的功能。",
       "LOCK_TO_SINGLE_CONVERSATION": "会话路由",
@@ -815,6 +1793,80 @@
       "WHATSAPP_CALLING_ENABLED": {
         "LABEL": "启用语音通话",
         "DESCRIPTION": "允许客服在此收件箱上发起和接听 WhatsApp 语音通话。仅适用于通过 Embedded Signup 接入且已获得 Meta 通话权限的 WhatsApp Cloud 渠道。"
+      },
+      "WHATSAPP_BUSINESS_MANAGEMENT_TOKEN_ADD_TITLE": "添加 Business Management 令牌",
+      "WHATSAPP_BUSINESS_MANAGEMENT_TOKEN_REPLACE_TITLE": "更换 Business Management 令牌",
+      "WHATSAPP_BUSINESS_MANAGEMENT_TOKEN_CONFIGURED": "已配置 Business Management 令牌",
+      "WHATSAPP_BUSINESS_MANAGEMENT_TOKEN_UPDATE_SUBHEADER": "当 Chatwoot 无法获取此 WhatsApp Business 账户的消息模板时，请提供一个可访问该账户的令牌。Chatwoot 仅将此令牌用于模板同步。",
+      "WHATSAPP_BUSINESS_MANAGEMENT_TOKEN_UPDATE_PLACEHOLDER": "输入 Business Management 令牌",
+      "WHATSAPP_BUSINESS_MANAGEMENT_TOKEN_REPLACE_BUTTON": "更换",
+      "WHATSAPP_BUSINESS_MANAGEMENT_TOKEN_UPDATE_SUCCESS": "WhatsApp Business Management 令牌更新成功。",
+      "WHATSAPP_BUSINESS_MANAGEMENT_TOKEN_UPDATE_ERROR": "无法更新 Business Management 令牌。请检查其 WhatsApp Business Management 权限和账户访问权限后重试。",
+      "WHATSAPP_BUSINESS_MANAGEMENT_TOKEN_GUIDE_LINK": "了解如何生成 WhatsApp Business Management 令牌",
+      "WHATSAPP_MANUAL_TRANSFER_TITLE": "切换为手动设置",
+      "WHATSAPP_MANUAL_TRANSFER_SUBHEADER": "此收件箱通过 WhatsApp 嵌入式注册连接，该方式已不再支持。请输入您自己的 Meta 应用中的 WhatsApp Cloud API 凭据，将此收件箱切换为手动设置。切换前，请使用上方的验证令牌在您的 Meta 应用中配置 Webhook。",
+      "WHATSAPP_MANUAL_TRANSFER_PHONE_NUMBER_ID_LABEL": "电话号码 ID",
+      "WHATSAPP_MANUAL_TRANSFER_API_KEY_PLACEHOLDER": "输入您 Meta 应用中的永久访问令牌",
+      "WHATSAPP_MANUAL_TRANSFER_BUTTON": "切换为手动设置",
+      "WHATSAPP_MANUAL_TRANSFER_SUCCESS": "收件箱已成功切换为手动设置。",
+      "WHATSAPP_MANUAL_TRANSFER_ERROR": "无法切换为手动设置。请检查凭据后重试。",
+      "WHATSAPP_MANUAL_MIGRATION": {
+        "BANNER": {
+          "TITLE": "建议使用手动设置",
+          "DESCRIPTION": "此收件箱通过嵌入式注册使用的共享 Meta 应用连接，该应用近期受到 Meta 限制的影响。为避免今后出现类似问题，建议您使用自己的 Meta 应用重新连接。",
+          "START": "开始手动迁移",
+          "GUIDE": "查看指南"
+        },
+        "DIALOG": {
+          "EYEBROW": "WhatsApp 手动迁移",
+          "TITLE": "重新连接 WhatsApp 收件箱",
+          "ACTION_REQUIRED_TITLE": "使用您自己的 Meta 应用重新连接",
+          "ACTION_REQUIRED_DESCRIPTION": "通过您自己的 Meta 应用连接的收件箱不受共享嵌入式注册应用限制的影响。此引导流程会更新 WhatsApp API 连接，而不会创建新的收件箱。",
+          "GUIDE_LINK": "打开手动设置指南",
+          "PRESERVED_TITLE": "保留",
+          "PRESERVED_DESCRIPTION": "会话、联系人、协作者、路由、营业时间和收件箱设置。",
+          "UPDATED_TITLE": "更新",
+          "UPDATED_DESCRIPTION": "WABA ID、电话号码 ID、访问令牌和 Webhook 配置。",
+          "WABA_ID": "WABA ID",
+          "WABA_PLACEHOLDER": "输入 WABA ID",
+          "WABA_HELP": "拥有此电话号码的 WhatsApp Business 账户。",
+          "PHONE_NUMBER_ID": "电话号码 ID",
+          "PHONE_NUMBER_PLACEHOLDER": "输入电话号码 ID",
+          "PHONE_NUMBER_HELP": "Meta 为连接到此收件箱的 WhatsApp 号码分配的唯一 ID。",
+          "DISPLAY_PHONE_NUMBER": "显示电话号码",
+          "DISPLAY_PHONE_NUMBER_PLACEHOLDER": "输入显示电话号码",
+          "DISPLAY_PHONE_NUMBER_HELP": "面向客户的 WhatsApp 号码。迁移期间无法更改。",
+          "ACCESS_TOKEN": "永久访问令牌或系统用户令牌",
+          "ACCESS_TOKEN_PLACEHOLDER": "粘贴访问令牌",
+          "TOKEN_HELP_PREFIX": "令牌必须包含",
+          "TOKEN_HELP_SUFFIX": "权限，用于模板同步和模板管理。",
+          "MESSAGING_PERMISSION": "whatsapp_business_messaging.",
+          "MANAGEMENT_PERMISSION": "whatsapp_business_management",
+          "REVIEW_TITLE": "重新连接前请核对",
+          "NOT_ENTERED": "未填写",
+          "VERIFY_NOTICE": "在应用任何更改之前，Chatwoot 会先通过 Meta 验证这些凭据。如果验证失败，当前配置将保持不变。",
+          "CONTINUE": "继续",
+          "REVIEW_MIGRATION": "核对迁移信息",
+          "RECONNECT": "重新连接 WhatsApp 收件箱"
+        },
+        "STEPS": {
+          "BEFORE_YOU_START": {
+            "TITLE": "开始之前",
+            "DESCRIPTION": "此操作将重新连接此收件箱的 WhatsApp API 信息。会话、协作者、路由、营业时间、CSAT 和机器人设置都将保留。"
+          },
+          "BUSINESS_DETAILS": {
+            "TITLE": "业务信息",
+            "DESCRIPTION": "输入客户 Meta Business 账户中的 WhatsApp 资产。"
+          },
+          "ACCESS_TOKEN": {
+            "TITLE": "访问令牌",
+            "DESCRIPTION": "粘贴具有 WhatsApp 权限的永久访问令牌或系统用户令牌。"
+          },
+          "REVIEW_MIGRATION": {
+            "TITLE": "核对迁移信息",
+            "DESCRIPTION": "重新连接此收件箱前，请确认连接信息。在应用更改之前，Chatwoot 会通过 Meta 验证令牌、WABA 和电话号码。"
+          }
+        }
       }
     },
     "ASSIGNMENT": {
@@ -914,7 +1966,135 @@
       },
       "WIDGET_SCREEN": {
         "CHAT": "聊天模式"
+      },
+      "SCRIPT_SETTINGS": "\n      window.chatwootSettings = {options};"
+    },
+    "DETAILS": {
+      "ERROR_CHANNEL_CREATION": "无法创建收件箱，请重试。"
+    },
+    "FINISH": {
+      "SMS_QR_INSTRUCTION": "扫描上方二维码，快速测试您的短信收件箱",
+      "SMS_QR_ALT": "用于测试短信收件箱的二维码",
+      "TWILIO_CALLBACK_FALLBACK": "Webhook 会自动配置。如果收不到传入消息，请在 Twilio 中使用此回调 URL。"
+    },
+    "TWILIO_HEALTH": {
+      "TITLE": "管理您的 Twilio 号码",
+      "DESCRIPTION": "检查支持此收件箱的 Twilio 账户、发送方和 Webhook。Chatwoot 无法接收的内容会在此标记",
+      "GO_TO_SETTINGS": "前往 Twilio 控制台",
+      "NO_DATA": "健康数据不可用",
+      "LOADING": "正在从 Twilio 获取健康数据…",
+      "ERROR_TITLE": "无法连接 Twilio",
+      "STATUS": {
+        "HEALTHY": "所有检查均已通过",
+        "MISCONFIGURED": "需要处理"
+      },
+      "FIELDS": {
+        "ACCOUNT_NAME": {
+          "LABEL": "Twilio 账户",
+          "TOOLTIP": "这些凭据所属的 Twilio 账户"
+        },
+        "ACCOUNT_STATUS": {
+          "LABEL": "账户状态",
+          "TOOLTIP": "已暂停或已关闭的 Twilio 账户无法发送或接收任何内容"
+        },
+        "ACCOUNT_TYPE": {
+          "LABEL": "账户类型",
+          "TOOLTIP": "试用账户只能向已在 Twilio 验证过的电话号码发送消息或拨打电话"
+        },
+        "SENDER": {
+          "LABEL": "发送方",
+          "TOOLTIP": "承载此收件箱的电话号码或消息服务"
+        },
+        "CAPABILITIES": {
+          "LABEL": "号码功能",
+          "TOOLTIP": "Twilio 在此号码上启用的功能。如果此收件箱需要的某项功能未启用，相关操作将无法进行"
+        },
+        "VOICE_CALLING": {
+          "LABEL": "语音通话",
+          "TOOLTIP": "此收件箱是否已开启通话功能"
+        }
+      },
+      "VALUES": {
+        "ACCOUNT_STATUSES": {
+          "ACTIVE": "活跃",
+          "SUSPENDED": "已暂停",
+          "CLOSED": "已关闭"
+        },
+        "ACCOUNT_TYPES": {
+          "TRIAL": "试用",
+          "FULL": "正式"
+        },
+        "CAPABILITIES": {
+          "SMS": "短信",
+          "VOICE": "语音"
+        },
+        "SENDER_TYPES": {
+          "PHONE_NUMBER": "电话号码",
+          "MESSAGING_SERVICE": "消息服务"
+        },
+        "ENABLED": "已启用",
+        "DISABLED": "已停用"
+      },
+      "WEBHOOKS": {
+        "TITLE": "Webhooks",
+        "DESCRIPTION": "当消息或通话到达时，Twilio 会调用这些 URL。更改安装 URL 后请重新注册",
+        "REGISTER_ALL": "注册 Webhook",
+        "MESSAGING": "消息 Webhook",
+        "VOICE": "语音 Webhook",
+        "VOICE_STATUS": "语音状态回调",
+        "VOICE_APP": "外呼（TwiML 应用）"
+      },
+      "WEBHOOK": {
+        "CONFIGURED_SUCCESS": "Webhook 配置成功",
+        "NOT_SET": "未设置",
+        "EXPECTED": "预期值",
+        "CURRENT": "当前设置为",
+        "REASONS": {
+          "NOT_SET": "未配置 Webhook",
+          "URL_MISMATCH": "Webhook URL 不匹配",
+          "WRONG_HTTP_METHOD": "Webhook 使用了错误的 HTTP 方法",
+          "OVERRIDDEN_BY_NUMBER": "消息服务改用号码上的设置",
+          "OVERRIDDEN_BY_APPLICATION": "已被 TwiML 应用覆盖",
+          "OVERRIDDEN_BY_TRUNK": "已被 SIP 中继覆盖",
+          "MISSING_TWIML_APP": "未创建 TwiML 应用"
+        },
+        "HINTS": {
+          "NOT_SET": "Twilio 在此发送方上没有配置 Webhook，因此不会有任何内容到达 Chatwoot。",
+          "URL_MISMATCH": "Twilio 正在调用另一个 URL，因此流量被发送到了别处。",
+          "WRONG_HTTP_METHOD": "URL 正确，但 Twilio 使用 {method} 而不是 POST 调用它，而 Chatwoot 只响应 POST。",
+          "OVERRIDDEN_BY_NUMBER": "此消息服务开启了「Use webhook on number」，因此 Twilio 会忽略服务上的 Webhook。",
+          "OVERRIDDEN_BY_APPLICATION": "此号码关联了一个 TwiML 应用，Twilio 会使用该应用的 URL 而不是号码的 URL。请在 Twilio 控制台中解除关联。",
+          "OVERRIDDEN_BY_TRUNK": "此号码关联了一个 SIP 中继，因此 Twilio 会将通话路由到该中继，并完全忽略语音 Webhook。请在 Twilio 控制台中解除中继关联。",
+          "MISSING_TWIML_APP": "Chatwoot 没有为此号码创建 TwiML 应用，因此无法拨打外呼电话。"
+        }
       }
+    },
+    "IMAP": {
+      "TITLE": "IMAP"
+    },
+    "MICROSOFT": {
+      "TITLE": "Microsoft"
+    },
+    "SMTP": {
+      "TITLE": "SMTP",
+      "SSL_TLS": "SSL/TLS",
+      "START_TLS": "STARTTLS"
+    },
+    "EMAIL_PROVIDERS": {
+      "MICROSOFT": {
+        "TITLE": "Microsoft"
+      },
+      "GOOGLE": {
+        "TITLE": "Google"
+      }
+    },
+    "CHANNELS": {
+      "MESSENGER": "Messenger",
+      "WHATSAPP": "WhatsApp",
+      "TELEGRAM": "Telegram",
+      "LINE": "Line",
+      "INSTAGRAM": "Instagram",
+      "TIKTOK": "TikTok"
     }
   },
   "INTEGRATION_APPS": {
@@ -936,9 +2116,25 @@
         "TITLE": "连接 Shopify 商店",
         "LABEL": "商店 URL",
         "HELP": "请输入您 Shopify 商店的 myshopify.com URL",
-        "SUBMIT": "连接商店"
+        "SUBMIT": "连接商店",
+        "PLACEHOLDER": "your-store.myshopify.com",
+        "INVALID_URL": "请输入有效的 Shopify 店铺 URL（例如 your-store.myshopify.com）"
       },
-      "ERROR": "连接 Shopify 时出错。请重试，如果问题仍然存在，请联系支持团队。"
+      "ERROR": "连接 Shopify 时出错。请重试，如果问题仍然存在，请联系支持团队。",
+      "HEADER": "Shopify",
+      "HELP_TEXT": {
+        "TITLE": "如何使用 Shopify 集成？",
+        "BODY": "通过此集成，您的 Shopify 店铺 ***{storeDomain}*** 已连接到您的 Chatwoot 工作区。您可以：\n\n**在会话中跟踪订单：** 打开会话时，Shopify 侧边栏会根据客户的邮箱地址自动显示其最近的订单，让您的支持团队无需切换标签页即可立即了解背景信息。\n\n**查看订单详情：** 直接在会话面板中查看订单状态、履约状态和总金额。"
+      },
+      "PENDING_INSTALL": {
+        "SUCCESS": "Shopify 店铺连接成功。",
+        "ERROR": "无法完成 Shopify 安装，请重试。"
+      },
+      "SELECT_ACCOUNT": {
+        "TITLE": "选择工作区",
+        "DESCRIPTION": "选择要连接到您 Shopify 店铺的工作区。如需恢复之前的连接，请选择其原来的工作区。",
+        "UNAVAILABLE": "未找到符合条件的工作区或有效的安装。请重新开始安装，或以工作区管理员身份登录。"
+      }
     },
     "SEARCH_PLACEHOLDER": "搜索集成...",
     "NO_RESULTS": "未找到与您的搜索匹配的集成",
@@ -964,6 +2160,12 @@
           "LABEL": "Webhook 名称",
           "PLACEHOLDER": "请输入 Webhook 的名称"
         }
+      },
+      "PAYWALL": {
+        "TITLE": "Webhook 仅适用于付费套餐",
+        "AVAILABLE_ON": "使用 Webhook 从您的 Chatwoot 账户接收实时事件。",
+        "UPGRADE_PROMPT": "升级到 Startups、Business 或 Enterprise 套餐即可使用 Webhook。",
+        "CANCEL_ANYTIME": "可随时更改或取消套餐。"
       }
     },
     "OPEN_AI": {
@@ -999,12 +2201,35 @@
       "NO_LINKED_ISSUES": "未找到已关联的事项",
       "CTA": {
         "DESCRIPTION": "尚未连接 Linear 工作区。请点击下方按钮连接您的工作区以使用此集成。"
-      }
+      },
+      "HEADER": "Linear"
     },
     "NOTION": {
       "DELETE": {
         "TITLE": "确定要删除 Notion 集成吗？",
         "MESSAGE": "删除此集成将移除对您 Notion 工作区的访问权限，并停止所有相关功能。"
+      },
+      "HEADER": "Notion"
+    },
+    "SLACK": {
+      "HEADER": "Slack",
+      "HELP_TEXT": {
+        "BODY_ALERT": "通过此集成，所有传入的会话都会同步到您 Slack 工作区中的 ***{selectedChannelName}*** 频道，方便您的团队在会话进来时第一时间处理。\n\n此集成设置为**仅提醒**，这意味着 Slack 帖子是一个安全的内部讨论空间。您的团队在其中发布的任何内容都只会留在 Slack 中，绝不会发送给客户。\n\n**在 Chatwoot 中回复客户：** 通过帖子中分享的链接打开会话，然后在 Chatwoot 控制台中回复。在 Chatwoot 中添加的回复和私人便笺会持续同步到 Slack 帖子中，让每个人都能及时了解进展。"
+      },
+      "MESSAGE_MODE": {
+        "TITLE": "Slack 帖子行为",
+        "DESCRIPTION": "决定 Slack 帖子中的回复是发送给客户还是仅限内部。",
+        "OPTIONS": {
+          "TWO_WAY": {
+            "LABEL": "双向同步",
+            "DESCRIPTION": "Slack 帖子中的回复会发送给客户。以 `note:` 开头的消息将仅限内部可见。"
+          },
+          "ALERT": {
+            "LABEL": "仅提醒",
+            "DESCRIPTION": "会话发布到 Slack 仅供内部讨论。帖子中的任何内容都不会发送给客户。"
+          }
+        },
+        "UPDATE_SUCCESS": "Slack 帖子行为更新成功"
       }
     }
   },
@@ -1014,6 +2239,72 @@
         "FEATURES": {
           "ALLOW_CITATIONS": "在回复中包含来源引用",
           "ALLOW_CONTACT_ATTRIBUTES": "允许访问联系人信息"
+        },
+        "INACTIVITY_RESOLUTION": {
+          "TITLE": "当客户停止回复时",
+          "DESCRIPTION": "选择 Captain 如何处理该会话。",
+          "MODE_LABEL": "客户停止回复时的操作",
+          "REVIEW_AFTER": "多久后审核",
+          "RESOLVE_AFTER": "多久后解决",
+          "ALWAYS_WARNING": "Captain 将在所选时间后直接解决每个会话，不进行审核。一些仍需要帮助的会话可能会被关闭。",
+          "PENDING_INFO": "会话将保持待处理状态，直到客户回复。",
+          "RESOLUTION_MESSAGE": {
+            "TITLE": "解决时发送消息",
+            "DESCRIPTION": "Captain 会在解决会话前发送这条结束消息。"
+          },
+          "MODES": {
+            "DISABLED": {
+              "LABEL": "等待客户",
+              "DESCRIPTION": "Captain 不会解决该会话。如果客户提出要求，Captain 仍可将其转交人工。"
+            },
+            "LEGACY": {
+              "LABEL": "始终解决",
+              "DESCRIPTION": "Captain 会在所选时间后解决每个会话。"
+            },
+            "EVALUATED": {
+              "LABEL": "让 Captain 审核（推荐）",
+              "DESCRIPTION": "Captain 会决定是解决会话还是将其转交人工。"
+            }
+          },
+          "DURATION_HOURS_ARIA_LABEL": "执行操作前的小时数",
+          "DURATION_MINUTES_ARIA_LABEL": "执行操作前的分钟数",
+          "DURATION_MINUTES_SHORT": "{count} 分钟"
+        },
+        "AUDIENCE": {
+          "EVERYONE": {
+            "LABEL": "所有人",
+            "DESC": "Captain 会回复已连接收件箱中的每个会话。"
+          },
+          "SPECIFIC": {
+            "LABEL": "特定受众",
+            "DESC": "Captain 只会回复符合以下条件的客户。"
+          },
+          "ADD_CONDITION": "添加条件",
+          "ADD_GROUP": "添加条件组",
+          "EMPTY_TITLE": "暂无条件",
+          "EMPTY_BODY": "添加条件以定位特定客户，或添加条件组以使用不同的「且/或」逻辑组合条件。",
+          "EMPTY_ERROR": "特定受众至少需要添加一个条件。",
+          "MATCH_PREFIX": "满足以下",
+          "MATCH_SUFFIX": "条件",
+          "MATCH_ANY": "任一",
+          "GROUP_CONTACT": "联系人属性",
+          "CONVERSATION_LANGUAGE": "首条消息语言",
+          "LOGGED_IN": "已登录用户"
+        },
+        "SCHEDULE": {
+          "ALWAYS": {
+            "LABEL": "任何时间",
+            "DESC": "无论何时，Captain 都会回复每个会话。"
+          },
+          "BUSINESS_HOURS": {
+            "LABEL": "营业时间内",
+            "DESC": "Captain 仅在各收件箱的营业时间内回复。"
+          },
+          "OUTSIDE_BUSINESS_HOURS": {
+            "LABEL": "营业时间外",
+            "DESC": "Captain 仅在各收件箱休息时回复。"
+          },
+          "HINT": "未配置营业时间的收件箱将始终由 Captain 覆盖。"
         }
       },
       "SETTINGS": {
@@ -1021,7 +2312,8 @@
           "DESCRIPTION": "自定义助手在结束会话或转接人工时所说的内容。"
         },
         "SYSTEM_SETTINGS": {
-          "DESCRIPTION": "自定义助手在结束会话或转接人工时所说的内容。"
+          "DESCRIPTION": "自定义助手在结束会话或转接人工时所说的内容。",
+          "DESCRIPTION_V2": "管理客户停止回复时 Captain 的处理方式，并设置转人工消息。"
         },
         "CONTROL_ITEMS": {
           "TITLE": "趣味功能",
@@ -1036,6 +2328,13 @@
               "DESCRIPTION": "定义助手回复的风格与结构——清晰友好？简短利落？还是详尽正式？"
             }
           }
+        },
+        "AUDIENCE": {
+          "DESCRIPTION": "选择此助手是回复所有人，还是仅回复特定受众。"
+        },
+        "SCHEDULE": {
+          "TITLE": "时间安排",
+          "DESCRIPTION": "选择 Captain 回复的时间段。在此时间段之外，会话将转交给您的团队。"
         }
       },
       "GUARDRAILS": {
@@ -1155,7 +2454,15 @@
           "DELETE": {
             "SUCCESS": "场景删除成功",
             "ERROR": "删除场景时出错，请重试。"
+          },
+          "TOGGLE": {
+            "ENABLED": "场景启用成功",
+            "DISABLED": "场景停用成功",
+            "ERROR": "更新场景状态时出错，请重试。"
           }
+        },
+        "STATUS": {
+          "TOGGLE": "切换 {title}"
         }
       }
     },
@@ -1190,7 +2497,8 @@
         },
         "SORT": {
           "RECENTLY_UPDATED": "最近更新",
-          "RECENTLY_CREATED": "最近创建"
+          "RECENTLY_CREATED": "最近创建",
+          "MOST_USED": "在会话中使用最多"
         }
       },
       "SYNC_STATUS": {
@@ -1219,6 +2527,31 @@
       "EMPTY_STATE": {
         "FILTERED_TITLE": "没有匹配的文档",
         "FILTERED_SUBTITLE": "请尝试更改来源、状态或搜索词。"
+      },
+      "FAQ_COUNT": "{n} 条常见问题 | {n} 条常见问题",
+      "USED_IN_CONVERSATIONS": "已用于 {n} 个会话 | 已用于 {n} 个会话",
+      "NO_USED_CONVERSATIONS": "未找到使用此文档的会话。",
+      "RELATED_RESPONSES": {
+        "EMPTY": "尚未从此文档生成常见问题。"
+      },
+      "DETAILS": {
+        "DESCRIPTION": "查看抓取的内容以及从此来源生成的常见问题。",
+        "SOURCE": "来源",
+        "GENERATED_FAQS": "生成的常见问题",
+        "USED_IN_CONVERSATIONS": "已用于会话",
+        "LAST_UPDATED": "最后更新",
+        "CONTENT_TAB": "抓取的内容",
+        "PDF_TAB": "PDF 详情",
+        "CONTENT_TITLE": "抓取的内容",
+        "PDF_TITLE": "PDF 文件",
+        "PDF_DESCRIPTION": "查看原始 PDF 来源。",
+        "CHARACTER_COUNT": "已提取 {count} 个字符",
+        "COPY_SUCCESS": "抓取的内容已复制到剪贴板",
+        "COPY_ERROR": "无法复制抓取的内容",
+        "VIEW_RAW": "查看原始内容",
+        "VIEW_PREVIEW": "查看预览",
+        "UNREADABLE_CONTENT": "无法从此文档中提取可读内容。您可以查看提取的原始内容。",
+        "EMPTY_CONTENT": "此文档暂无可用的抓取内容。"
       }
     },
     "CUSTOM_TOOLS": {
@@ -1235,7 +2568,8 @@
       "FORM_DESCRIPTION": "配置您的自定义工具以连接外部 API",
       "OPTIONS": {
         "EDIT_TOOL": "编辑工具",
-        "DELETE_TOOL": "删除工具"
+        "DELETE_TOOL": "删除工具",
+        "VIEW_TOOL": "查看工具"
       },
       "CREATE": {
         "TITLE": "创建自定义工具",
@@ -1282,13 +2616,15 @@
         },
         "ENDPOINT_URL": {
           "LABEL": "端点 URL",
-          "ERROR": "请输入有效的 URL"
+          "ERROR": "请输入有效的 URL",
+          "PLACEHOLDER": "https://api.example.com/orders/{'{{'} order_id {'}}'}"
         },
         "AUTH_TYPE": {
           "LABEL": "认证方式"
         },
         "AUTH_TYPES": {
-          "BASIC": "Basic 认证"
+          "BASIC": "Basic 认证",
+          "BEARER": "Bearer 令牌"
         },
         "AUTH_CONFIG": {
           "BEARER_TOKEN_PLACEHOLDER": "请输入您的 Bearer Token",
@@ -1297,7 +2633,9 @@
           "PASSWORD_PLACEHOLDER": "请输入密码",
           "API_KEY": "请求头名称",
           "API_VALUE": "请求头值",
-          "API_VALUE_PLACEHOLDER": "请输入 API 密钥值"
+          "API_VALUE_PLACEHOLDER": "请输入 API 密钥值",
+          "BEARER_TOKEN": "Bearer 令牌",
+          "API_KEY_PLACEHOLDER": "X-API-Key"
         },
         "PARAMETERS": {
           "LABEL": "参数",
@@ -1317,7 +2655,8 @@
           "PLACEHOLDER": "参数说明"
         },
         "REQUEST_TEMPLATE": {
-          "LABEL": "请求体模板（可选）"
+          "LABEL": "请求体模板（可选）",
+          "PLACEHOLDER": "{'{'}\n  \"order_id\": \"{'{{'} order_id {'}}'}\"\n{'}'}"
         },
         "RESPONSE_TEMPLATE": {
           "LABEL": "响应模板（可选）",
@@ -1325,7 +2664,85 @@
         },
         "ERRORS": {
           "PARAM_NAME_REQUIRED": "请输入参数名称"
+        },
+        "SECTIONS": {
+          "TEMPLATES": "模板",
+          "TEMPLATES_HELP_TEXT": "支持 Liquid 语法，例如 {'{{'} order_id {'}}'} 或 {'{{'} response.status {'}}'}。"
+        },
+        "HEADERS": {
+          "LABEL": "请求头",
+          "HELP_TEXT": "每个请求都会附带的静态请求头。值将按输入内容原样发送；凭据请使用「身份验证」设置。",
+          "NAME_PLACEHOLDER": "请求头名称（例如 cal-api-version）",
+          "VALUE_PLACEHOLDER": "请求头值",
+          "NAME_REQUIRED": "请求头名称为必填项",
+          "NAME_DUPLICATE": "请求头名称不能重复",
+          "ADD": "添加请求头"
         }
+      },
+      "CATALOG": {
+        "BUTTON": "工具目录",
+        "HEADER": "工具目录",
+        "DESCRIPTION": "浏览 Captain 工具目录中的工具集，并将其安装到此助手。",
+        "ALL": "全部",
+        "EMPTY": "此类别下暂无工具集。",
+        "LOAD_ERROR": "无法加载工具目录。请检查 Captain 设置中的目录 URL。",
+        "TOOL_COUNT": "{n} 个工具 | {n} 个工具",
+        "UPDATED": "更新于 {time}",
+        "REPOSITORY": "代码仓库",
+        "MANIFEST": "清单",
+        "CONFIGURATION": "配置",
+        "REQUIRED": "必填",
+        "DETAILS_ERROR": "无法加载工具集详情。",
+        "INSTALLED": "已安装",
+        "UPDATE_AVAILABLE": "有可用更新"
+      },
+      "INSTALL_LINK": {
+        "TITLE": "选择助手",
+        "DESCRIPTION": "选择要安装此工具集的助手。",
+        "PLACEHOLDER": "选择一个助手",
+        "LOAD_ERROR": "无法加载您的助手。请刷新页面重试。"
+      },
+      "INSTALL_MANIFEST": {
+        "TITLE": "安装工具集",
+        "DESCRIPTION": "从 Captain 工具目录安装工具集。",
+        "UPDATE_NOTE": "已安装其他版本。更新将替换其中的工具，并保留每个工具的启用状态。请重新输入密钥。",
+        "TOOLS_LABEL": "工具",
+        "CONFIGURATION_LABEL": "配置",
+        "CONTINUE": "继续",
+        "INSTALL": "安装",
+        "UPDATE": "更新",
+        "REINSTALL": "重新安装",
+        "REINSTALL_NOTE": "此工具集中的部分工具已被删除。重新安装会将其加回，并保留每个工具的启用状态。请重新输入密钥。",
+        "ALREADY_INSTALLED": "已安装",
+        "SUCCESS_MESSAGE": "工具集已安装",
+        "ERROR_MESSAGE": "无法安装工具集",
+        "PREVIEW_ERROR": "无法加载工具集"
+      },
+      "ASSISTANT_TOOLS_BANNER": {
+        "MESSAGE": "自定义工具现在按助手分别管理。切换助手即可自定义其工具。",
+        "LEARN_MORE": "了解更多",
+        "DISMISS": "关闭公告",
+        "MODAL_TITLE": "您的每个助手现在都有自己的工具",
+        "MODAL_DESCRIPTION": "每个助手现在都有独立的自定义工具列表。我们已将您现有的工具复制到每个助手，因此不会丢失任何内容。",
+        "MODAL_INSTRUCTIONS": "当您添加、编辑、关闭或删除某个工具时，更改仅适用于您当前查看的助手。在页面顶部切换助手，即可查看或自定义其工具。",
+        "ACKNOWLEDGE": "知道了"
+      },
+      "STATUS": {
+        "TOGGLE": "切换 {title}"
+      },
+      "TOGGLE": {
+        "ENABLED": "工具启用成功",
+        "DISABLED": "工具停用成功",
+        "ERROR": "更新工具状态失败"
+      },
+      "DISABLE_CONFIRMATION": {
+        "TITLE": "要停用 {title} 吗？",
+        "DESCRIPTION_ONE": "此工具被 {count} 个已启用的场景使用。停用后，该场景可能无法按预期工作。",
+        "DESCRIPTION_OTHER": "此工具被 {count} 个已启用的场景使用。停用后，这些场景可能无法按预期工作。",
+        "CONFIRM": "停用工具"
+      },
+      "VIEW": {
+        "TITLE": "自定义工具详情"
       }
     },
     "RESPONSES": {
@@ -1337,12 +2754,320 @@
       "EMPTY_STATE": {
         "NO_PENDING_TITLE": "没有更多待审核的 FAQ",
         "CLEAR_SEARCH": "清除当前筛选条件"
+      },
+      "NO_USED_CONVERSATIONS": "未找到使用此常见问题的会话。",
+      "ERRORS": {
+        "LOAD": "加载常见问题时出错，请重试。"
+      },
+      "SUGGESTIONS_BANNER": {
+        "TITLE": "Captain 已将客户反复提出的问题归纳为常见问题建议。",
+        "ACTION": "审核建议"
+      }
+    },
+    "NAME": "Captain",
+    "OVERVIEW": {
+      "WELCOME": {
+        "LABEL": "Captain 概览",
+        "LOADING": "正在生成概览…"
+      },
+      "INBOX_BANNER": {
+        "TEXT": "此助手尚未连接任何收件箱，因此不会回复会话。",
+        "ACTION": "连接收件箱"
+      },
+      "COVERAGE_BANNER": {
+        "TEXT": "有 {count} 条常见问题建议待审核，当前覆盖率为 {coverage}%。批准这些建议，让您的助手能够自主解决更多问题。",
+        "ACTION": "审核建议"
+      },
+      "RANGES": {
+        "INSUFFICIENT_HISTORY": "报告历史数据尚不足",
+        "THIS_WEEK": "本周",
+        "LAST_WEEK": "上周",
+        "LAST_DAYS": "最近 {count} 天",
+        "THIS_MONTH": "本月",
+        "LAST_MONTH": "上月"
+      },
+      "METRICS": {
+        "HANDLED": {
+          "LABEL": "已处理会话",
+          "HINT": "Captain 回复了客户或将会话转交给您团队的会话。"
+        },
+        "AUTO_RESOLUTION": {
+          "LABEL": "自动解决率",
+          "HINT": "在已处理的会话中，Captain 无需团队协助即可解决的比例。数值越高，说明 Captain 自主解决的问题越多。"
+        },
+        "HANDOFF": {
+          "LABEL": "转人工率",
+          "HINT": "在已处理的会话中，Captain 转交给团队的比例。数值越低，说明需要客服介入的会话越少。"
+        },
+        "HOURS_SAVED": {
+          "LABEL": "节省的时间",
+          "HINT": "估算 Captain 为客服节省的回复时间。",
+          "NOTE": "按 Captain 每条公开回复节省两分钟计算。"
+        },
+        "REOPEN": {
+          "LABEL": "重新打开率",
+          "HINT": "Captain 已解决的会话中，客户之后再次回来咨询的比例。",
+          "NOTE": "数值越低，说明更多已解决的会话保持解决状态。"
+        },
+        "DEPTH": {
+          "LABEL": "消息数 / 会话",
+          "HINT": "Captain 在其处理的每个会话中发送的平均回复数。",
+          "NOTE": "数值较低可能意味着回答更快，但复杂的问题可能需要更多回复。"
+        }
+      },
+      "DRILLDOWN": {
+        "EMPTY": "此指标暂无记录。",
+        "ERROR": "无法加载记录，请重试。",
+        "RESULT_COUNT_CONVERSATION": "{count} 个会话 | {count} 个会话"
+      },
+      "KNOWLEDGE": {
+        "TITLE": "知识覆盖率",
+        "COVERAGE": "已批准 {pct}%",
+        "APPROVED": "已批准的常见问题",
+        "SUGGESTIONS": "常见问题建议"
+      },
+      "LINKS": {
+        "DOCS": {
+          "TITLE": "Captain 文档",
+          "DESCRIPTION": "Captain 的使用指南和操作说明"
+        },
+        "PLAYGROUND": {
+          "DESCRIPTION": "测试此助手的回复"
+        },
+        "BILLING": {
+          "DESCRIPTION": "管理点数和套餐"
+        }
+      },
+      "V2": {
+        "DRILLDOWN": {
+          "HANDLED": "所选时间段内 Captain 参与的处理轮次。",
+          "RESOLVED": "Captain 在解决前未转人工、也无人工回复即解决的处理轮次。",
+          "HANDED_OFF": "Captain 参与后转交人工的处理轮次。",
+          "REOPENED": "Captain 已解决但之后被重新打开的处理轮次。",
+          "DURABLE": "Captain 已解决且至少七天内保持关闭的处理轮次。",
+          "CLOSED_WITH_TEAM": "Captain 参与过，但既未自主解决也未转交人工的处理轮次。",
+          "REOPENED_WITHIN_7_DAYS": "Captain 已解决但在七天内被重新打开的处理轮次。",
+          "STAYED_CLOSED": "Captain 已解决且七天内没有重新打开记录的处理轮次，包含近期的解决记录。",
+          "HANDOFF_REASON": "因以下原因转交人工的处理轮次：{reason}。",
+          "COUNT": "暂无处理轮次 | 1 个处理轮次 | {count} 个处理轮次",
+          "EPISODES_HINT": "如果 Captain 在不同的处理轮次中处理了同一个会话，该会话可能会出现多次。处理轮次按开始时间分组。",
+          "STARTED_AT": "处理轮次开始于 {time}",
+          "RETRY": "重试"
+        },
+        "EMPTY": "该时间段暂无数据。",
+        "SUMMARY": {
+          "GREETING": "您好，{name}！",
+          "DEFAULT_NAME": "朋友",
+          "EMPTY": "当有足够的活动数据时，Captain 的表现概览将显示在这里。",
+          "PREVIOUS": "上一条概览要点",
+          "NEXT": "下一条概览要点"
+        },
+        "UNITS": {
+          "MINUTES": "{value} 分钟"
+        },
+        "METRICS": {
+          "TIME_SAVED": {
+            "LABEL": "节省的客服工作量和时间"
+          },
+          "DURABLE": {
+            "LABEL": "Captain 解决后保持关闭",
+            "NOT_APPLICABLE_HINT": "此时间段内的已解决会话尚未满七天的跟踪期，暂无法计算持久性。",
+            "HINT": "Captain 已解决的会话在七天后仍保持关闭的比例。",
+            "NOTE": "仅包含已满七天观察期的已解决会话。"
+          },
+          "MEDIAN_RESOLUTION": {
+            "LABEL": "解决时间中位数",
+            "HINT": "从会话到达 Captain 到被解决的典型时长。",
+            "NOTE": "数值越低，说明客户的问题通常解决得越快。"
+          },
+          "DEPTH": {
+            "LABEL": "每个会话的消息数"
+          },
+          "OF_TOTAL": "共 {total}"
+        },
+        "RESOLUTION_FLOW": {
+          "ARIA_LABEL": "已处理会话经过 Captain 和团队后的结果流向",
+          "NODES": {
+            "HANDLED": "已处理",
+            "RESOLVED_BY_CAPTAIN": "由 Captain 解决",
+            "HANDED_OFF": "已转人工",
+            "CLOSED_WITH_TEAM": "由团队关闭",
+            "REOPENED": "7 天内重新打开",
+            "STAYED_CLOSED": "保持关闭",
+            "OTHER_REASONS": "其他原因"
+          }
+        },
+        "HANDOFF_REASONS": {
+          "TITLE": "转人工原因",
+          "CUSTOMER_REQUEST": "客户要求",
+          "MISSING_KNOWLEDGE": "缺少知识",
+          "UNSUPPORTED_REQUEST": "不支持的请求",
+          "POLICY_RESTRICTION": "政策限制",
+          "TOOL_FAILURE": "工具失败",
+          "PENDING_CLARIFICATION": "等待客户澄清",
+          "USAGE_LIMIT": "用量限制",
+          "UNCLASSIFIED": "未分类"
+        },
+        "RESOLUTION_TREND": {
+          "TITLE": "解决趋势",
+          "COMPARISON_LABEL": "按星期对齐比较",
+          "COMPARISON_HINT": "按相同星期几比较解决率，例如周一对比周一。",
+          "COMPARISON_NOTE": "今天的数据会与此前同一时刻的数据进行比较。",
+          "CONVERSATION_COUNT": "会话数",
+          "RESOLUTION_RATE": "解决率",
+          "CURRENT_PERIOD": "当前周期",
+          "HANDLED": "已处理",
+          "RESOLVED": "由 Captain 解决",
+          "ARIA_LABEL": "按报告周期统计的已处理会话和由 Captain 解决的会话",
+          "RATE_ARIA_LABEL": "当前和上一周期的 Captain 解决率"
+        },
+        "CSAT": {
+          "TITLE": "Captain CSAT",
+          "AUTONOMOUS": "由 Captain 解决的会话",
+          "AUTONOMOUS_HINT": "Captain 在没有团队协助的情况下解决的会话的平均客户评分。",
+          "ASSISTED": "Captain 协助的会话",
+          "ASSISTED_HINT": "Captain 提供协助后由团队解决的会话的平均客户评分。",
+          "VS_HUMANS": "相比人工 {value}"
+        },
+        "USAGE": {
+          "TITLE": "用量",
+          "USED": "（已使用 {percentage}%）",
+          "REFRESH": "刷新用量"
+        },
+        "KNOWLEDGE": {
+          "SUGGESTED": "建议的常见问题",
+          "REVIEW": "审核常见问题"
+        }
+      }
+    },
+    "COPILOT": {
+      "TITLE": "Copilot"
+    },
+    "PLAYGROUND": {
+      "SEND_MESSAGE": "发送消息",
+      "CLEAR_CONVERSATION": "清空会话",
+      "RESPONSE_ERROR": "Captain 无法完成此次测试运行。请检查设置后重试。",
+      "SETUP": {
+        "TITLE": "测试设置",
+        "DESCRIPTION": "除非您明确保存某个项目，否则此处的更改仅适用于本次试验场会话。",
+        "TOGGLE": "切换测试设置",
+        "CLOSE": "关闭测试设置",
+        "RESET": "重置测试设置",
+        "TEMPORARY": "临时",
+        "SESSION_ONLY": "仅限本次会话",
+        "INCLUDE_IN_TEST": "包含在此次测试中",
+        "ADD_TO_TEST": "添加到测试（↵）",
+        "LOAD_ERROR": "无法加载已保存的助手设置。",
+        "INVALID_CONFIGURATION": "发送消息前，请完善或移除已包含的临时场景。",
+        "SAVE_SCENARIO_SUCCESS": "场景已保存，并仍包含在此次测试中。",
+        "SAVE_SCENARIO_ERROR": "无法保存场景。",
+        "SAVE_RULE_SUCCESS": "规则已保存，并仍包含在此次测试中。",
+        "SAVE_RULE_ERROR": "无法保存规则。",
+        "RULE_ALREADY_SAVED": "已存在完全相同的规则，因此未创建重复项。",
+        "SCENARIOS": {
+          "TAB_TITLE": "场景",
+          "CREATE_TITLE": "添加临时场景",
+          "CREATE_HINT": "在不更改助手配置的情况下尝试新的行为。",
+          "SAVED_SUMMARY": "现有场景（{count}）",
+          "ADD_PERMANENTLY": "永久添加场景",
+          "DISABLED": "已停用",
+          "EMPTY": "此助手没有已保存的场景。",
+          "COMPOSER_PLACEHOLDER": "输入临时场景标题...",
+          "COLLAPSE": "折叠临时场景",
+          "EXPAND": "展开临时场景",
+          "REMOVE": "移除临时场景"
+        },
+        "GUIDELINES": {
+          "TAB_TITLE": "准则",
+          "CREATE_TITLE": "添加临时准则",
+          "CREATE_HINT": "在添加到助手之前，先测试回复偏好。",
+          "SAVED_SUMMARY": "现有准则（{count}）",
+          "ADD_PERMANENTLY": "永久添加准则",
+          "EMPTY": "此助手没有已保存的回复准则。",
+          "COMPOSER_PLACEHOLDER": "输入临时准则...",
+          "PLACEHOLDER": "添加回复准则",
+          "REMOVE": "移除临时回复准则"
+        },
+        "GUARDRAILS": {
+          "TAB_TITLE": "护栏",
+          "CREATE_TITLE": "添加临时护栏",
+          "CREATE_HINT": "在添加到助手之前，先测试安全边界。",
+          "SAVED_SUMMARY": "现有护栏（{count}）",
+          "ADD_PERMANENTLY": "永久添加护栏",
+          "EMPTY": "此助手没有已保存的护栏。",
+          "COMPOSER_PLACEHOLDER": "输入临时护栏...",
+          "PLACEHOLDER": "添加护栏",
+          "REMOVE": "移除临时护栏"
+        },
+        "KNOWLEDGE": {
+          "TAB_TITLE": "知识",
+          "AVAILABLE_TITLE": "Captain 可用的知识",
+          "AVAILABLE_DESCRIPTION": "已保存的来源在此汇总显示，并在试验场之外进行管理。",
+          "DOCUMENTS": "文档",
+          "FAQS": "常见问题",
+          "TEMPORARY_TITLE": "临时知识",
+          "ADD_PERMANENTLY": "永久添加文档",
+          "LABEL": "参考文本",
+          "PLACEHOLDER": "粘贴或编写用于此次测试的新知识",
+          "HINT": "除非您将其添加为文档，否则此文本仅会附加到试验场请求中。"
+        },
+        "SAVE_KNOWLEDGE_SUCCESS": "知识已添加为文档。",
+        "SAVE_KNOWLEDGE_ERROR": "无法将知识添加为文档。"
+      },
+      "RUN_DETAILS": {
+        "SUMMARY": "运行详情 · {duration}ms",
+        "HANDLER_VALUE": "处理者：{handler}",
+        "SCENARIOS": "无场景 | 1 个场景 | {count} 个场景",
+        "RULES": "{count} 条规则",
+        "KNOWLEDGE_ATTACHED": "此次运行附加了临时知识。",
+        "NO_EVENTS": "未记录到工具调用或场景转交。",
+        "STATUS": {
+          "RUNNING": "运行中",
+          "COMPLETED": "已完成",
+          "FAILED": "失败"
+        }
+      }
+    },
+    "FAQ_SUGGESTIONS": {
+      "HEADER": "常见问题建议",
+      "SEARCH_PLACEHOLDER": "搜索建议...",
+      "QUEUE_COUNT": "{count} 条建议待审核 | {count} 条建议待审核",
+      "QUEUE_HINT": "按客户需求排序",
+      "SOURCE_COUNT": "{count} 个会话 | {count} 个会话",
+      "REVIEW": "查看来源",
+      "APPROVE_FAQ": "批准常见问题",
+      "DETAILS": {
+        "TITLE": "审核常见问题建议",
+        "DESCRIPTION": "Captain 将 {count} 个会话归纳为此建议。请在批准前查看依据并完善常见问题。 | Captain 将 {count} 个会话归纳为此建议。请在批准前查看依据并完善常见问题。",
+        "SOURCES": "来源会话",
+        "SOURCE_PROGRESS": "{visible} / {total}",
+        "NO_SOURCES": "未找到可访问的来源会话。"
+      },
+      "EMPTY_STATE": {
+        "TITLE": "审核队列已清空",
+        "SUBTITLE": "新的常见问题建议准备好审核后将显示在这里。",
+        "CLEAR_SEARCH": "清除搜索"
+      },
+      "SUCCESS": {
+        "APPROVED": "常见问题已批准，并已添加到 Captain 的知识库。",
+        "DISMISSED": "已忽略该建议。",
+        "SAVED": "建议已更新。"
+      },
+      "ERRORS": {
+        "LOAD": "加载常见问题建议时出错，请重试。",
+        "LOAD_DETAILS": "加载来源会话时出错。",
+        "APPROVE": "批准常见问题时出错，请重试。",
+        "DISMISS": "忽略建议时出错，请重试。",
+        "SAVE": "保存建议时出错，请重试。"
       }
     }
   },
   "LABEL_MGMT": {
     "COUNT": "{n} 个标签 | {n} 个标签",
-    "NO_RESULTS": "没有找到匹配的标签"
+    "NO_RESULTS": "没有找到匹配的标签",
+    "SUGGESTIONS": {
+      "POWERED_BY": "Chatwoot AI"
+    }
   },
   "LOGIN": {
     "EMAIL": {
@@ -1361,6 +3086,10 @@
       "API": {
         "ERROR_MESSAGE": "SSO 认证失败。请检查您的凭据后重试。"
       }
+    },
+    "OAUTH": {
+      "BUSINESS_ACCOUNTS_ONLY": "无法使用个人邮箱地址创建新账户，请使用工作邮箱注册。",
+      "SHOPIFY_INSTALLATION_FAILED": "无法完成 Shopify 安装。请从 Shopify 重新开始安装。"
     }
   },
   "MACROS": {
@@ -1379,7 +3108,11 @@
       }
     },
     "ACTIONS": {
-      "REMOVE_ASSIGNED_AGENT": "移除受理客服"
+      "REMOVE_ASSIGNED_AGENT": "移除受理客服",
+      "CHANGE_STATUS": "更改状态"
+    },
+    "EXECUTE": {
+      "EXECUTED_WITHOUT_RESOLVING": "宏已执行。由于缺少必填属性，会话未被解决。"
     }
   },
   "MFA_SETTINGS": {
@@ -1387,6 +3120,15 @@
     "DISABLE": {
       "USE_BACKUP_CODE": "无法使用身份验证器？改用备用代码",
       "USE_OTP_CODE": "使用身份验证器应用中的验证码"
+    },
+    "MANAGEMENT": {
+      "ENFORCED_TITLE": "账户要求启用",
+      "ENFORCED_NOTE": "您的账户要求启用双重身份验证，因此无法在此处停用。如需帮助，请联系管理员。"
+    },
+    "LOW_BACKUP_CODES": {
+      "MESSAGE": "您还剩 {n} 个备用验证码。请生成新的验证码，以免在无法使用身份验证器时被锁定在账户之外。 | 您还剩 {n} 个备用验证码。请生成新的验证码，以免在无法使用身份验证器时被锁定在账户之外。",
+      "NONE_LEFT": "您已没有剩余的备用验证码。请立即生成新的验证码，以免在无法使用身份验证器时被锁定在账户之外。",
+      "ACTION": "生成验证码"
     }
   },
   "ONBOARDING_NEXT": {
@@ -1406,7 +3148,8 @@
       "SELECT_LANGUAGE": "请选择语言",
       "SELECT_COMPANY_SIZE": "请选择公司规模",
       "SELECT_INDUSTRY": "请选择行业",
-      "SELECT_REFERRAL_SOURCE": "请选择来源"
+      "SELECT_REFERRAL_SOURCE": "请选择来源",
+      "ENTER_WEBSITE": "www.example.com"
     },
     "EMAIL_VERIFIED": "邮箱已验证",
     "SETTING_UP": "正在设置您的账户...",
@@ -1423,6 +3166,36 @@
     },
     "PAGINATION": {
       "PER_PAGE_TEMPLATE": "{size} 条/页"
+    },
+    "METRICS": {
+      "FIRST_RESPONSE_TIME": {
+        "TOOLTIP_DESCRIPTION": "基于 {count} 个会话 | 基于 {count} 个会话"
+      },
+      "RESOLUTION_TIME": {
+        "TOOLTIP_DESCRIPTION": "基于 {count} 个会话 | 基于 {count} 个会话"
+      },
+      "REPLY_TIME": {
+        "TOOLTIP_LABEL": "等待时间",
+        "TOOLTIP_DESCRIPTION": "基于 {count} 条回复 | 基于 {count} 条回复"
+      }
+    },
+    "DRILLDOWN": {
+      "TITLE": "{metric}详情",
+      "RESULT_COUNT_CONVERSATION": "{count} 个会话 | {count} 个会话",
+      "RESULT_COUNT_MESSAGE": "{count} 条消息 | {count} 条消息",
+      "EMPTY": "此柱形暂无记录。",
+      "ERROR": "无法加载记录，请重试。",
+      "ADMIN_ONLY": "只有管理员才能深入查看报告记录。",
+      "PREVIOUS_BUCKET": "上一个柱形",
+      "NEXT_BUCKET": "下一个柱形",
+      "VIEW_ALL": "查看全部",
+      "UNKNOWN_CONTACT": "未知联系人",
+      "UNKNOWN_INBOX": "未知收件箱",
+      "NO_MESSAGE_CONTENT": "无消息内容",
+      "MESSAGE_CREATED_AT": "消息创建于 {time}",
+      "EVENT_OCCURRED_AT": "事件发生于 {time}",
+      "INCOMING_MESSAGE": "收到的消息",
+      "OUTGOING_MESSAGE": "发出的消息"
     }
   },
   "AGENT_REPORTS": {
@@ -1481,7 +3254,8 @@
   "OVERVIEW_REPORTS": {
     "RESOLUTION_HEATMAP": {
       "HEADER": "解决数"
-    }
+    },
+    "HEATMAP_ARIA_LABEL": "按日期和小时统计的{metric}"
   },
   "RESET_PASSWORD": {
     "EMAIL": {
@@ -1499,6 +3273,30 @@
       "SECURITY_SECTION": {
         "NOTE": "管理您账户的更多安全功能。",
         "MFA_BUTTON": "管理两步验证"
+      },
+      "SEND_MESSAGE": {
+        "CARD": {
+          "ENTER_KEY": {
+            "HEADING": "Enter（↵）"
+          },
+          "CMD_ENTER_KEY": {
+            "HEADING": "Cmd/Ctrl + Enter（⌘ + ↵）"
+          }
+        }
+      },
+      "SESSIONS_SECTION": {
+        "TITLE": "活跃会话",
+        "NOTE": "这些是当前登录您账户的设备。",
+        "CURRENT": "当前会话",
+        "REVOKE": "撤销",
+        "REVOKE_SUCCESS": "会话撤销成功",
+        "REVOKE_ERROR": "无法撤销会话，请重试。",
+        "FETCH_ERROR": "无法获取会话，请重试。",
+        "LAST_ACTIVE": "最后活跃",
+        "UNKNOWN_DEVICE": "未知设备"
+      },
+      "ACCESS_TOKEN": {
+        "PAID_PLAN_NOTE": "API 访问令牌仅适用于付费套餐。"
       }
     }
   },
@@ -1510,13 +3308,41 @@
       "TITLE": "未找到账户",
       "MESSAGE_CLOUD": "您目前不属于任何账户。如果您认为这是误判，请联系我们的支持团队。",
       "MESSAGE_SELF_HOSTED": "您目前不属于任何账户。请联系您的管理员。"
+    },
+    "IMPERSONATION": {
+      "MESSAGE": "您正在以 {name}（{email}）的身份登录。您执行的任何操作都将显示为该用户的操作。",
+      "STOP": "停止模拟登录"
+    },
+    "ACCOUNT_SUSPENDED": {
+      "MANAGE_BILLING": "管理账单"
     }
   },
   "SIDEBAR": {
     "ALL_COMPANIES": "所有公司",
     "CAPTAIN_SCENARIOS": "场景",
     "AGENT_ASSIGNMENT": "客服分配",
-    "CONVERSATION_WORKFLOW": "会话工作流"
+    "CONVERSATION_WORKFLOW": "会话工作流",
+    "CAPTAIN": "Captain",
+    "CALLS": "通话",
+    "WHATSAPP_TEMPLATES": "模板",
+    "DATA": "数据",
+    "WHATSAPP": "WhatsApp",
+    "REPORTS_SLA": "SLA",
+    "SLA": "SLA",
+    "SORT_GROUPS": {
+      "CREATED": "按创建日期排序",
+      "ALPHABETICAL": "按字母顺序排序",
+      "UNREAD_COUNT": "按未读数排序"
+    },
+    "SORT_OPTIONS": {
+      "CREATED_DESC": "最新优先",
+      "CREATED_ASC": "最早优先",
+      "ALPHABETICAL_ASC": "升序（A - Z）",
+      "ALPHABETICAL_DESC": "降序（Z - A）",
+      "UNREAD_COUNT_DESC": "从高到低",
+      "UNREAD_COUNT_ASC": "从低到高"
+    },
+    "CAPTAIN_AI": "Captain"
   },
   "CAPTAIN_SETTINGS": {
     "TITLE": "Captain 设置",
@@ -1538,14 +3364,17 @@
         "DESCRIPTION": "处理自动回复、会话摘要，并为客户互动提供智能回复建议。"
       },
       "COPILOT": {
-        "DESCRIPTION": "在会话过程中提供实时上下文建议、知识库推荐和主动洞察。"
+        "DESCRIPTION": "在会话过程中提供实时上下文建议、知识库推荐和主动洞察。",
+        "TITLE": "Copilot"
       }
     },
     "FEATURES": {
       "DESCRIPTION": "启用或禁用 AI 功能。",
       "AUDIO_TRANSCRIPTION": {
         "TITLE": "音频转写",
-        "DESCRIPTION": "自动将语音消息和通话录音转换为可搜索的文字记录。"
+        "DESCRIPTION": "自动将语音消息和通话录音转换为可搜索的文字记录。",
+        "MODEL_TITLE": "音频转写模型",
+        "MODEL_DESCRIPTION": "选择用于将语音消息转换为文字记录的 AI 模型"
       },
       "HELP_CENTER_SEARCH": {
         "TITLE": "帮助中心搜索索引",
@@ -1583,6 +3412,59 @@
         "INSTANT_DEDUCTION_NOTE": "确认后将立即从您保存的银行卡中扣款。",
         "CONFIRM_PURCHASE": "确认购买"
       }
+    },
+    "PAYMENT_RECOVERY": {
+      "DESCRIPTION": "您的付款已逾期。请在账单门户中更新付款方式或支付未结发票，以保持订阅有效。",
+      "ACTION": "处理付款"
+    },
+    "CURRENT_PLAN": {
+      "CANCELS_ON": "取消日期",
+      "CURRENCY": "货币"
+    },
+    "CURRENCY": {
+      "SELECT": {
+        "TITLE": "选择计费货币",
+        "DESCRIPTION": "选择您希望使用的计费货币。订阅创建后将无法更改。"
+      },
+      "OPTIONS": {
+        "USD": "美元（USD）",
+        "BRL": "巴西雷亚尔（BRL）"
+      }
+    },
+    "CAPTAIN": {
+      "TITLE": "Captain"
+    },
+    "SHOPIFY": {
+      "TITLE": "通过 Shopify 计费",
+      "DESCRIPTION": "您的 Chatwoot 订阅通过 Shopify 安全计费和管理。",
+      "UNAVAILABLE": "Shopify 计费目前不可用。如果问题持续存在，请联系支持团队。",
+      "LOADING": "正在检查您的 Shopify 订阅...",
+      "PLAN_TITLE": "Shopify 订阅",
+      "PLAN_DESCRIPTION": "在 Shopify 中安全地选择或管理您的 Chatwoot 套餐。",
+      "CURRENT_PLAN": "当前套餐",
+      "SUBSCRIPTION_STATUS": "状态",
+      "PRICE": "价格",
+      "PER_MONTH": "{price} / 月",
+      "PER_YEAR": "{price} / 年",
+      "TRIAL_ENDS_ON": "试用结束日期",
+      "RENEWS_ON": "续订日期",
+      "ACCESS_UNTIL": "可使用至",
+      "LAST_VERIFIED": "最后验证时间",
+      "VIEW_PLANS": "在 Shopify 中查看套餐",
+      "MANAGE_PLAN": "在 Shopify 中管理",
+      "RETRY": "重试",
+      "ERROR_TITLE": "无法验证您的 Shopify 订阅",
+      "ERROR_DESCRIPTION": "请稍后重试。您最近一次验证的访问权限未发生变化。",
+      "STALE_TITLE": "显示的是您最近一次验证的订阅",
+      "STALE_DESCRIPTION": "无法连接 Shopify。您的访问权限未发生变化。",
+      "STATUS": {
+        "PENDING": "待处理",
+        "ACTIVE": "有效",
+        "TRIALING": "试用中",
+        "CANCELLED": "已计划取消",
+        "EXPIRED": "已过期",
+        "MISSING": "无有效套餐"
+      }
     }
   },
   "SECURITY_SETTINGS": {
@@ -1590,14 +3472,17 @@
     "SAML": {
       "NOTE": "为您的账户配置 SAML 单点登录。用户将通过您的身份提供商进行认证，无需使用邮箱/密码。",
       "ACS_URL": {
-        "TOOLTIP": "断言消费者服务 URL（ACS URL）- 请在您的 IdP 中将此 URL 配置为 SAML 响应的目标地址"
+        "TOOLTIP": "断言消费者服务 URL（ACS URL）- 请在您的 IdP 中将此 URL 配置为 SAML 响应的目标地址",
+        "LABEL": "ACS URL"
       },
       "SSO_URL": {
-        "HELP": "SAML 认证请求将发送到的 URL"
+        "HELP": "SAML 认证请求将发送到的 URL",
+        "LABEL": "SSO URL"
       },
       "CERTIFICATE": {
         "LABEL": "PEM 格式的签名证书",
-        "HELP": "来自您身份提供商的公钥证书，用于验证 SAML 响应"
+        "HELP": "来自您身份提供商的公钥证书，用于验证 SAML 响应",
+        "PLACEHOLDER": "-----BEGIN CERTIFICATE-----\nMIIC..."
       },
       "FINGERPRINT": {
         "LABEL": "指纹",
@@ -1605,7 +3490,8 @@
       },
       "SP_ENTITY_ID": {
         "HELP": "本应用作为服务提供商的唯一标识符（自动生成）。",
-        "TOOLTIP": "Chatwoot 作为服务提供商（SP）的唯一标识符 - 请在您的 IdP 设置中配置此值"
+        "TOOLTIP": "Chatwoot 作为服务提供商（SP）的唯一标识符 - 请在您的 IdP 设置中配置此值",
+        "LABEL": "SP 实体 ID"
       },
       "IDP_ENTITY_ID": {
         "LABEL": "身份提供商 Entity ID",
@@ -1639,8 +3525,10 @@
       "INFO_SECTION": {
         "TITLE": "服务提供商信息",
         "TOOLTIP": "复制这些值并在您的身份提供商中配置，以建立 SAML 连接"
-      }
-    }
+      },
+      "TITLE": "SAML 单点登录"
+    },
+    "NO_SETTINGS_AVAILABLE": "此安装实例暂无可用的安全设置。请配置 MFA 加密密钥以启用强制双重身份验证。"
   },
   "CONVERSATION_WORKFLOW": {
     "INDEX": {
@@ -1812,6 +3700,10 @@
             "SUCCESS_MESSAGE": "已成功将收件箱添加到策略",
             "ERROR_MESSAGE": "添加收件箱到策略失败"
           }
+        },
+        "EXCLUDE_OLDER_THAN": {
+          "LABEL": "跳过陈旧会话",
+          "DESCRIPTION": "跳过早于此时间的未分配会话。默认为 7 天；清空则停用。"
         }
       },
       "DELETE_POLICY": {
@@ -1948,6 +3840,10 @@
       "DESCRIPTION": "我们已向 {email} 发送了验证链接。请点击链接验证您的邮箱并开始使用。",
       "RESEND_SUCCESS": "验证邮件已发送，请查收您的邮箱。",
       "RESEND_ERROR": "无法发送验证邮件，请重试。"
+    },
+    "SHOPIFY": {
+      "TITLE": "为您的 Shopify 店铺设置 Chatwoot",
+      "DESCRIPTION": "创建账户后，继续前往 Shopify 应用定价页面选择套餐。"
     }
   },
   "SLA": {
@@ -1958,10 +3854,18 @@
     },
     "LIST": {
       "TABLE_HEADER": {
-        "BUSINESS_HOURS": "营业时间"
+        "BUSINESS_HOURS": "营业时间",
+        "SLA": "SLA"
       },
       "BUSINESS_HOURS_ON": "已开启",
-      "BUSINESS_HOURS_OFF": "已关闭"
+      "BUSINESS_HOURS_OFF": "已关闭",
+      "RESPONSE_TYPES": {
+        "SHORT_HAND": {
+          "FRT": "FRT",
+          "NRT": "NRT",
+          "RT": "RT"
+        }
+      }
     }
   },
   "SNOOZE_PARSER": {
@@ -2027,6 +3931,14 @@
     "NO_RESULTS": "未找到符合搜索条件的团队",
     "AGENTS": {
       "EMAIL": "邮箱"
+    },
+    "EDIT_FLOW": {
+      "EDIT_WIZARD_DETAILS": {
+        "ROUTE": "settings_teams_edit"
+      },
+      "EDIT_WIZARD_AGENTS": {
+        "ROUTE": "settings_teams_edit_members"
+      }
     }
   },
   "WHATSAPP_TEMPLATES": {
@@ -2054,7 +3966,8 @@
       "COUPON_CODE": "输入优惠码（最多 15 个字符）",
       "MEDIA_URL_LABEL": "输入{type} URL",
       "DOCUMENT_NAME_PLACEHOLDER": "输入文档文件名（例如 Invoice_2025.pdf）",
-      "BUTTON_PARAMETER": "输入按钮参数"
+      "BUTTON_PARAMETER": "输入按钮参数",
+      "HEADER_VARIABLES_LABEL": "标题变量"
     }
   },
   "YEAR_IN_REVIEW": {
@@ -2112,6 +4025,582 @@
     "NAVIGATION": {
       "PREVIOUS": "上一页",
       "NEXT": "下一页"
+    }
+  },
+  "AUDIT_LOGS": {
+    "COUNT": "{n} 个事件 | {n} 个事件",
+    "FILTERS": {
+      "SEARCH_PLACEHOLDER": "按姓名或邮箱搜索",
+      "ALL_EVENTS": "全部事件",
+      "DATE_RANGE": "日期范围",
+      "EVENT_TYPE_GROUPS": {
+        "ACCESS": "访问",
+        "AGENTS_TEAMS": "客服与团队"
+      },
+      "EVENT_TYPES": {
+        "SIGN_IN_OUT": "登录 / 退出",
+        "TEAM_MEMBERS": "团队成员",
+        "INBOX_MEMBERS": "收件箱协作者",
+        "WEBHOOKS": "Webhooks",
+        "AUTOMATION_RULES": "自动化规则",
+        "CONVERSATION_DELETIONS": "会话删除",
+        "MESSAGE_DELETIONS": "消息删除"
+      },
+      "SORT": {
+        "NEWEST": "最新优先",
+        "OLDEST": "最早优先"
+      }
+    },
+    "LIST": {
+      "TABLE_HEADER": {
+        "LOCATION": "位置"
+      }
+    },
+    "MESSAGE": {
+      "DELETE": "{agentName} 删除了会话 #{conversationId} 中的一条消息"
+    }
+  },
+  "CALLS_PAGE": {
+    "HEADER": "通话",
+    "ALL_CALLS": "全部通话",
+    "ALL_CALLS_COUNT": "全部通话（{count}）",
+    "EMPTY_STATE": "未找到通话",
+    "SETUP": {
+      "TITLE": "在一处拨打和接听电话",
+      "SUBTITLE": "设置语音渠道，开始与团队一起处理通话。每一通电话及其录音都会显示在这里。",
+      "ACTION": "设置语音渠道"
+    },
+    "FILTERS": {
+      "MISSED": "未接",
+      "NO_REPLY": "无应答",
+      "OTHER_ACTIVITY": "其他活动",
+      "INCOMING": "呼入",
+      "OUTGOING": "呼出",
+      "IN_PROGRESS": "进行中",
+      "ALL_ASSIGNEES": "全部负责人",
+      "MORE_FILTERS": "更多筛选"
+    },
+    "STATUS": {
+      "INCOMING": "呼入",
+      "OUTGOING": "呼出",
+      "MISSED": "未接",
+      "NO_REPLY": "无应答"
+    },
+    "ROW": {
+      "PICKED_BY": "接听人",
+      "DIALED_BY": "拨打人",
+      "ANSWERED": "已接听",
+      "RINGING": "响铃中",
+      "IN_PROGRESS": "进行中",
+      "NO_AGENT": "没有客服接听此通话",
+      "NO_CONTACT_ANSWER": "联系人未接听",
+      "FAILED": "此通话无法接通",
+      "DELETED_CONTACT": "已删除的联系人"
+    }
+  },
+  "FEATURE_ANNOUNCEMENT": {
+    "BADGE": "新功能",
+    "DISMISS": "知道了",
+    "PREVIOUS": "上一个",
+    "NEXT": "下一个",
+    "DISMISS_HINT": "按 {key} 关闭",
+    "ESCAPE_KEY": "Esc",
+    "CLOSE": "关闭"
+  },
+  "VIDEO_EMBED": {
+    "TAB_EMBED": "嵌入链接",
+    "TAB_UPLOAD": "上传",
+    "PLACEHOLDER": "粘贴视频链接",
+    "HINT": "支持 YouTube、Vimeo、Loom、Wistia、Arcade、Bunny、CodePen、GuideJar 和 mp4 链接",
+    "ERROR": "这似乎不是受支持的视频链接",
+    "UPLOAD_LABEL": "选择视频文件",
+    "UPLOAD_HINT": "MP4 · 最大 {size}MB · 或拖放到此处",
+    "UPLOAD_ERROR": "仅支持上传 MP4 文件",
+    "ADD": "嵌入"
+  },
+  "CONTACT_FORM": {
+    "FORM": {
+      "SOCIAL_PROFILES": {
+        "FACEBOOK": {
+          "LABEL": "Facebook"
+        },
+        "GITHUB": {
+          "LABEL": "GitHub"
+        }
+      }
+    }
+  },
+  "MERGE_CONTACTS": {
+    "DROPDOWN_ITEM": {
+      "ID": "（ID：{identifier}）"
+    }
+  },
+  "EMAIL_HEADER": {
+    "DATE": "日期"
+  },
+  "FORWARD_EMAIL": {
+    "HEADER_TITLE": "---------- 转发的邮件 ---------",
+    "TO_LABEL": "收件人：",
+    "TO_PLACEHOLDER": "至少输入 2 个字符以按邮箱搜索",
+    "MESSAGE_PLACEHOLDER": "添加留言（可选）",
+    "FORWARDED_TO": "已转发给 {emails}",
+    "CONTACT_CANNOT_SEE": "{name} 看不到此内容"
+  },
+  "EMOJI_ICON_PICKER": {
+    "TABS": {
+      "ICONS": "图标",
+      "EMOJIS": "表情"
+    },
+    "SEARCH_EMOJI": "搜索表情…",
+    "SEARCH_ICON": "搜索图标…",
+    "FREQUENTLY_USED": "常用",
+    "NO_ICON": "没有符合搜索条件的图标",
+    "STYLE": {
+      "OUTLINE": "线性图标",
+      "FILLED": "填充图标"
+    },
+    "COLORS": {
+      "SLATE": "石板灰",
+      "RED": "红色",
+      "ORANGE": "橙色",
+      "AMBER": "琥珀色",
+      "GREEN": "绿色",
+      "TEAL": "青色",
+      "BLUE": "蓝色",
+      "INDIGO": "靛蓝",
+      "VIOLET": "紫罗兰",
+      "PINK": "粉色"
+    }
+  },
+  "GENERAL_SETTINGS": {
+    "FORM": {
+      "ENFORCE_MFA": {
+        "TITLE": "强制启用双重身份验证",
+        "NOTE": "要求此账户的每位成员设置双重身份验证。未设置的成员将在下次使用密码登录时被要求设置。通过 Google 或 SAML 登录的成员不受此限制。未设置双重身份验证的成员，其 API 访问令牌将在此账户中失效，直至完成设置。",
+        "API": {
+          "SUCCESS": "双重身份验证强制设置更新成功",
+          "ERROR": "更新双重身份验证强制设置失败"
+        }
+      }
+    },
+    "PAYMENT_PENDING_AGENT": "您的账户付款已逾期，请联系管理员处理。"
+  },
+  "STRIPE_INTEGRATION": {
+    "UNAVAILABLE": "此账户无法使用 Stripe。请联系管理员检查集成配置。",
+    "TITLE": "Stripe",
+    "DESCRIPTION": "在会话旁查看客户详情、订阅和发票。",
+    "CONNECT": "连接",
+    "DISCONNECT": "与 Chatwoot 断开连接",
+    "DISCONNECT_NOTE": "断开连接将从 Chatwoot 中删除已保存的凭据。如需撤销其在 Stripe 中的访问权限，请在 Stripe 中卸载该应用。",
+    "CONNECTED": "已连接",
+    "RECONNECT": "重新连接 Stripe",
+    "REAUTHORIZATION_REQUIRED": "需要重新连接",
+    "ACCOUNT": "已连接的账户",
+    "ACCOUNT_ID": "账户 ID",
+    "ENVIRONMENT": "环境",
+    "SANDBOX": "沙盒",
+    "LIVE": "正式",
+    "CONNECTED_ON": "连接时间",
+    "OPEN_STRIPE": "打开 Stripe 控制台",
+    "ERROR": "无法加载 Stripe。请重试或重新连接该集成。",
+    "EMPTY": "没有与此联系人邮箱匹配的 Stripe 客户。",
+    "NO_EMAIL": "为此联系人添加邮箱以查找 Stripe 客户。",
+    "SELECT": "选择匹配的客户",
+    "MORE": "仅显示前 100 个匹配的客户。如果未列出该客户，请完善联系人邮箱。",
+    "SUBSCRIPTIONS": "最近五个订阅",
+    "SUBSCRIPTION": "订阅",
+    "VIEW_SUBSCRIPTION": "查看 {name} 订阅详情",
+    "COPY_ID": "复制 ID",
+    "COPIED": "已复制",
+    "QUANTITY": "数量：{count}",
+    "INTERVAL": {
+      "day": "天 | {count} 天",
+      "week": "周 | {count} 周",
+      "month": "月 | {count} 个月",
+      "year": "年 | {count} 年"
+    },
+    "VARIABLE_PRICE": "按用量或阶梯定价",
+    "RENEWS": "{date} 续订",
+    "PERIOD_START": "周期开始于 {date}",
+    "PERIOD_END": "周期结束于 {date}",
+    "TRIAL_ENDS": "试用期结束于 {date}",
+    "CANCELS": "将于 {date} 取消",
+    "CANCELS_AT_PERIOD_END": "将在计费周期结束时取消",
+    "CANCELED_ON": "已于 {date} 取消",
+    "MORE_ITEMS": "其他订阅项目未显示。",
+    "PRICE_NOTE": "价格为单价，未计入折扣和税费，并非下一张发票的预估金额。",
+    "INVOICES": "最近的发票",
+    "NO_SUBSCRIPTIONS": "未找到订阅。",
+    "NO_INVOICES": "未找到发票。"
+  },
+  "MFA_VERIFICATION": {
+    "EMAIL_TITLE": "请查收邮件",
+    "EMAIL_DESCRIPTION": "您正在从新设备登录。",
+    "ENTER_EMAIL_CODE": "输入邮件中的 6 位验证码",
+    "REMEMBER_DEVICE": "30 天内在此设备上不再询问"
+  },
+  "MFA_ENFORCED_SETUP": {
+    "TITLE": "设置双重身份验证",
+    "DESCRIPTION": "您的账户要求启用双重身份验证。请使用身份验证器应用扫描二维码，然后输入验证码以继续。"
+  },
+  "ONBOARDING_INBOX_SETUP": {
+    "GREETING": "我们来完成一些设置",
+    "SUBTITLE": "这将帮助您快速上手工作区",
+    "CONTINUE": "继续",
+    "SKIP": "跳过",
+    "WHATSAPP_CONNECTED": "WhatsApp 连接成功",
+    "FACEBOOK_CONNECTED": "Facebook 连接成功",
+    "META_RESTRICTION": {
+      "MESSAGE": "由于 Meta 方面的 API 层面问题，暂时无法设置 Facebook、Instagram 和 WhatsApp 收件箱，这并非 Chatwoot 的问题。我们正与 Meta 紧密合作，尽快解决此问题。",
+      "STATUS_LINK": "查看状态更新"
+    },
+    "CREATED_FOR_YOU": {
+      "TITLE": "我们已为您创建了以下内容",
+      "LIVE_CHAT": "在线聊天窗口",
+      "LIVE_CHAT_DESCRIPTION": "为您的网站提供即时消息",
+      "LIVE_CHAT_STATUS": "即将完成…",
+      "HELP_CENTER_DESCRIPTION": "您的数字百科全书",
+      "HELP_CENTER_GENERATING": "正在创建您的帮助中心…",
+      "HELP_CENTER_ANALYZING_WEBSITE": "正在分析您的网站…",
+      "HELP_CENTER_SETTING_UP_CATEGORIES": "正在设置类别…",
+      "HELP_CENTER_CURATING_ARTICLES": "正在整理文章…",
+      "HELP_CENTER_ARTICLES": "已创建 {count} 篇文章 | 已创建 {count} 篇文章",
+      "HELP_CENTER_SUMMARY": "已在 {categories} 中创建 {count} 篇文章 | 已在 {categories} 中创建 {count} 篇文章"
+    },
+    "CHANNELS": {
+      "TITLE": "连接您的所有会话渠道",
+      "HEADER": "我们找到了一些您可以连接的渠道",
+      "CONNECTED": "已连接",
+      "MORE_CHANNELS_NOTE": "稍后可在应用内设置{email}和{voice}渠道",
+      "MORE_CHANNELS_EMAIL": "邮件",
+      "GMAIL": "Gmail",
+      "OUTLOOK": "Outlook",
+      "OTHER_EMAIL": "其他邮件服务商"
+    },
+    "CHANNELS_DIALOG": {
+      "TITLE": "立即连接您的所有渠道",
+      "SUBTITLE": "在一个控制台中统一管理。您也可以稍后在应用内设置和编辑收件箱。",
+      "NOTE": "短信、API、语音和其他邮件服务商可以稍后在控制台中设置。",
+      "CONNECT_TITLE": "连接您的 {name} 账户",
+      "CONNECT_SUBTITLE": "填写以下简要信息",
+      "SETUP_LATER": "稍后在应用内设置",
+      "FACEBOOK_SUBTITLE": "授权访问并选择要连接的主页。",
+      "FACEBOOK_LAUNCH": "使用 Facebook 继续",
+      "FACEBOOK_SELECT_PAGE": "选择要连接的主页",
+      "FACEBOOK_LOADING": "正在加载您的 Facebook 主页…",
+      "FACEBOOK_NO_PAGES": "未找到可连接的主页。您的所有主页均已连接。",
+      "FACEBOOK_ERROR": "无法连接到 Facebook，请重试。"
+    }
+  },
+  "MONITORS": {
+    "TITLE": "监控",
+    "AUTOMATIONS": {
+      "TITLE": "自动化",
+      "DESCRIPTION": "当此监控首次通过新的实时活动匹配到某个会话时执行操作。",
+      "CREATE": "创建自动化",
+      "EMPTY": "暂无关联到此监控的自动化。",
+      "ACTIVE": "已启用",
+      "DISABLED": "已停用",
+      "FETCH_FAILED": "无法加载关联的自动化。"
+    },
+    "LIST": {
+      "CONVERSATIONS_COUNT": "{count} 个会话 | {count} 个会话",
+      "CONVERSATIONS_HELP": "过去 7 天内与此监控匹配的会话数。",
+      "RUNNING": "运行中",
+      "FETCH_FAILED": "无法加载监控，请重试。",
+      "PAGINATION": "显示第 {startItem} – {endItem} 个，共 {totalItems} 个监控 | 显示第 {startItem} – {endItem} 个，共 {totalItems} 个监控"
+    },
+    "DESCRIPTION": "跟踪客户会话中您关注的主题。用自然语言描述一个主题，监控会在新的客户消息到达时统计匹配的会话。",
+    "CREATE": "创建监控",
+    "PREVIEW": "预览匹配结果",
+    "PREVIEW_COOLDOWN": "{count} 秒后可再次预览。 | {count} 秒后可再次预览。",
+    "PREVIEW_FAILED": "无法预览匹配结果，请重试。",
+    "PREVIEW_HELP": "在 {sampled} 个近期会话样本中匹配到 {count} 个（{excluded} 个缺少可用上下文）。此样本不代表完整扫描结果。 | 在 {sampled} 个近期会话样本中匹配到 {count} 个（{excluded} 个缺少可用上下文）。此样本不代表完整扫描结果。",
+    "NAME": "名称",
+    "NAME_PLACEHOLDER": "退款相关会话",
+    "CHOOSE_ICON": "选择图标或表情",
+    "CONDITION": "此监控应查找哪些会话？",
+    "CONDITION_PLACEHOLDER": "所有提到退款的会话",
+    "CREATE_HELP": "我们会检查过去七天内创建的会话，并持续检查新的客户消息。公开回复和已配置的客户属性会作为上下文，私人便笺不包括在内。",
+    "SECTIONS": {
+      "YOUR_MONITORS": "您的监控",
+      "TEMPLATES": "模板"
+    },
+    "TEMPLATES": {
+      "TITLE": "从模板开始",
+      "USE_NAMED": "使用 {name} 模板",
+      "EDIT_HINT": "来自 {name} 模板。创建前可编辑任何内容。",
+      "ADMIN_HELP": "请联系管理员从模板创建监控。",
+      "LOGIN_PROBLEMS": {
+        "NAME": "登录问题",
+        "AUDIENCE": "适用于支持团队",
+        "SUMMARY": "及时发现登录相关投诉的增长。",
+        "CONDITION": "客户表示无法登录其账户，包括密码重置失败以及收不到验证码。不包括已登录状态下询问如何修改密码的问题。"
+      },
+      "MISSING_ORDER_UPDATES": {
+        "NAME": "订单通知缺失",
+        "AUDIENCE": "适用于运营团队",
+        "SUMMARY": "跟踪反复出现的配送通知问题。",
+        "CONDITION": "客户表示没有收到订单确认、发货通知或送达通知，或收到的是其他订单的通知。不包括已收到物流跟踪邮件、仅询问包裹位置的客户。"
+      },
+      "COMPETITOR_MENTIONS": {
+        "NAME": "竞争对手提及",
+        "AUDIENCE": "适用于创始人和销售团队",
+        "SUMMARY": "找出值得跟进的会话。",
+        "CONDITION": "客户将我们与竞争产品进行比较、表示正在评估某个竞争产品，或提到可能会更换产品。不包括从竞争对手迁移过来、询问如何导入数据的客户。"
+      },
+      "FEATURE_REQUESTS": {
+        "NAME": "功能需求",
+        "AUDIENCE": "适用于产品团队",
+        "SUMMARY": "持续统计有关未满足需求的会话数量。",
+        "CONDITION": "客户要求产品目前不具备的功能，或询问某件事是否可行而实际上并不支持。不包括询问如何使用现有功能的问题。"
+      },
+      "REFUND_REQUESTS": {
+        "NAME": "退款请求",
+        "AUDIENCE": "适用于财务团队",
+        "SUMMARY": "为每周退款请求统计提供一致的口径。",
+        "CONDITION": "客户要求退还已支付的款项，包括重复扣款以及取消后的退款。不包括询问退款政策和要求折扣的请求。"
+      },
+      "CANCELLATION_INTENT": {
+        "NAME": "取消意向",
+        "AUDIENCE": "适用于客户经理",
+        "SUMMARY": "找出在流失前可能需要沟通的客户。",
+        "CONDITION": "客户表示打算取消、不再续订或计划停止使用产品。不包括要求减少席位或降级的请求，以及客户在同一会话中撤回的取消意向。"
+      },
+      "PAYMENT_FAILURES": {
+        "NAME": "付款失败",
+        "AUDIENCE": "适用于账单和支持团队",
+        "SUMMARY": "找出无法完成付款的客户。",
+        "CONDITION": "客户表示付款、结账或发票支付失败，或银行卡被拒。不包括退款请求、对已完成扣款的争议以及有关付款方式的一般性问题。"
+      },
+      "PRODUCT_ERRORS": {
+        "NAME": "产品错误",
+        "AUDIENCE": "适用于支持和工程团队",
+        "SUMMARY": "及时发现错误和崩溃的扩散。",
+        "CONDITION": "客户报告了错误、崩溃、服务不可用或严重卡顿，导致无法完成任务。不包括登录问题以及询问如何使用正常功能的问题。"
+      },
+      "ISSUE_STILL_UNRESOLVED": {
+        "NAME": "问题仍未解决",
+        "AUDIENCE": "适用于支持主管",
+        "SUMMARY": "找出需要再次跟进的会话。",
+        "CONDITION": "客户表示建议的解决方法无效、同一问题再次出现，或在支持人员表示已解决后问题依然存在。不包括首次报告的问题以及仅询问进度的请求。"
+      },
+      "ESCALATION_REQUESTS": {
+        "NAME": "升级请求",
+        "AUDIENCE": "适用于支持主管",
+        "SUMMARY": "找出需要及时处理的请求。",
+        "CONDITION": "客户因问题未得到解决，明确要求转接人工客服、经理、专家或更高级别的支持。不包括常规转接和销售咨询。"
+      }
+    },
+    "MATCHING_CONVERSATIONS": "创建的匹配会话",
+    "LAST_DAYS": "最近 {count} 天 | 最近 {count} 天",
+    "LAST_DAYS_BEFORE_PAUSE": "暂停前 {count} 天 | 暂停前 {count} 天",
+    "GROUP_BY": "按{interval}分组",
+    "INTERVALS": {
+      "HOUR": "1 小时",
+      "SIX_HOURS": "6 小时",
+      "DAY": "1 天"
+    },
+    "EDIT": "编辑",
+    "UPDATE": "更新",
+    "MONITOR_DESCRIPTION": "描述",
+    "EDIT_HELP": "描述决定了哪些会话会被匹配。修改描述将清除现有匹配结果，并重新检查之前已检查的会话。已跳过的时间段仍保持跳过。如果监控已暂停，将在恢复后开始重新检查。",
+    "DUPLICATE": "复制",
+    "PAUSE": "暂停",
+    "RESUME": "恢复",
+    "RESUME_HELP": "选择此监控从何处继续。现有结果将保留。",
+    "RESUME_CATCH_UP": "检查暂停期间",
+    "RESUME_CATCH_UP_HELP": "检查从监控暂停到现在期间创建的会话和收到的客户消息，然后继续实时更新。",
+    "RESUME_FROM_NOW": "从现在开始",
+    "RESUME_FROM_NOW_HELP": "仅检查从现在开始的新客户消息和会话，不扫描暂停期间。",
+    "DELETE": "删除",
+    "DELETE_HELP": "要删除此监控及其结果吗？这不会删除会话。",
+    "PAUSE_HELP": "要暂停此监控吗？其结果将保留，但将停止检查消息和会话。",
+    "PAUSED_HELP": "已于 {time} 暂停。历史结果仍可查看，新的消息和会话不会被检查。",
+    "COLLECTED_UNTIL": "结果收集至 {time}。",
+    "RETRY": "重试",
+    "RESULTS_UPDATED": "有新的结果。图表已刷新；选择某个柱形即可查看其更新后的会话。",
+    "TIME_BASIS_HELP": "每个会话仅在其创建日期计数一次。新的匹配可能会更新较早的柱形。",
+    "COVERAGE_HELP": "此范围包含未完全检查的时间段，计数可能不完整。",
+    "REFRESHED": "最后刷新于 {time}。更新会自动显示。",
+    "USAGE": {
+      "LIMIT_REACHED": "此账户本月的 {limit} 次监控调用额度已用完。",
+      "RESETS": "新的评估和预览将暂停至 {time}。现有结果仍可查看。",
+      "REACHED_AT": "于 {time} 达到上限。"
+    },
+    "STATES": {
+      "SCANNING": "正在检查近期会话",
+      "PROCESSING": "正在检查会话",
+      "RECHECKING": "正在使用更新后的描述重新检查会话",
+      "LIVE": "已是最新",
+      "DELAYED": "更新有延迟",
+      "NEEDS_ATTENTION": "需要处理",
+      "PAUSED": "已暂停",
+      "CATCHING_UP": "正在检查暂停期间"
+    },
+    "ERRORS": {
+      "FETCH_FAILED": "无法加载此监控。请刷新后重试。",
+      "SAVE_FAILED": "无法保存监控。请检查名称和条件后重试。",
+      "NOT_CONFIGURED": "请配置 OpenRouter 连接，然后点击「重试」。",
+      "CREDENTIALS_INVALID": "OpenRouter 连接需要处理。请联系您的安装管理员检查其凭据。",
+      "PROVIDER_CREDITS_EXHAUSTED": "OpenRouter 账户余额不足。请联系您的安装管理员检查余额后重试。",
+      "INVALID_REQUEST": "评估请求需要处理。请联系您的安装管理员。",
+      "INVALID_RESPONSE": "评估服务商返回的结果不完整。受影响的会话未被计入。",
+      "PROVIDER_BUSY": "评估服务商繁忙。待处理的会话需要重新评估。",
+      "PROVIDER_UNAVAILABLE": "评估服务商暂时不可用，更新可能会延迟。",
+      "BUDGET_LIMIT": "已达到每日评估额度。待处理的工作将在额度重置后恢复。",
+      "MONTHLY_LIMIT": "此账户已达到本月的监控额度。待处理的评估将在下个月恢复。",
+      "CONTEXT_LIMIT": "部分会话过长，无法完整评估，已从结果中排除。",
+      "INVALID_PARAMETERS": "请检查名称、条件、日期范围和时间间隔。",
+      "TOO_MANY_BUCKETS": "请选择更短的日期范围或更大的时间间隔。图表最多可显示 744 个柱形。",
+      "MONITOR_LIMIT": "此账户已达到活跃监控数量上限。请先暂停一个监控再创建新的监控。",
+      "MONITOR_PAUSED": "此监控已暂停，不再检查会话。",
+      "MONITOR_CHANGED": "此监控已在其他会话中被修改，当前状态已刷新。请重试。"
+    }
+  },
+  "SESSION_LIMIT": {
+    "TITLE": "已达到活跃会话上限",
+    "DESCRIPTION": "您的活跃会话已达到上限。请先结束一个会话再登录。",
+    "END": "结束",
+    "END_ALL": "结束所有会话",
+    "LOG_IN": "登录",
+    "CANCEL": "返回登录",
+    "UNKNOWN_DEVICE": "未知设备",
+    "STARTED": "开始时间"
+  },
+  "COMPONENTS": {
+    "CODE": {
+      "COPY_ERROR": "无法复制到剪贴板，请重试。"
+    }
+  },
+  "DATA_IMPORTS": {
+    "HEADER": "数据",
+    "DESCRIPTION": "将您现有的联系人和历史会话从其他客服工具导入到此账户。每次导入都在后台运行，您可以在导入完成前继续工作，跟踪导入进度，并查看导入过程中被跳过的内容。",
+    "LOADING": "正在获取导入记录",
+    "DEFAULT_IMPORT_NAME": "Intercom 导入",
+    "DEFAULT_IMPORT_NAMES": {
+      "INTERCOM": "Intercom 导入",
+      "FRESHDESK": "Freshdesk 导入"
+    },
+    "DRAWER": {
+      "TITLE": "新建导入",
+      "SOURCE": "来源",
+      "NAME": "导入名称",
+      "NAME_PLACEHOLDER": "7 月客服数据迁移",
+      "ACCESS_KEY": "Intercom 访问密钥",
+      "ACCESS_KEY_PLACEHOLDER": "粘贴您的 Intercom 访问密钥",
+      "INTERCOM_ACCESS_KEY": "Intercom 访问密钥",
+      "INTERCOM_ACCESS_KEY_PLACEHOLDER": "粘贴您的 Intercom 访问密钥",
+      "FRESHDESK_API_KEY": "Freshdesk API 密钥",
+      "FRESHDESK_API_KEY_PLACEHOLDER": "粘贴您的 Freshdesk API 密钥",
+      "FRESHDESK_DOMAIN": "Freshdesk 域名",
+      "FRESHDESK_DOMAIN_PLACEHOLDER": "acme.freshdesk.com",
+      "DATA_TYPES": "要导入的数据",
+      "VALIDATING": "正在验证访问密钥...",
+      "VALID_KEY": "访问密钥验证成功。",
+      "INVALID_KEY": "无法验证此访问密钥。",
+      "ACTIVE_IMPORT": "请等待当前导入完成后再开始新的导入。"
+    },
+    "EXPORT": {
+      "TITLE": "导出功能即将推出",
+      "DESCRIPTION": "将您的联系人和会话从此账户导出。此功能即将推出。",
+      "COMING_SOON": "即将推出"
+    },
+    "TABLE": {
+      "TITLE": "最近的导入",
+      "EMPTY": "暂无导入记录",
+      "EMPTY_DESCRIPTION": "开始导入，将您现有的客户历史记录导入到此账户。",
+      "COUNT": "{count} 次导入",
+      "UNNAMED": "未命名的导入",
+      "IMPORTED_COUNT": "已导入 {count} 条",
+      "VIEW": "查看导入",
+      "IMPORTED": "已导入",
+      "ABANDON": "放弃"
+    },
+    "DETAIL": {
+      "BACK": "返回导入列表",
+      "ERRORS": "错误",
+      "SKIP_LOGS": "跳过日志",
+      "SOURCE": "来源",
+      "IMPORT_TYPES": "导入类型",
+      "INITIATED_BY": "发起人",
+      "PROGRESS": "导入进度",
+      "PROGRESS_WITH_TOTAL": "已导入 {imported} / {total}",
+      "PROGRESS_WITHOUT_TOTAL": "已导入 {imported}",
+      "PROGRESS_OF_TOTAL": "/ {total} 已导入",
+      "PROGRESS_IMPORTED": "已导入",
+      "LAST_UPDATED_TOOLTIP": "最后更新于 {time}",
+      "NO_SKIP_LOGS": "没有跳过或失败的记录。",
+      "DOWNLOAD_SKIP_LOGS": "下载 CSV",
+      "DOWNLOAD_ERROR_LOGS": "下载 CSV",
+      "KIND": "类型",
+      "NO_ERRORS": "没有错误记录。",
+      "ERROR_CODE": "代码",
+      "SOURCE_OBJECT": "来源对象"
+    },
+    "MONITOR": {
+      "LIVE": "每 {seconds} 秒实时更新",
+      "LAST_UPDATED": "最后更新于 {time}",
+      "REFRESHING": "正在刷新",
+      "STAGES": {
+        "unknown": "等待更新",
+        "queued": "排队中",
+        "contacts": "正在导入联系人",
+        "conversations": "正在导入会话",
+        "finalizing": "正在完成导入",
+        "completed_with_errors": "已完成，但有错误",
+        "abandoned": "已放弃"
+      }
+    },
+    "ALERTS": {
+      "IMPORT_STARTED": "导入已开始。",
+      "IMPORT_RETRIED": "导入已加入队列，将继续进行。",
+      "IMPORT_RETRY_FAILED": "无法重试导入。",
+      "IMPORT_ABANDONED": "已放弃导入。",
+      "IMPORT_FAILED": "无法开始导入。"
+    }
+  },
+  "WHATSAPP_TEMPLATE_MGMT": {
+    "TITLE": "模板",
+    "DESCRIPTION": "查看从您的 WhatsApp 收件箱同步的消息模板。如需创建或编辑模板，请在您的服务商处管理。",
+    "COUNT": "{n} 个模板 | {n} 个模板",
+    "LEARN_MORE": "了解有关 WhatsApp 模板的更多信息",
+    "SYNC_TEMPLATES": "同步模板",
+    "SYNC_SUCCESS": "已开始同步所有 WhatsApp 收件箱的模板。更新可能需要几分钟。",
+    "PARTIAL_SYNC_ERROR": "已开始同步部分 WhatsApp 收件箱的模板，但其他收件箱无法同步。",
+    "SYNC_ERROR": "无法开始同步模板，请重试。",
+    "SEARCH_PLACEHOLDER": "按内容或名称搜索...",
+    "MANAGE_IN_META": "在 Meta 中管理",
+    "MANAGE_IN_TWILIO": "在 Twilio 中管理",
+    "LOADING": "正在加载 WhatsApp 模板...",
+    "EMPTY": "未找到 WhatsApp 模板。",
+    "NO_RESULTS": "没有符合筛选条件的模板。",
+    "FETCH_ERROR": "无法加载 WhatsApp 模板，请重试。",
+    "PARTIAL_FETCH_ERROR": "部分 WhatsApp 模板无法加载，请重试。",
+    "LAST_SYNC_ATTEMPT": "最后一次同步尝试于 {date}",
+    "STATUSES": {
+      "UNSUBMITTED": "未提交 WhatsApp 审核"
+    },
+    "FILTERS": {
+      "ALL_LANGUAGES": "全部语言",
+      "ALL_TYPES": "全部类型"
+    },
+    "TYPES": {
+      "IMAGE": "图片",
+      "VIDEO": "视频",
+      "DOCUMENT": "文档",
+      "QUICK_REPLY": "快速回复",
+      "CALL_TO_ACTION": "行动号召",
+      "CATALOG": "目录",
+      "COPY_CODE": "复制代码"
+    },
+    "PREVIEW": {
+      "TITLE": "模板预览",
+      "DESCRIPTION": "预览此模板在 WhatsApp 中的显示效果。",
+      "OPEN": "预览 {name}",
+      "CLOSE": "关闭预览",
+      "DETAILS": "模板详情",
+      "TYPE": "内容类型"
     }
   }
 }

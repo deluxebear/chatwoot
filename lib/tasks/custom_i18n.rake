@@ -7,8 +7,10 @@ namespace :custom_i18n do
   desc 'Verify the overlay hooks survived an upstream merge'
   task verify: :environment do
     failures = []
-    frontend_hook = Rails.root.join('app/javascript/dashboard/i18n/index.js')
-    failures << "missing CUSTOM-I18N-HOOK in #{frontend_hook}" unless File.read(frontend_hook).include?('CUSTOM-I18N-HOOK')
+    %w[dashboard widget].each do |app|
+      frontend_hook = Rails.root.join("app/javascript/#{app}/i18n/index.js")
+      failures << "missing CUSTOM-I18N-HOOK in #{frontend_hook}" unless File.read(frontend_hook).include?('CUSTOM-I18N-HOOK')
+    end
     unless Rails.root.join('app/javascript/dashboard/i18n/custom/zh_CN.json').exist?
       failures << 'missing app/javascript/dashboard/i18n/custom/zh_CN.json'
     end
