@@ -13,6 +13,13 @@ This repo is a customized fork (二次开发) of upstream `chatwoot/chatwoot`. L
   git merge upstream/develop
   ```
 - **Pushing to the fork**: upstream's husky pre-push hook blocks direct pushes to `develop`; for our fork `develop` is the main branch, so push with `git push --no-verify origin develop` (do not edit the hook file — that would drift from upstream)
+- **Release deployment branches** (`custom/vX.Y.Z`): deployments run on an upstream release tag plus our customizations, not on `develop`. Release tags are cut from upstream's release branch and are not ancestors of `develop`, so never merge a tag into `develop`. Commit customizations on `develop` first (it is the source of truth), then build the release branch by cherry-picking our non-merge commits in order:
+  ```bash
+  git fetch upstream --tags
+  git switch -c custom/vX.Y.Z vX.Y.Z
+  git rev-list --reverse --no-merges upstream/develop..develop | while read c; do git cherry-pick "$c" || break; done
+  ```
+  Resolve conflicts with the rules below, then `bundle install && pnpm install`, run the post-sync checks (`custom_i18n:verify` / `custom_i18n:check`), and `bundle exec rails db:migrate` on that branch. Never run `develop`'s migrations against a deployment database — they are newer than the release. Push with `git push --no-verify origin custom/vX.Y.Z`.
 - **Conflict resolution**: when a sync produces conflicts, the agent must intelligently resolve them — do not abort the merge and do not blindly pick one side:
   1. For each conflicted file, understand both sides: what upstream changed and what our customization does
   2. Default to upstream's version for code we never customized; preserve our local customizations and re-apply them on top of upstream's new structure when the surrounding code changed
