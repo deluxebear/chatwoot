@@ -101,8 +101,13 @@ namespace :mock do
       config = InstallationConfig.find_or_initialize_by(name: 'INSTALLATION_PRICING_PLAN')
       config.value = plan
       config.save!
+      # Licensed seat count; super admin warns when User.count exceeds it
+      quantity = InstallationConfig.find_or_initialize_by(name: 'INSTALLATION_PRICING_PLAN_QUANTITY')
+      quantity.value = 10_000
+      quantity.save!
       GlobalConfig.clear_cache
       puts "💾 INSTALLATION_PRICING_PLAN → #{plan} (keeps the reconcile job from disabling premium features)"
+      puts "💾 INSTALLATION_PRICING_PLAN_QUANTITY → #{quantity.value} licenses"
     end
 
     def mock_enterprise_print_status(account)

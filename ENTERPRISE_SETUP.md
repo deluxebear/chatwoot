@@ -46,7 +46,7 @@ CONFIRM=yes bundle exec rake mock:enterprise:enable_all
 
 1. 账户套餐属性：`plan_name=Enterprise`、100 坐席、订阅有效期 1 年
 2. Captain AI 配额：`limits.captain_responses/captain_documents = 100000`（避免开发时撞用量上限）
-3. 安装级配置：`INSTALLATION_PRICING_PLAN=enterprise` 并清除 GlobalConfig 缓存
+3. 安装级配置：`INSTALLATION_PRICING_PLAN=enterprise`、`INSTALLATION_PRICING_PLAN_QUANTITY=10000`（授权席位数，否则超级管理后台会提示 “Please add more licenses”），并清除 GlobalConfig 缓存
 
 启用后硬刷新浏览器（`Cmd+Shift+R`）即可看到企业功能菜单（Audit Logs、SLA、Custom Roles 等）。
 
