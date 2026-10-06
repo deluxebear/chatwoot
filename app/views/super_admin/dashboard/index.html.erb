@@ -1,5 +1,17 @@
 <% content_for(:title) do %>
-  Admin Dashboard
+  <%# CUSTOM-I18N-HOOK: translated title; labels below are passed to the Vue component %>
+  <%= t('super_admin.dashboard.title', default: 'Admin Dashboard') %>
 <% end %>
 
-<%= render_vue_component('DashboardIndex', {}) %>
+<%= render_vue_component('DashboardIndex', {
+  labels: {
+    title: t('super_admin.dashboard.title', default: 'Admin Dashboard'),
+    accounts: t('super_admin.dashboard.accounts', default: 'Accounts'),
+    users: t('super_admin.dashboard.users', default: 'Users'),
+    inboxes: t('super_admin.dashboard.inboxes', default: 'Inboxes'),
+    conversations: t('super_admin.dashboard.conversations', default: 'Conversations'),
+    not_available: t('super_admin.dashboard.not_available', default: 'N/A'),
+    chart_aria_label: t('super_admin.dashboard.chart_aria_label', default: 'Conversations created by day'),
+    chart_date_format: t('super_admin.dashboard.chart_date_format', default: 'dd-MMM')
+  }
+}) %>

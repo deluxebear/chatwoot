@@ -659,3 +659,13 @@ zh-CN:
         test_email:
           queued: 测试邮件正在发往 %{email}。请让用户检查收件箱和垃圾邮件文件夹。
           subject: 来自 %{brand_name} 支持团队的测试邮件
+    console_subtitle: 超级管理控制台
+    dashboard:
+      title: 管理仪表盘
+      accounts: 账户
+      users: 用户
+      inboxes: 收件箱
+      conversations: 会话
+      not_available: 暂无
+      chart_aria_label: 每日新建会话数
+      chart_date_format: M'月'd'日'

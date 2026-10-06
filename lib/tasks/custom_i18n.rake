@@ -10,6 +10,8 @@ namespace :custom_i18n do
     hooked_files = %w[
       app/javascript/dashboard/i18n/index.js
       app/javascript/widget/i18n/index.js
+      app/javascript/superadmin_pages/views/dashboard/Index.vue
+      app/views/super_admin/dashboard/index.html.erb
       app/views/super_admin/application/index.html.erb
       app/views/super_admin/application/_navigation.html.erb
       app/views/super_admin/application/_settings_menu.html.erb
