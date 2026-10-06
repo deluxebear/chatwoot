@@ -4,6 +4,13 @@ import format from 'date-fns/format';
 import parseISO from 'date-fns/parseISO';
 import BarChart from 'shared/components/charts/BarChart.vue';
 
+const props = defineProps({
+  componentData: { type: Object, default: () => ({}) },
+});
+
+// CUSTOM-I18N-HOOK: translated labels come from the ERB; fall back to upstream English
+const label = (key, fallback) => props.componentData.labels?.[key] ?? fallback;
+
 const stats = ref(null);
 const failed = ref(false);
 
@@ -22,22 +29,31 @@ onMounted(async () => {
 });
 
 const metrics = computed(() => [
-  { label: 'Accounts', value: stats.value?.accountsCount },
-  { label: 'Users', value: stats.value?.usersCount },
-  { label: 'Inboxes', value: stats.value?.inboxesCount },
-  { label: 'Conversations', value: stats.value?.conversationsCount },
+  { label: label('accounts', 'Accounts'), value: stats.value?.accountsCount },
+  { label: label('users', 'Users'), value: stats.value?.usersCount },
+  { label: label('inboxes', 'Inboxes'), value: stats.value?.inboxesCount },
+  {
+    label: label('conversations', 'Conversations'),
+    value: stats.value?.conversationsCount,
+  },
 ]);
 
-const chartAriaLabel = 'Conversations created by day';
+const chartAriaLabel = label(
+  'chart_aria_label',
+  'Conversations created by day'
+);
+const chartDateFormat = label('chart_date_format', 'dd-MMM');
 
 const chartData = computed(() => {
   const sourceData = stats.value?.chartData || [];
   return {
-    categories: sourceData.map(([label]) => format(parseISO(label), 'dd-MMM')),
+    categories: sourceData.map(([day]) =>
+      format(parseISO(day), chartDateFormat)
+    ),
     series: [
       {
         id: 'conversations',
-        label: 'Conversations',
+        label: label('conversations', 'Conversations'),
         color: '#1f93ff',
         data: sourceData.map(([, value]) => value),
       },
@@ -50,7 +66,7 @@ const chartData = computed(() => {
   <div class="w-full h-full">
     <header class="main-content__header" role="banner">
       <h1 id="page-title" class="main-content__page-title">
-        {{ 'Admin Dashboard' }}
+        {{ label('title', 'Admin Dashboard') }}
       </h1>
     </header>
 
@@ -62,7 +78,9 @@ const chartData = computed(() => {
               v-if="loading"
               class="inline-block w-20 h-8 rounded bg-woot-100 animate-pulse"
             />
-            <template v-else>{{ item.value || 'N/A' }}</template>
+            <template v-else>
+              {{ item.value || label('not_available', 'N/A') }}
+            </template>
           </div>
           <div>{{ item.label }}</div>
         </div>
