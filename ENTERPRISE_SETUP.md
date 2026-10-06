@@ -37,6 +37,9 @@ bundle exec rake mock:enterprise:disable
 
 # 给所有账户启用（有确认提示）
 bundle exec rake mock:enterprise:enable_all
+
+# 非交互环境（脚本、CI、Agent）跳过确认提示
+CONFIRM=yes bundle exec rake mock:enterprise:enable_all
 ```
 
 `enable` 任务一次完成三件事：

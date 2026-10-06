@@ -44,8 +44,11 @@ namespace :mock do
     desc 'Enable premium features for ALL accounts (use with caution)'
     task enable_all: :environment do
       puts '🚨 WARNING: This will enable enterprise features for ALL accounts!'
-      print 'Are you sure? (y/N): '
-      next puts('❌ Cancelled.') unless %w[y yes].include?($stdin.gets.chomp.downcase)
+      confirmation = ENV.fetch('CONFIRM') do
+        print 'Are you sure? (y/N): '
+        $stdin.gets.to_s
+      end
+      next puts('❌ Cancelled.') unless %w[y yes].include?(confirmation.strip.downcase)
 
       Account.find_each do |account|
         puts "🚀 Enabling enterprise features for account: #{account.name} (ID: #{account.id})"
