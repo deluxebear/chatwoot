@@ -213,6 +213,11 @@ zh-CN:
       general: 通用
       custom_branding: 自定义品牌
       email: 邮件
+      internal: 内部设置
+      saml: SAML
+      captain: Captain
+      whatsapp_embedded: WhatsApp 嵌入式注册
+      tiktok: TikTok
     sign_in:
       title: "管理员，您好 \U0001F44B"
       email: 邮箱地址
@@ -498,3 +503,159 @@ zh-CN:
       submit: 提交
       'true': 是
       'false': 否
+      CAPTAIN_TOOLS_MANIFEST_ENABLED:
+        title: Captain 工具清单
+        description: 显示从 GitHub 清单安装 Captain 工具集的选项。
+      CAPTAIN_TOOLS_CATALOG_URL:
+        title: Captain 工具目录 URL
+        description: Captain 工具目录的基础 URL。控制台会在此 URL 后追加 .json 来加载工具集列表，因此它必须允许跨域请求。
+      CAPTAIN_TOOLS_GITHUB_TOKEN:
+        title: Captain 工具 GitHub 令牌
+        description: 可选的 GitHub 令牌，用于解析公开 Captain 工具集的最新提交。可提高 GitHub API 速率限制，无需任何权限。
+      CAPTAIN_OPENROUTER_API_KEY:
+        title: OpenRouter API 密钥
+        description: Captain 分类器和会话监控使用的 OpenRouter API 密钥。
+      CAPTAIN_OPENROUTER_DECISION_MODEL_ENDPOINT:
+        title: OpenRouter 决策模型端点
+        description: Captain 分类器和会话监控使用的 OpenRouter API 基础 URL。示例：https://openrouter.ai/api
+      DISABLE_META_INBOX_CREATION:
+        title: 禁止创建 Meta 收件箱
+        description: 在 Meta 发生故障期间，禁止在 Chatwoot Cloud 上通过嵌入式注册创建 Facebook、Instagram 和 WhatsApp 收件箱
+      DISABLE_META_MESSAGE_SENDING:
+        title: 禁止发送 Meta 消息
+        description: 在 Meta 发生故障期间，禁止在 Chatwoot Cloud 上发送 Instagram 消息
+      CHATWOOT_SHOPIFY_PLANS:
+        title: Shopify 套餐
+        description: 锁定的 Shopify 应用定价套餐目录，包含套餐标识、功能和固定限额
+      CAPTAIN_TOPUP_OPTIONS:
+        title: Captain 充值选项
+        description: 按货币划分的 AI 点数充值套餐，例如 {"usd":[{"credits":1000,"amount":20.0}],"brl":[{"credits":1000,"amount":100.0}]}
+      ENABLE_MULTI_CURRENCY_BILLING:
+        title: 启用多币种计费
+        description: 以当地货币（例如 BRL）向新账户计费，并显示按币种计价的点数充值；关闭时所有账户均以美元计费
+      MARKETING_CONVERSION_TRACKING_CONFIG:
+        title: 营销转化跟踪配置
+        description: 用于跟踪 Chatwoot Cloud 注册和套餐激活转化的 JSON 配置
+      DEVICE_VERIFICATION_ENABLED:
+        title: 设备验证
+        description: 从未识别的设备使用密码登录时，需要输入通过邮件发送的验证码（仅限 Chatwoot Cloud）
+      STRIPE_APP_AUTHORIZE_URL:
+        title: Stripe 应用授权 URL
+        description: 为此安装实例使用 Stripe 应用的 OAuth 链接：正式环境使用 Live 模式，测试使用 Sandbox。链接和密钥必须使用相同的环境。
+      STRIPE_APP_SECRET_KEY:
+        title: Stripe 应用密钥
+        description: Live 模式使用应用开发者的 live 密钥，Sandbox 使用应用托管的 sandbox 密钥。需要启用 Active Record 加密。切换环境后需要重新连接现有账户。
+      SLACK_SIGNING_SECRET:
+        title: Slack 签名密钥
+        description: 用于验证传入 Webhook 签名的 Slack 签名密钥
+      ENABLE_SHOPIFY_INTEGRATION:
+        title: 启用 Shopify 集成
+        description: 启用 Shopify OAuth、账户集成 API、Webhook 和控制台相关界面
+      SHOPIFY_APP_STORE_URL:
+        title: Shopify 应用商店 URL
+        description: Shopify 应用商店的应用页面 URL（例如 https://apps.shopify.com/your-app）
+      SHOPIFY_PARTNER_ORGANIZATION_ID:
+        title: Shopify 合作伙伴组织 ID
+        description: 用于访问 Shopify Partner API 的数字组织 ID
+      SHOPIFY_PARTNER_APP_ID:
+        title: Shopify 合作伙伴应用 ID
+        description: 用于查询托管定价订阅的 Shopify 应用 GID
+      SHOPIFY_PARTNER_ACCESS_TOKEN:
+        title: Shopify 合作伙伴访问令牌
+        description: 具有「管理应用」权限的 Partner API 令牌
+      SHOPIFY_PARTNER_API_VERSION:
+        title: Shopify 合作伙伴 API 版本
+        description: 用于托管定价的固定 Partner API 版本
+    account_suspension:
+      categories:
+        spam: 垃圾信息
+        non_payment: 未付款
+        other: 其他
+      form:
+        category: 停用类别
+        category_prompt: 选择类别
+        reason: 停用原因
+        reason_hint: 请输入不超过 256 个字符的原因。
+      history:
+        suspended_at: 停用时间
+        reason: 原因
+        suspended_by: 操作人
+        unknown_user: 未知用户
+        empty: 暂无停用记录。
+        category: 类别
+    captain_model_overrides:
+      form:
+        helper_text: 留空模型即可使用该 AI 功能的默认路由。
+        customer_features: 面向客户的功能
+        internal_features: 内部功能
+        use_default: 使用默认值：%{model}（%{model_id}）
+        use_installation_model: 使用安装实例模型：%{model}（%{model_id}）
+      show:
+        summary: 查看模型路由
+        provider: 服务商
+        model: 模型
+      sources:
+        account_override: 账户覆盖
+        installation_override: 安装实例设置
+        default: 默认
+      features:
+        conversation_completion: 非活跃会话结束评估器
+        editor: 编辑器
+        copilot: Copilot
+        label_suggestion: 标签建议
+        document_faq_generation: 文档常见问题生成
+        conversation_faq_generation: 会话常见问题生成
+        conversation_faq_matching: 会话常见问题匹配
+        help_center_article_generation: 帮助中心文章生成
+        onboarding_content_generation: 引导内容生成
+        help_center_query_translation: 帮助中心查询翻译
+        audio_transcription: 音频转写
+        help_center_search: 帮助中心搜索
+        assistant: 助手
+    push_diagnostics:
+      subscriptions_deleted:
+        one: 已删除 %{count} 个订阅。该用户的设备将在下次启动应用时重新注册。
+        other: 已删除 %{count} 个订阅。这些用户的设备将在下次启动应用时重新注册。
+      user_not_found: 未找到用户。
+      no_subscriptions_to_test: 请至少选择一个要测试的订阅。
+      no_subscriptions_to_delete: 请至少选择一个要删除的订阅。
+    users:
+      impersonate: 模拟登录用户
+      copy_impersonation_link: 复制链接
+      impersonation_link_copied: 已复制
+      impersonation_link_failed: 复制失败
+      resend_confirmation:
+        button: 重新发送确认邮件
+        sent: 确认邮件已发送。
+        already_confirmed: 该用户已确认。
+      email_suppression:
+        menu: 邮件
+        check_button: 检查邮件投递
+        clear_button: 解除邮件屏蔽
+        clear_dialog:
+          title: 要解除对 %{email} 的屏蔽吗？
+          body: "%{brand_name} 将重新向此地址发送邮件。如果下一封邮件被退回，该地址将再次被屏蔽。"
+          cancel: 取消
+          confirm: 解除屏蔽
+        complaint_hint: 因垃圾邮件投诉被屏蔽。请上报给工程团队。
+        check_first_hint: 请先检查邮件投递。
+        not_blocked_hint: 发往此地址的邮件未被屏蔽。
+        test_email_blocked_hint:
+          bounce: 请先解除该地址的屏蔽。发往被屏蔽地址的邮件会被丢弃。
+          complaint: 因垃圾邮件投诉被屏蔽。发往此地址的邮件会被丢弃。
+        test_email_button: 发送测试邮件
+        pending:
+          check: 正在检查…
+          clear: 正在解除屏蔽…
+          send: 正在发送…
+        check:
+          not_suppressed: 发往 %{email} 的邮件未被屏蔽。
+          bounce: 由于地址退信，自 %{since} 起发往 %{email} 的邮件已被屏蔽。请解除屏蔽，然后让用户重试。
+          complaint: 由于垃圾邮件投诉，自 %{since} 起发往 %{email} 的邮件已被屏蔽。请上报给工程团队。
+          unavailable: 无法检查 %{email} 的投递状态。请重试，或上报给工程团队。
+        clear:
+          success: 已解除对 %{email} 的屏蔽。请让用户重试，或发送测试邮件检查投递情况。
+          failed: 无法解除对 %{email} 的屏蔽（%{error}）。请上报给工程团队。
+        test_email:
+          queued: 测试邮件正在发往 %{email}。请让用户检查收件箱和垃圾邮件文件夹。
+          subject: 来自 %{brand_name} 支持团队的测试邮件

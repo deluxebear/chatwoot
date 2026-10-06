@@ -13,12 +13,15 @@ zh_CN:
     reset_password_saml_user: 此账户使用 SAML 身份验证，无法重置密码。请联系您的管理员。
     login_saml_user: 此账户使用 SAML 身份验证。请通过您所在组织的 SAML 提供商登录。
     saml_not_available: 当前安装不支持 SAML 身份验证。
+    mfa_sign_in_required: 您的账户要求启用双重身份验证。请登录以继续。
   errors:
     account:
       reporting_timezone:
         invalid: 不是有效的时区
       support_email:
         invalid: 不是有效的电子邮件地址
+      not_authorized: 您无权访问此账户
+      email_limit_exceeded: 此账户已达到每日邮件发送上限
     voice:
       call_already_accepted: "%{agent_name} 正在处理该通话。"
     assignment_policy:
@@ -36,14 +39,23 @@ zh_CN:
     saml:
       feature_not_enabled: 此账户未启用 SAML 功能
       sso_not_enabled: 当前安装未启用 SAML SSO
+      multi_account_invitation_not_allowed: 启用 SAML 后，无法添加已关联其他账户的用户
     conversations:
       unread_counts:
         feature_not_enabled: 此账户未启用会话未读计数功能
+      resolved: 会话已解决，不再接收新消息
     companies:
       domain:
         invalid: 必须是有效的域名
       search:
         query_missing: 请使用参数 q 指定搜索字符串
+      social_profiles:
+        invalid: 社交资料链接必须以 http:// 或 https:// 开头
+      enrichment:
+        plan_required: 公司资料丰富功能适用于商业版和企业版套餐
+        not_configured: 此安装实例未配置公司资料丰富功能
+        domain_missing: 请先为公司添加域名，再刷新其资料
+        not_found: 找不到该公司域名的资料信息
     messages:
       search:
         time_range_limit_exceeded: 搜索仅限于最近 %{days} 天
@@ -62,6 +74,19 @@ zh_CN:
         sdp_offer_required: sdp_offer 为必填项
         contact_phone_required: 联系人电话号码为必填项
         permission_request_failed: 发送通话权限请求失败
+        already_ended: 此通话已结束
+        already_accepted: 通话已被其他客服接听
+        recording_disabled: 此收件箱已停用通话录音
+      message_outside_messaging_window: 消息未发送：WhatsApp 24 小时客户服务窗口已关闭，且未提供模板参数。请改为发送已批准的模板消息。
+      authentication_template_requires_phone: 身份验证模板需要 WhatsApp 电话号码，无法发送给仅有 BSUID 的联系人。
+      template_category_required_for_bsuid: 无法验证此仅有 BSUID 的联系人的模板类别。
+      contact_info_request:
+        unsupported_provider: 联系信息请求目前仅适用于 WhatsApp Cloud 收件箱。
+        phone_already_available: 此联系人已有电话号码。
+        invalid_identifier: 只能向企业范围内的 WhatsApp 用户请求联系信息。
+        outside_messaging_window: 只能在 WhatsApp 24 小时客户服务窗口内请求联系信息。
+        template_not_configured: 在 24 小时客户服务窗口之外，需要一个带有「请求联系信息」按钮的已批准 WhatsApp 模板。
+        pending_request: 已有一个待处理的联系信息请求。
     openai:
       invalid_api_key: OpenAI API 密钥无效或已被吊销。请在您的 OpenAI 控制台中检查密钥。
     inboxes:
@@ -79,6 +104,10 @@ zh_CN:
       invalid_token: MFA Token 无效或已过期
       invalid_credentials: 凭据或验证码无效
       feature_unavailable: MFA 功能不可用。请配置加密密钥。
+      setup_required: 您的账户要求启用双重身份验证。请完成设置以继续登录。
+      enrollment_required: 此账户要求启用双重身份验证。请在个人资料设置中完成设置以恢复 API 访问。
+      interactive_session_required: 无法使用 API 访问令牌管理双重身份验证设置。请登录控制台进行操作。
+      enforced_cannot_disable: 您的账户要求启用双重身份验证，无法停用。
     topup:
       credits_required: 积分数量为必填项
       invalid_credits: 积分数量无效
@@ -88,6 +117,32 @@ zh_CN:
       no_payment_method: 未找到付款方式。请在购买前添加付款方式。
     reports:
       date_range_too_long: 日期范围不能超过 6 个月
+    database:
+      query_canceled: 请求耗时过长，请重试。
+    dyte:
+      realtimekit_credentials_required: 需要 Cloudflare RealtimeKit 凭据。请删除现有的 Dyte 集成，然后使用 Cloudflare RealtimeKit 凭据重新创建。
+    cloudflare:
+      realtimekit:
+        invalid_credentials: Cloudflare RealtimeKit 凭据无效。请检查 Account ID、RealtimeKit App ID 和 API 令牌权限。
+        missing_credentials: Cloudflare Account ID、RealtimeKit App ID 和 API 令牌均为必填项。
+        invalid_api_token: Cloudflare API 令牌无效或未激活。请创建一个具有 Realtime Admin 权限的新令牌。
+        invalid_account_or_permissions: Cloudflare Account ID 无效，或 API 令牌没有此账户的 Realtime Admin 访问权限。
+        app_not_found: 在此 Cloudflare 账户中未找到该 RealtimeKit App ID。请检查您选择的应用。
+        verification_failed: 暂时无法验证 Cloudflare RealtimeKit 凭据，请重试。
+    device_verification:
+      invalid_token: 验证令牌无效或已过期，请重新登录以获取新的验证码
+      invalid_code: 验证码错误。请输入我们发送到您邮箱的 6 位验证码。
+      expired: 验证码已过期，请重新登录以获取新的验证码
+      locked: 错误次数过多，请重新登录以获取新的验证码
+      stale: 此验证码发出后您的账户已发生变更，请重新登录
+      rate_limited: 验证尝试次数过多，请稍后重试或重置密码
+      code_field_required: 请在验证码字段中输入邮件中的 6 位验证码，而不是在备用验证码字段中输入
+    billing:
+      invalid_currency: 计费货币无效
+      currency_locked: 设置计费后无法更改计费货币
+      provider_action_unavailable: 通过 Shopify 计费的账户无法使用此计费操作
+      shopify_pricing_unavailable: Shopify 应用定价目前不可用
+      shopify_verification_failed: 暂时无法验证 Shopify 计费
   profile:
     mfa:
       enabled: MFA 已成功启用
@@ -110,6 +165,8 @@ zh_CN:
         list_button_label: 选择一项
         call_permission_request_body: 我们希望就您的会话与您进行通话。
         unsupported_message: 此消息不可用。
+        flow_response: 提交了一个流程响应
+        request_contact_info: 您愿意与我们分享您的电话号码吗？
       voice_call:
         twilio: 语音通话
         whatsapp: WhatsApp 通话
@@ -132,14 +189,39 @@ zh_CN:
         not_sent_due_to_messaging_window: 由于外发消息限制，CSAT 调查未发送
       auto_resolve:
         not_sent_due_to_messaging_window: 由于外发消息限制，自动解决消息未发送
+    reply:
+      greeting: "%{name}，您好："
+      new_messages: 您的会话中有新消息。
+      contact_label: 您
+      bot_label: 机器人
+      attachments: 附件：
+      rate_conversation_html: 点击%{link}为本次会话评分。
+      rate_conversation_link: 此处
   integration_apps:
     linear:
       attachment_link_title: 与 %{name} 的会话（#%{conversation_id}）
+      name: Linear
     notion:
       short_description: 将数据库、文档和页面直接与 Captain 集成。
       description: 连接您的 Notion 工作区，让 Captain 能够访问您的数据库、文档和页面中的内容，并据此生成智能回复，为客户提供更具上下文的支持。
+      name: Notion
     shopify:
       description: 连接您的 Shopify 商店，在会话中直接访问订单详情、客户信息和产品数据，帮助您的支持团队为客户提供更快速、更具上下文的协助。
+      name: Shopify
+    stripe:
+      name: Stripe
+      short_description: 在会话中查看客户的账单详情。
+      description: 在会话旁查看来自 Stripe 的客户详情、订阅和最近的发票。
+    slack:
+      name: Slack
+    webhooks:
+      name: Webhooks
+    dialogflow:
+      name: Dialogflow
+    openai:
+      name: OpenAI
+    leadsquared:
+      name: LeadSquared
   captain:
     documents:
       limit_exceeded: 已超出文档数量限制
@@ -164,9 +246,28 @@ zh_CN:
       processing_pages: 正在处理第 %{start}-%{end} 页（第 %{iteration} 次迭代）
       chunk_generated: 本块生成了 %{chunk_faqs} 条 FAQ。当前总计：%{total_faqs}
       page_processing_error: 处理第 %{start}-%{end} 页时出错：%{error}
+      markdown_format_error: 必须是 Markdown 文件
+      markdown_size_error: 不得超过 10,000 个字符
+      multiple_files_error: 一个文档只能包含一个上传的文件
+      sync_not_supported_for_file: 上传的文档不支持同步
     custom_tool:
       slug_generation_failed: 尝试 5 次后仍无法生成唯一的 slug
       limit_exceeded: 每个账户最多可创建 %{limit} 个自定义工具
+      installed_read_only: 从清单安装的工具为只读，只能启用或停用
+      headers:
+        invalid: 必须是由请求头名称和值组成的对象
+        too_many: 不能超过 %{limit} 项
+        duplicate: 不能重复使用相同的请求头名称
+        invalid_name: "%{name} 不是有效的请求头名称"
+        reserved: "%{name} 由 Chatwoot 管理，无法设置"
+        invalid_value: "%{name} 的值必须是不超过 1 KiB 的固定文本，且不能包含占位符或控制字符"
+    copilot:
+      reply_suggestion_discarded: Copilot 起草期间会话发生了变化，因此已丢弃该建议。
+      reply_suggestion_failed: Copilot 无法生成回复，请重试。
+    tools_manifest:
+      invalid_source: 请按 chatwoot/tools/folder 格式输入 Captain 工具目录中的工具集
+      invalid_configuration: 配置无效
+      disabled: 未启用从清单安装工具
   public_portal:
     search:
       results_for: "“%{query}”的搜索结果"
@@ -185,6 +286,9 @@ zh_CN:
       popular_label: 热门主题：
       authors_others: "%{names} 和其他 %{count} 人"
       primary_nav: 主导航
+      recommended: 推荐文章
+      recommended_subtitle: 精选文章，助您快速上手。
+      recommended_label: 推荐主题：
     common:
       previous: 上一页
       next: 下一页
@@ -196,6 +300,7 @@ zh_CN:
       llm_prompt: 请阅读以下文章并帮助我理解它：%{url}
     header:
       visit_website: 访问网站
+      recommended: 推荐文章
     not_active:
       title: 帮助中心不可用
       description: 请联系站点管理员了解更多信息。
@@ -228,9 +333,37 @@ zh_CN:
       subject: 完成 %{custom_domain} 的设置
     ssl_status:
       custom_domain_not_configured: 未配置自定义域名
+    analytics:
+      invalid_configuration: 分析配置无效
   super_admin:
     push_diagnostics:
       user_not_found: 未找到用户。
       no_subscriptions_to_test: 请至少选择一个要测试的订阅。
       no_subscriptions_to_delete: 请至少选择一个要删除的订阅。
-      subscriptions_deleted: 已删除 %{count} 个订阅。用户的设备将在下次启动应用时重新注册。
+      subscriptions_deleted:
+        one: 已删除 %{count} 个订阅。该用户的设备将在下次启动应用时重新注册。
+        other: 已删除 %{count} 个订阅。这些用户的设备将在下次启动应用时重新注册。
+  data_imports:
+    intercom:
+      activities:
+        assignment: "%{actor} 分配了会话"
+        assignment_with_target: "%{actor} 将会话分配给了 %{target}"
+        assign_and_reopen: "%{actor} 分配并重新打开了会话"
+        assign_and_reopen_with_target: "%{actor} 将会话分配给了 %{target} 并重新打开"
+        open: "%{actor} 打开了会话"
+        close: "%{actor} 关闭了会话"
+        snoozed: "%{actor} 推迟了会话"
+        participant_added: "%{actor} 添加了一位参与者"
+        participant_added_with_target: "%{actor} 将 %{target} 添加为参与者"
+        participant_removed: "%{actor} 移除了一位参与者"
+        participant_removed_with_target: "%{actor} 将 %{target} 从参与者中移除"
+        conversation_attribute_updated: "%{actor} 更新了会话属性"
+        ticket_attribute_updated: "%{actor} 更新了工单属性"
+        ticket_state_updated: "%{actor} 更新了工单状态"
+        custom_action_started: "%{actor} 开始了一项自定义操作"
+        custom_action_finished: "%{actor} 完成了一项自定义操作"
+        quick_reply: "%{actor} 使用了快捷回复"
+        generic: "%{actor} 记录了 %{event}"
+  profile_settings:
+    sessions:
+      cannot_revoke_current: 您无法撤销当前会话。
