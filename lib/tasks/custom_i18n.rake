@@ -15,6 +15,7 @@ namespace :custom_i18n do
       app/views/super_admin/application/index.html.erb
       app/views/super_admin/application/_navigation.html.erb
       app/views/super_admin/application/_settings_menu.html.erb
+      app/views/super_admin/application/_filters.html.erb
       app/views/super_admin/app_configs/show.html.erb
       app/views/super_admin/devise/sessions/new.html.erb
     ]
