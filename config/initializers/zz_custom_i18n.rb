@@ -25,9 +25,22 @@ module CustomAdministrateDisplayResource
   end
 end
 
+# 5. Account status is stored as `active`/`suspended` and administrate prints the
+#    raw value on index/show pages and English labels in the edit select.
+module CustomAccountStatusFieldLabels
+  def to_partial_path
+    page == :form ? super : '/fields/account_status_field/translated'
+  end
+
+  def selectable_options
+    super.map { |label, value| [I18n.t("super_admin.account_status.#{value}", default: label), value] }
+  end
+end
+
 Rails.application.config.to_prepare do
   require 'administrate/base_dashboard'
   Administrate::BaseDashboard.prepend(CustomAdministrateDisplayResource)
+  AccountStatusField.prepend(CustomAccountStatusFieldLabels)
 
   [SuperAdmin::ApplicationController, SuperAdmin::Devise::SessionsController].each do |controller|
     controller.class_eval do

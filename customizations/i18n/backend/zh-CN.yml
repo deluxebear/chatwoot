@@ -669,3 +669,20 @@ zh-CN:
       not_available: 暂无
       chart_aria_label: 每日新建会话数
       chart_date_format: M'月'd'日'
+    account_status:
+      active: 正常
+      suspended: 已停用
+    filters:
+      filter_by: 筛选
+      clear_filter: 清除筛选
+      all_records: 全部记录
+      active: 正常
+      suspended: 已停用
+      recent: 最近 30 天创建
+      marked_for_deletion: 待删除
+      user: 用户
+      agent_bot: 客服机器人
+      platform_app: 平台应用
+      confirmed: 已确认
+      unconfirmed: 未确认
+      super_admin: 超级管理员
